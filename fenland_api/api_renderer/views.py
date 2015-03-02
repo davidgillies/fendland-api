@@ -1,6 +1,7 @@
 from django.views.generic import View
 from django.http import HttpResponse, HttpResponseNotFound
 from cam_apps import Application
+import json
 
 
 xml_string = open('U:/Data/forms_api/forms_api/xmlfiles/Fenland.xml', 'r').read()

@@ -14,12 +14,14 @@ class Application(object):
         self.db.table = self.db.entity(self.get_table_name(section_number))
         data = self.db.table.get(int(id_variable_value)).__dict__
         data.pop('_sa_instance_state')
+        data['dob'] = str(data['dob'])
         return data
 
     def insert_data(self, section_number, id_variable, id_variable_value, body):
         self.db.table = self.db.entity(self.get_table_name(section_number))
         json_dict = simplejson.JSONDecoder().decode(body)
         data = self.db.table.insert(**json_dict).__dict__
+        # import prep data for fenland from fenland business logic
         data.pop('_sa_instance_state')
         self.db.commit()
         return data
@@ -29,7 +31,7 @@ class Application(object):
         json_dict = simplejson.JSONDecoder().decode(body)
         # problem: can't put a variable into this filter_by must be a
         # database column name
-        data = self.db.table.filter_by(id=int(id_variable_value)).update(json_dict)
+        data = self.db.table.filter_by(volunteer_id=int(id_variable_value)).update(json_dict)
         data = json_dict
         self.db.commit()
         return data
