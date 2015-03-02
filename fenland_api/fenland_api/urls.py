@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^html/(\w+)', csrf_exempt(html_renderer_views.HTMLView.as_view())),
     url(r'^html/', csrf_exempt(html_renderer_views.HTMLView.as_view())),
     url(r'^api/(\w+)/(\w+)/(\w+)', csrf_exempt(api_renderer_views.APIView.as_view())),
-    url(r'^api/(\w+)/(\w+))', csrf_exempt(api_renderer_views.APIView.as_view())),
+    url(r'^api/(\w+)/(\w+)', csrf_exempt(api_renderer_views.APIView.as_view())),
     url(r'^api/(\w+)', csrf_exempt(api_renderer_views.APIView.as_view())),
     url(r'^api/', csrf_exempt(api_renderer_views.APIView.as_view())),
 )
