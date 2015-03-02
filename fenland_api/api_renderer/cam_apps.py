@@ -4,10 +4,10 @@ import simplejson
 
 
 class Application(object):
-    def __inti__(self, name, xml):
+    def __init__(self, name, xml):
         self.name = name
         self.xml = xml
-        self.xml_object = objectify.from_string(self.xml)
+        self.xml_object = objectify.fromstring(self.xml)
         self.db = sqlsoup.SQLSoup('mysql+pymysql://david:david@localhost:3306/sm_db')
 
     def get_data(self, section_number, id_variable, id_variable_value):

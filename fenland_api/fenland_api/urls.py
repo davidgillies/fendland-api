@@ -1,10 +1,11 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from html_renderer import views as html_renderer_views
+from django.views.decorators.csrf import csrf_exempt
+
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'fenland_api.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
     url(r'^admin/', include(admin.site.urls)),
+#    url(r'^a/', csrf_exempt(html_renderer_views.HTMLView.as_view()) ),
+#   url(r'^b/', 'api_renderer.views.tester'),
 )

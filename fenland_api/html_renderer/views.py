@@ -1,8 +1,8 @@
 from django.views.generic import View
-from cam_apps import Application
+from django.http import HttpResponse
+from api_renderer.views import fenland_app
 
-xml_string = open('U:/Data/forms_api/forms_api/xmlfiles/Fenland.xml', 'r').read()
-fenland_app = Application('fenland', xml_string)
 
 class HTMLView(View):
-    pass
+    def get(self, request):
+        return HttpResponse(fenland_app.name)
