@@ -2,12 +2,15 @@ from django.views.generic import View
 from api_renderer.views import fenland_app
 from django.shortcuts import render
 from helpers import get_question_group, get_question
+from django.http import HttpResponseNotFound
 
 
 class HTMLView(View):
     def get(self, request, section=None, question_group=None,
             question=None):
         # test using this data in a template
+        if section is None:
+            return HttpResponseNotFound('Page Not Found')
         section = fenland_app.get_section(section)
         if question_group is None:
             result = {'section': section}
