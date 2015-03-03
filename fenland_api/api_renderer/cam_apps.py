@@ -3,12 +3,6 @@ import sqlsoup
 import simplejson
 
 
-class Section(object):
-    def __init__(self):
-        pass
-        
-
-
 class Application(object):
     def __init__(self, name, xml):
         self.name = name
