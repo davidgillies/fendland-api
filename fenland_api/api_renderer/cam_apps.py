@@ -15,7 +15,6 @@ class Application(object):
         self.title = self.xml_object.title
         self.studyname = self.xml_object.studyName
         self.sections = self.get_sections()
-        
 
     def get_data(self, section_number, id_variable, id_variable_value):
         self.db.table = self.db.entity(self.get_table_name(section_number))
@@ -55,11 +54,12 @@ class Application(object):
 
     def get_section(self, section_number):
         return self.sections[str(section_number)]
-        
-        
+
     def get_sections(self):
         sections = {}
         for section in self.xml_object.section:
             sections[section.attrib['position']] = section
         return sections
+
+        
 
