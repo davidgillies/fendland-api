@@ -3,12 +3,25 @@ import sqlsoup
 import simplejson
 
 
+class Section(object):
+    def __init__(self):
+        pass
+        
+
+
 class Application(object):
     def __init__(self, name, xml):
         self.name = name
         self.xml = xml
         self.xml_object = objectify.fromstring(self.xml)
         self.db = sqlsoup.SQLSoup('mysql+pymysql://david:david@localhost:3306/sm_db')
+        self.author = self.xml_object.author
+        self.version_number = self.xml_object.versionNumber
+        self.version_date = self.xml_object.versionDate
+        self.title = self.xml_object.title
+        self.studyname = self.xml_object.studyName
+        self.sections = self.get_sections()
+        
 
     def get_data(self, section_number, id_variable, id_variable_value):
         self.db.table = self.db.entity(self.get_table_name(section_number))
@@ -47,4 +60,12 @@ class Application(object):
         return 'volunteers'
 
     def get_section(self, section_number):
-        return self.xml_object.section[int(section_number)]
+        return self.sections[str(section_number)]
+        
+        
+    def get_sections(self):
+        sections = {}
+        for section in self.xml_object.section:
+            sections[section.attrib['position']] = section
+        return sections
+
