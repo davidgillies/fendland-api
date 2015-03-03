@@ -1,6 +1,7 @@
 from lxml import objectify
 import sqlsoup
 import simplejson
+from copy import deepcopy
 
 
 class Application(object):
@@ -53,7 +54,7 @@ class Application(object):
         return 'volunteers'
 
     def get_section(self, section_number):
-        return self.sections[str(section_number)]
+        return deepcopy(self.sections[str(section_number)])
 
     def get_sections(self):
         sections = {}
