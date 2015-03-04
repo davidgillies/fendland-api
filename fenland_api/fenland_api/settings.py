@@ -67,6 +67,11 @@ DATABASES = {
     }
 }
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    'U:/Data/fenland_api/fenland-api/fenland_api/static/',
+)
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
