@@ -2,7 +2,6 @@ from lxml import objectify
 
 
 def data_prep(section, data):
-    print data
     for qg in section.questionGroup:
         for q in qg.question:
             var_value = objectify.Element('{http://www.mrc-epid.cam.ac.uk/schema/common/epi}var_value')
