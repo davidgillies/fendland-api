@@ -9,7 +9,6 @@ from api_renderer.business_layer import data_prep
 class HTMLView(View):
     def get(self, request, section=None, question_group=None,
             question=None):
-        # test using this data in a template
         result = {}
         if section is None:
             return HttpResponseNotFound('Page Not Found')
@@ -29,10 +28,10 @@ class HTMLView(View):
         result['question'] = question
         return render(request, 'html_renderer/question.html', result)
 
+
 class TestView(View):
     def get(self, request, section=None, question_group=None,
             question=None):
-        # test using this data in a template
         result = {}
         if section is None:
             return HttpResponseNotFound('Page Not Found')
