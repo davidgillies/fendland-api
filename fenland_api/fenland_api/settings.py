@@ -69,7 +69,7 @@ DATABASES = {
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    'U:/Data/fenland_api/fenland-api/fenland_api/static/',
+    
 )
 
 # Internationalization

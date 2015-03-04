@@ -1,0 +1,74 @@
+
+<html>
+<head>
+
+<title>Login for MRC-Epidemiology Questionnaire Platform</title>
+
+<link rel='stylesheet' type='text/css' media='all' href='/fenland/login/login.css'>
+<link rel='stylesheet' type='text/css' media='screen and (max-width:800px)' href='/fenland/login/login_small.css'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+
+<script type="text/javascript" src="/fenland/login/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/fenland/login/login.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+        if ($("#page_container").length > 0)  {
+            top.location.href = '/fenland';
+        }
+    });
+</script>	
+
+<body bgcolor="white">
+
+	<div id="main_page">
+		
+			<div id="home_logos" class="page_structurer">
+				<span id="logoLeft">
+					<a href="http://www.cam.ac.uk/" title="" target="_blank"><img id="UoC_img" class="home_logos" src="/fenland/login/UoC_Logo_white.png" alt="" border="none"/></a></span>
+				<span id="logoRight">
+					<a href="http://www.mrc-epid.cam.ac.uk/" title="" target="_blank"><img id="MRC_img" class="home_logos" src="/fenland/login/MRC_Logo_small_tr.jpg"  alt="" align="right" border="none"/></a></span>
+			</div>
+			<hr id="home_hr">
+						
+			<div id="page_header" class="home_page_structurer">
+				Login to the <i>On-line Questionnaire Platform</i> - MRC Epidemiology Unit<br>	
+					Fenland Study<br>
+			</div>
+			<div id="homeBanner"><img src="/fenland/login/homepage_banner.jpg" alt="" /></div>
+			<div id="page_body" class="home_page_structurer">Please enter your username and password to login:</div>
+			<br/>
+
+			<form method="POST" action='j_security_check' >
+			  <table border="0" cellspacing="5">
+				<tr>
+				  <th align="right">Username:</th>
+				  <td align="left"><input type="text" name="j_username"></td>
+				</tr>
+				<tr>
+				  <th align="right">Password:</th>
+				  <td align="left"><input type="password" name="j_password"></td>
+				</tr>
+				<tr>
+				  <td align="right"><input class="login_button" type="submit" value="Log In"></td>
+				  <td align="left"><input class="login_button" type="reset"></td>
+				</tr>
+			  </table>
+			</form>
+
+			<div id="footer_container">
+				<hr>
+				<div id="footer" class="col-full">
+				
+					<div id="copyright" class="col-left">&copy; 2014 MRC Epidemiology Unit, University of Cambridge</div>
+					<div id="credit" class="col-right">
+						<a href="http://www.mrc-epid.cam.ac.uk/disclaimer/" target="_blank">Disclaimer</a> | 
+						<a href="http://www.mrc-epid.cam.ac.uk/freedom-of-information/" target="_blank">Freedom of Information</a> | 
+						<a href="http://www.mrc-epid.cam.ac.uk/privacy-policy/" target="_blank">Privacy Policy</a> | 
+						<a href="http://www.mrc-epid.cam.ac.uk/cookies/" target="_blank">Cookies</a>  | 
+						<a href="http://intranet.mrc-epid.cam.ac.uk/" target="_blank">Intranet</a>
+					</div>
+				</div>
+			</div>
+	</div>
+</body>
+</html>
