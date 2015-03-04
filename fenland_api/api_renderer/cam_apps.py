@@ -61,6 +61,3 @@ class Application(object):
         for section in self.xml_object.section:
             sections[section.attrib['position']] = section
         return sections
-
-        
-

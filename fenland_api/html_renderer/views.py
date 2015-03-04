@@ -1,8 +1,9 @@
 from django.views.generic import View
 from api_renderer.views import fenland_app
 from django.shortcuts import render
-from helpers import get_question_group, get_question, data_prep
+from helpers import get_question_group, get_question
 from django.http import HttpResponseNotFound
+from api_renderer.business_layer import data_prep
 
 
 class HTMLView(View):
