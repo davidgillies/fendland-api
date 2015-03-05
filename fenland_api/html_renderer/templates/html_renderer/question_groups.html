@@ -11,7 +11,7 @@
                  
                  {% if c.tag == '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}textNode'  %}
                     {% if c.attrib.position == "1" %}<tr>{% endif %}
-                  <td class="{{c.info.attrib.cssClass}}"> {{c.attrib.position}}.  {{  c.info }} </td>
+                  <td class="{{c.info.attrib.cssClass}} {% for rh in c.renderingHint %}{% if rh.rhType == 'tdclass' %} {% for data in rh.rhData %}{{data}} {% endfor %}{% endif %}{% endfor %}"> {{c.attrib.position}}.  {{  c.info }} </td>
                  {% endif%}
                  {% if c.tag == '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}question'  %}
                          {% if c.attrib.position == '1' %}<tr>{% endif %}
