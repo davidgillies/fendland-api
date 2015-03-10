@@ -4,10 +4,62 @@ import simplejson
 from copy import deepcopy
 
 
-class Question(object):
-    def __init__(self, question_object):
+class VariableType(object):
+    def __init__(self, variable):
         pass
 
+class Question(object):
+    def __init__(self, question_object):
+        self.question_objects = []
+        self.variable = question_object.variable.varName
+        # self.var_type = VariableType(question_object.variable.dataType)
+        self.id = question_object.attrib['ID']
+        self.position = question_object.attrib['position']
+        self.rendering_hints = []
+        self.build_question(question_object)
+        
+    def build_question(self, question_object):
+        for item in question_object.getchildren():
+            self.tag_type(item.tag)(item)
+        
+    def tag_type(self, tag_type):
+        return {'{http://www.mrc-epid.cam.ac.uk/schema/common/epi}title': self.set_title, 
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}info': self.set_info,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}renderingHint': self.set_rendering_hint,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}externalPrograms': self.set_external_programs,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}option': self.set_options,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}restrictions': self.set_restrictions,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}variable': self.set_variable
+                }[tag_type]
+                
+    def set_restrictions(self, item):
+        pass
+    
+    def set_options(self, item):
+        pass
+    
+    def set_variable(self, item):
+        pass
+        
+    def set_info(self, item):
+        q_info = {}
+        q_info['text'] = item.text
+        q_info['cssClass'] = item.attrib['cssClass']
+        self.question_objects.append(q_info)
+        
+    def set_title(self, item):
+        return
+        
+    def set_rendering_hint(self, item):
+        rh = {}
+        rh['type'] = item.rhType
+        rh['data'] = []
+        for rhdata in item.rhData:
+            rh['data'].append(rhdata)
+        self.rendering_hints.append(rh)
+        
+    def set_external_programs(self, item):
+        pass
 
 class QuestionGroup(object):
     def __init__(self, question_group_object):
@@ -18,7 +70,7 @@ class QuestionGroup(object):
 
     def build_question_group(self, question_group_object):
         for item in question_group_object.getchildren():
-            func = self.tag_type(item.tag)(item)
+            self.tag_type(item.tag)(item)
             
     def tag_type(self, tag_type):
         return {'{http://www.mrc-epid.cam.ac.uk/schema/common/epi}title': self.set_title, 
@@ -39,10 +91,27 @@ class QuestionGroup(object):
         self.question_group_objects.append(qg_info)
     
     def set_text_node(self, item):
-        pass
+        text_node = {}
+        try:
+            text_node['id'] = item.attrib['ID']
+        except:
+            text_node['id'] = None
+        text_node['position'] = item.attrib['position']
+        text_node['rendering_hints'] = []
+        text_node['text'] = item.info.text
+        for rh in item.renderingHint:
+            rh_item = {}
+            rh_item['type'] = rh.rhType
+            rh_item['data'] = []
+            for rhdata in rh.rhData:
+                rh_item['data'].append(rhdata)
+            text_node['rendering_hints'].append(rh_item)
+        self.question_group_objects.append(text_node)
+        
     
     def set_question(self, item):
-        pass
+        question = Question(item)
+        self.question_group_objects.append(question)
 
     def set_rendering_hint(self, item):
         rh = {}
