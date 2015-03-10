@@ -25,7 +25,8 @@ class QuestionGroup(object):
                 '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}info': self.set_info,
                 '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}renderingHint': self.set_rendering_hint,
                 '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}textNode': self.set_text_node,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}question': self.set_question
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}question': self.set_question,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}externalPrograms': self.set_external_programs
                 }[tag_type]
                 
     def set_title(self, item):
@@ -35,10 +36,7 @@ class QuestionGroup(object):
         qg_info = {}
         qg_info['text'] = item.text
         qg_info['cssClass'] = item.attrib['cssClass']
-        self.question_group_objects.append(section_info)
-        
-    def set_rendering_hint(self, item):
-        pass
+        self.question_group_objects.append(qg_info)
     
     def set_text_node(self, item):
         pass
@@ -53,6 +51,9 @@ class QuestionGroup(object):
         for rhdata in item.rhData:
             rh['data'].append(rhdata)
         self.rendering_hints.append(rh)
+        
+    def set_external_programs(self, item):
+        pass
 
 class Section(object):
     def __init__(self, section_xml_object):
@@ -72,7 +73,8 @@ class Section(object):
         return {'{http://www.mrc-epid.cam.ac.uk/schema/common/epi}title': self.set_title, 
                 '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}info': self.set_info,
                 '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}questionGroup':self.set_question_group,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}renderingHint': self.set_rendering_hint
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}renderingHint': self.set_rendering_hint,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}externalPrograms': self.set_external_programs
                 }[tag_type]
 
     def set_title(self, item):
@@ -100,6 +102,9 @@ class Section(object):
         for rhdata in item.rhData:
             rh['data'].append(rhdata)
         self.rendering_hints.append(rh)
+        
+    def set_external_programs(self, item):
+        pass
 
 class Application(object):
     def __init__(self, name, xml):
