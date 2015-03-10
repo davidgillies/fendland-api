@@ -7,12 +7,23 @@ from copy import deepcopy
 class VariableType(object):
     def __init__(self, variable):
         pass
+    
+class MethodMixin(object):
+    def set_rendering_hint(self, item):
+        rh = {}
+        #rh['type'] = item.rhType
+        rh[item.rhType] = ''
+        for rhdata in item.rhData:
+            rh[item.rhType] = rh[item.rhType] + ' ' + str(rhdata)
+        rh[item.rhType] = rh[item.rhType].strip()
+        self.rendering_hints.append(rh)
 
-class Question(object):
+class Question(MethodMixin):
     def __init__(self, question_object):
         self.question_objects = []
         self.variable = question_object.variable.varName
         # self.var_type = VariableType(question_object.variable.dataType)
+        self.var_value = None
         self.id = question_object.attrib['ID']
         self.position = question_object.attrib['position']
         self.rendering_hints = []
@@ -49,19 +60,12 @@ class Question(object):
         
     def set_title(self, item):
         return
-        
-    def set_rendering_hint(self, item):
-        rh = {}
-        rh['type'] = item.rhType
-        rh['data'] = []
-        for rhdata in item.rhData:
-            rh['data'].append(rhdata)
-        self.rendering_hints.append(rh)
+
         
     def set_external_programs(self, item):
         pass
 
-class QuestionGroup(object):
+class QuestionGroup(MethodMixin):
     def __init__(self, question_group_object):
         self.question_group_objects = []
         self.title = question_group_object.title
@@ -113,18 +117,12 @@ class QuestionGroup(object):
         question = Question(item)
         self.question_group_objects.append(question)
 
-    def set_rendering_hint(self, item):
-        rh = {}
-        rh['type'] = item.rhType
-        rh['data'] = []
-        for rhdata in item.rhData:
-            rh['data'].append(rhdata)
-        self.rendering_hints.append(rh)
+
         
     def set_external_programs(self, item):
         pass
 
-class Section(object):
+class Section(MethodMixin):
     def __init__(self, section_xml_object):
         self.section_xml_object = section_xml_object
         self.title = section_xml_object.title
@@ -163,15 +161,7 @@ class Section(object):
         question_group = QuestionGroup(item)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
-        
-    def set_rendering_hint(self, item):
-        rh = {}
-        rh['type'] = item.rhType
-        rh['data'] = []
-        for rhdata in item.rhData:
-            rh['data'].append(rhdata)
-        self.rendering_hints.append(rh)
-        
+
     def set_external_programs(self, item):
         pass
 
