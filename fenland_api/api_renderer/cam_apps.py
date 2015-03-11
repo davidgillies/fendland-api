@@ -79,6 +79,7 @@ class Question(MethodMixin):
 # 2. Refactor rendering_hints stuff
 # 3. Is there anything that can be rendered entirely by a template to string
 # that doesn't have any data...  First sections etc.  Does it help?
+# 4. Questions should name their template by type for easy loading.
 class QuestionGroup(MethodMixin):
     def __init__(self, question_group_object):
         self.question_group_objects = []
