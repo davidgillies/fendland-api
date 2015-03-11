@@ -4,11 +4,6 @@ import simplejson
 from copy import deepcopy
 
 
-class VariableType(object):
-    def __init__(self, variable):
-        pass
-
-
 class MethodMixin(object):
     def set_rendering_hint(self, item):
         # rh = {}
@@ -31,16 +26,31 @@ class Question(MethodMixin):
         self.question_objects = []
         self.title = question_object.attrib['position']
         self.variable = question_object.variable.varName.text
-        # self.var_type = VariableType(question_object.variable.dataType)
         self.var_value = None
         self.id = question_object.attrib['ID']
         self.position = question_object.attrib['position']
         self.rendering_hints = {}
+        self.template = ''
+        self.template_args = {'options': []}
         self.build_question(question_object)
+        
+        
+    def get_template(self, selection):
+        return {'radio': 'html_renderer/radio.html',
+                'dropdown': 'html_renderer/select.html',
+                'text': 'html_renderer/text.html',
+                'multiline': 'html_renderer/textarea.html',
+                'range': 'html_renderer/range.html',
+                'datalist': 'html_renderer/datalist.html'}[selection]
+
+    def set_template(self):
+        self.template = self.get_template(self.rendering_hints['qtype'])
 
     def build_question(self, question_object):
         for item in question_object.getchildren():
             self.tag_type(item.tag)(item)
+        self.set_template()
+        
 
     def tag_type(self, tag_type):
         return {'{http://www.mrc-epid.cam.ac.uk/schema/common/epi}title': self.set_title, 
@@ -56,7 +66,8 @@ class Question(MethodMixin):
         pass
 
     def set_options(self, item):
-        pass
+        self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
+        
 
     def set_variable(self, item):
         pass
@@ -126,7 +137,6 @@ class QuestionGroup(MethodMixin):
             for rhdata in rh.rhData:
                 text_node['rendering_hints'][key] = text_node['rendering_hints'][key] + ' ' + str(rhdata)
             text_node['rendering_hints'][key] = text_node['rendering_hints'][key].strip()
-            print text_node
         self.question_group_objects.append(text_node)
 
     def set_question(self, item):
