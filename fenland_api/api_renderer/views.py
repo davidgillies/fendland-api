@@ -7,6 +7,7 @@ import json
 xml_string = open('U:/Data/forms_api/forms_api/xmlfiles/Fenland.xml', 'r').read()
 fenland_app = Application('fenland', xml_string)
 
+
 class APIView(View):
     def get(self, request, section=None, id_variable=None,
             id_variable_value=None):

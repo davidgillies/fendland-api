@@ -18,10 +18,10 @@ class MethodMixin(object):
         for rhdata in item.rhData:
             self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
         self.rendering_hints[key] = self.rendering_hints[key].strip()
-        
+
     def __str__(self):
         return "%s: %s" % (self.title, self.position)
-        
+
     def __unicode__(self):
         return "%s: %s" % (self.title, self.position)
 
@@ -73,9 +73,10 @@ class Question(MethodMixin):
     def set_external_programs(self, item):
         pass
 
+
 # Tod dos:
 # 1. set table and shownumber on the QuestionGroup object, they come from
-# the renderingHints.  
+# the renderingHints.
 # 2. Refactor rendering_hints stuff
 # 3. Is there anything that can be rendered entirely by a template to string
 # that doesn't have any data...  First sections etc.  Does it help?
@@ -140,7 +141,7 @@ class Section(MethodMixin):
     def __init__(self, section_xml_object):
         self.section_xml_object = section_xml_object
         self.title = section_xml_object.title
-        self.position =  section_xml_object.attrib['position']
+        self.position = section_xml_object.attrib['position']
         self.info = []
         self.question_groups = []
         self.section_objects = []
