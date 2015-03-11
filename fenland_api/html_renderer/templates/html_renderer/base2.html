@@ -19,7 +19,7 @@
                  
 
                     {% if c.position == "1" %}<tr>{% endif %}
-                  <td class="{{c.rendering_hints.tdclass}}">{{ c.text }}{{c.var_value}}</td>
+                  <td class="{{c.rendering_hints.tdclass}}">{{ c.text }}  {% if c.template %}{% include c.template %}{% endif %}</td>
 
                         {% if c.rendering_hints.endoftr == 'True'%}
                             </tr><tr>

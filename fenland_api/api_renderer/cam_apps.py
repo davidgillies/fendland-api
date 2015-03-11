@@ -33,8 +33,7 @@ class Question(MethodMixin):
         self.template = ''
         self.template_args = {'options': []}
         self.build_question(question_object)
-        
-        
+
     def get_template(self, selection):
         return {'radio': 'html_renderer/radio.html',
                 'dropdown': 'html_renderer/select.html',
@@ -50,7 +49,6 @@ class Question(MethodMixin):
         for item in question_object.getchildren():
             self.tag_type(item.tag)(item)
         self.set_template()
-        
 
     def tag_type(self, tag_type):
         return {'{http://www.mrc-epid.cam.ac.uk/schema/common/epi}title': self.set_title, 
@@ -67,7 +65,10 @@ class Question(MethodMixin):
 
     def set_options(self, item):
         self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
-        
+        # dynamic options should have a table reference in xml so they can be loaded and cached? 
+        # if options dynamic load from application, which can hold cached data
+        # test if option is dynamic and if so load from application cache.  But 
+        # application should get this from specific business layer.  
 
     def set_variable(self, item):
         pass
