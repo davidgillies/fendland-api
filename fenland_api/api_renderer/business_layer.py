@@ -1,9 +1,9 @@
-from cam_apps import Question
+import cam_apps
 
 
 def data_prep(section, data):
     for qg in section.section_objects:
-        question_list = [q for q in qg.question_group_objects if isinstance(q, Question)]
+        question_list = [q for q in qg.question_group_objects if isinstance(q, cam_apps.Question)]
         for q in question_list:
             if q.variable == 'surgery':
                 q.var_value = data['surgery_id']

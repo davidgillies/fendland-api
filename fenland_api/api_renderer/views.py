@@ -29,5 +29,5 @@ class APIView(View):
 
     def delete(self, request, section=None, id_variable=None,
                id_variable_value=None):
-        data = fenland_app.delete_data(section, id_variable, id_variable_value)
+        fenland_app.delete_data(section, id_variable, id_variable_value)
         return HttpResponse(None, status=204)

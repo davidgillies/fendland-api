@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 
+
 class BeautifulMiddleware(object):
     def process_response(self, request, response):
         if response.status_code == 200:

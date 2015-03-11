@@ -6,8 +6,6 @@ from copy import deepcopy
 
 class MethodMixin(object):
     def set_rendering_hint(self, item):
-        # rh = {}
-        # rh['type'] = item.rhType
         key = item.rhType.text
         self.rendering_hints[key] = ''
         for rhdata in item.rhData:
