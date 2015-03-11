@@ -1,0 +1,35 @@
+<div class="section">
+<form style="height: 212px;" onscroll="moveScroll();" id="questionnaire_form">
+<div class="section_title">
+{{section.title}}
+</div>
+{{section.position}}
+
+
+    {#% include 'html_renderer/question_groups.html' %#}
+
+
+        {% for question_group in section.section_objects %}
+            {{question_group.title}}<br />
+           
+            {#% include 'html_renderer/question_group.html'%#}
+            <table class="{{ question_group.rendering_hints.tdclass }}">
+
+            {% for c in question_group.question_group_objects %}
+                 
+
+                    {% if c.position == "1" %}<tr>{% endif %}
+                  <td class="{{c.rendering_hints.tdclass}}"> {{c.position}}. {{c.variable}} = {{c.var_value}}  </td>
+
+                        {% if c.rendering_hints.endoftr == 'True'%}
+                            </tr><tr>
+                        {% endif %}
+
+                
+            {% endfor %}
+            </tr></table>
+        {% endfor %}
+
+</form>
+</div>    
+

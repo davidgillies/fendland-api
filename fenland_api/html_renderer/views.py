@@ -19,7 +19,7 @@ class HTMLView(View):
             section = data_prep(section, data)
         if question_group is None:
             result['section'] = section
-            return render(request, 'html_renderer/base.html', result)
+            return render(request, 'html_renderer/base2.html', result)
         question_group = get_question_group(section, question_group)
         if question is None:
             result['questionGroup'] = question_group

@@ -11,24 +11,31 @@ class VariableType(object):
 
 class MethodMixin(object):
     def set_rendering_hint(self, item):
-        rh = {}
+        # rh = {}
         # rh['type'] = item.rhType
-        rh[item.rhType] = ''
+        key = item.rhType.text
+        self.rendering_hints[key] = ''
         for rhdata in item.rhData:
-            rh[item.rhType] = rh[item.rhType] + ' ' + str(rhdata)
-        rh[item.rhType] = rh[item.rhType].strip()
-        self.rendering_hints.append(rh)
+            self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
+        self.rendering_hints[key] = self.rendering_hints[key].strip()
+        
+    def __str__(self):
+        return "%s: %s" % (self.title, self.position)
+        
+    def __unicode__(self):
+        return "%s: %s" % (self.title, self.position)
 
 
 class Question(MethodMixin):
     def __init__(self, question_object):
         self.question_objects = []
-        self.variable = question_object.variable.varName
+        self.title = question_object.attrib['position']
+        self.variable = question_object.variable.varName.text
         # self.var_type = VariableType(question_object.variable.dataType)
         self.var_value = None
         self.id = question_object.attrib['ID']
         self.position = question_object.attrib['position']
-        self.rendering_hints = []
+        self.rendering_hints = {}
         self.build_question(question_object)
 
     def build_question(self, question_object):
@@ -70,11 +77,14 @@ class Question(MethodMixin):
 # 1. set table and shownumber on the QuestionGroup object, they come from
 # the renderingHints.  
 # 2. Refactor rendering_hints stuff
+# 3. Is there anything that can be rendered entirely by a template to string
+# that doesn't have any data...  First sections etc.  Does it help?
 class QuestionGroup(MethodMixin):
     def __init__(self, question_group_object):
         self.question_group_objects = []
         self.title = question_group_object.title
-        self.rendering_hints = []
+        self.position = question_group_object.attrib['position']
+        self.rendering_hints = {}
         self.build_question_group(question_group_object)
 
     def build_question_group(self, question_group_object):
@@ -106,15 +116,15 @@ class QuestionGroup(MethodMixin):
         except:
             text_node['id'] = None
         text_node['position'] = item.attrib['position']
-        text_node['rendering_hints'] = []
+        text_node['rendering_hints'] = {}
         text_node['text'] = item.info.text
         for rh in item.renderingHint:
-            rh_item = {}
-            rh_item['type'] = rh.rhType
-            rh_item['data'] = []
+            key = rh.rhType.text
+            text_node['rendering_hints'][key] = ''
             for rhdata in rh.rhData:
-                rh_item['data'].append(rhdata)
-            text_node['rendering_hints'].append(rh_item)
+                text_node['rendering_hints'][key] = text_node['rendering_hints'][key] + ' ' + str(rhdata)
+            text_node['rendering_hints'][key] = text_node['rendering_hints'][key].strip()
+            print text_node
         self.question_group_objects.append(text_node)
 
     def set_question(self, item):
@@ -129,10 +139,11 @@ class Section(MethodMixin):
     def __init__(self, section_xml_object):
         self.section_xml_object = section_xml_object
         self.title = section_xml_object.title
+        self.position =  section_xml_object.attrib['position']
         self.info = []
         self.question_groups = []
         self.section_objects = []
-        self.rendering_hints = []
+        self.rendering_hints = {}
         self.build_section()
 
     def build_section(self):
@@ -150,13 +161,13 @@ class Section(MethodMixin):
     def set_title(self, item):
         return
 
-    def set_renderering_hint(self, item):
-        pass
-
     def set_info(self, item):
         section_info = {}
         section_info['text'] = item.text
-        section_info['cssClass'] = item.attrib['cssClass']
+        try:
+            section_info['cssClass'] = item.attrib['cssClass']
+        except:
+            section_info['cssClass'] = ''
         self.info.append(section_info)
         self.section_objects.append(section_info)
 
@@ -224,5 +235,5 @@ class Application(object):
     def get_sections(self):
         sections = {}
         for section in self.xml_object.section:
-            sections[section.attrib['position']] = section
+            sections[section.attrib['position']] = Section(section)
         return sections

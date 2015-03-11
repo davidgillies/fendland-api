@@ -1,15 +1,14 @@
-from lxml import objectify
+from cam_apps import Question
 
 
 def data_prep(section, data):
-    for qg in section.questionGroup:
-        for q in qg.question:
-            var_value = objectify.Element('{http://www.mrc-epid.cam.ac.uk/schema/common/epi}var_value')
-            if q.variable.varName == 'surgery':
-                var_value.value = data['surgery_id']
-            elif q.variable.varName == "diabetes":
-                var_value.value = data['diabetes_diagnosed']
+    for qg in section.section_objects:
+        question_list = [q for q in qg.question_group_objects if isinstance(q, Question)]
+        for q in question_list:
+            if q.variable == 'surgery':
+                q.var_value = data['surgery_id']
+            elif q.variable == "diabetes":
+                q.var_value = data['diabetes_diagnosed']
             else:
-                var_value.value = data[q.variable.varName]
-            q.variable.append(var_value)
+                q.var_value = data[q.variable]
     return section
