@@ -69,10 +69,6 @@ class Question(MethodMixin):
             self.template_args['options'] = local_functions.get_options(item.optionValue.text)
         else:
             self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
-        # dynamic options should have a table reference in xml so they can be loaded and cached? 
-        # if options dynamic load from application, which can hold cached data
-        # test if option is dynamic and if so load from application cache.  But 
-        # application should get this from specific business layer.
 
     def set_variable(self, item):
         pass
@@ -93,10 +89,9 @@ class Question(MethodMixin):
 # Tod dos:
 # 1. set table and shownumber on the QuestionGroup object, they come from
 # the renderingHints.
-# 2. Refactor rendering_hints stuff
-# 3. Is there anything that can be rendered entirely by a template to string
+# 2. Is there anything that can be rendered entirely by a template to string
 # that doesn't have any data...  First sections etc.  Does it help?
-# 4. Questions should name their template by type for easy loading.
+
 class QuestionGroup(MethodMixin):
     def __init__(self, question_group_object):
         self.question_group_objects = []

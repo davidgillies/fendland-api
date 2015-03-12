@@ -31,5 +31,5 @@ class CustomFunctions(object):
             result.append({'text': surgery.full_name, 'value': surgery.id})
         return result
 
-    def get_options(self, func_call):
-        return {'surgeries': self.surgeries}[func_call]
+    def get_options(self, option):
+        return {'surgeries': self.surgeries}[option]
