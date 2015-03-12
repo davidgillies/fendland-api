@@ -14,12 +14,52 @@ class MethodMixin(object):
         for rhdata in item.rhData:
             self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
         self.rendering_hints[key] = self.rendering_hints[key].strip()
+        
+    def tag_type(self, tag_type):
+        return {'{http://www.mrc-epid.cam.ac.uk/schema/common/epi}title': self.set_title, 
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}info': self.set_info,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}renderingHint': self.set_rendering_hint,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}externalPrograms': self.set_external_programs,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}option': self.set_options,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}restrictions': self.set_restrictions,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}textNode': self.set_text_node,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}question': self.set_question,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}questionGroup':self.set_question_group,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}variable': self.set_variable
+                }[tag_type]
 
     def __str__(self):
         return "%s: %s" % (self.title, self.position)
 
     def __unicode__(self):
         return "%s: %s" % (self.title, self.position)
+
+    def set_title(self, item):
+        pass
+
+    def set_variable(self, item):
+        pass
+
+    def set_options(self, item):
+        pass
+
+    def set_info(self, item):
+        pass
+
+    def set_external_programs(self, item):
+        pass
+
+    def set_text_node(self, item):
+        pass
+
+    def set_question(self, item):
+        pass
+
+    def set_question_group(self, item):
+        pass
+
+    def set_restrictions(self, item):
+        pass
 
 
 class Question(MethodMixin):
@@ -50,40 +90,18 @@ class Question(MethodMixin):
         for item in question_object.getchildren():
             self.tag_type(item.tag)(item)
         self.set_template()
-
-    def tag_type(self, tag_type):
-        return {'{http://www.mrc-epid.cam.ac.uk/schema/common/epi}title': self.set_title, 
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}info': self.set_info,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}renderingHint': self.set_rendering_hint,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}externalPrograms': self.set_external_programs,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}option': self.set_options,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}restrictions': self.set_restrictions,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}variable': self.set_variable
-                }[tag_type]
-
-    def set_restrictions(self, item):
-        pass
-
+        
     def set_options(self, item):
         if item.optionText.text == 'dynamic':
             self.template_args['options'] = local_functions.get_options(item.optionValue.text)
         else:
             self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
 
-    def set_variable(self, item):
-        pass
-
     def set_info(self, item):
         q_info = {}
         q_info['text'] = item.text
         q_info['cssClass'] = item.attrib['cssClass']
         self.question_objects.append(q_info)
-
-    def set_title(self, item):
-        return
-
-    def set_external_programs(self, item):
-        pass
 
 
 # Tod dos:
@@ -103,18 +121,6 @@ class QuestionGroup(MethodMixin):
     def build_question_group(self, question_group_object):
         for item in question_group_object.getchildren():
             self.tag_type(item.tag)(item)
-
-    def tag_type(self, tag_type):
-        return {'{http://www.mrc-epid.cam.ac.uk/schema/common/epi}title': self.set_title, 
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}info': self.set_info,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}renderingHint': self.set_rendering_hint,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}textNode': self.set_text_node,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}question': self.set_question,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}externalPrograms': self.set_external_programs
-                }[tag_type]
-
-    def set_title(self, item):
-        return
 
     def set_info(self, item):
         qg_info = {}
@@ -143,9 +149,6 @@ class QuestionGroup(MethodMixin):
         question = Question(item)
         self.question_group_objects.append(question)
 
-    def set_external_programs(self, item):
-        pass
-
 
 class Section(MethodMixin):
     def __init__(self, section_xml_object):
@@ -162,17 +165,6 @@ class Section(MethodMixin):
         for item in self.section_xml_object.getchildren():
             self.tag_type(item.tag)(item)
 
-    def tag_type(self, tag_type):
-        return {'{http://www.mrc-epid.cam.ac.uk/schema/common/epi}title': self.set_title, 
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}info': self.set_info,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}questionGroup':self.set_question_group,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}renderingHint': self.set_rendering_hint,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}externalPrograms': self.set_external_programs
-                }[tag_type]
-
-    def set_title(self, item):
-        return
-
     def set_info(self, item):
         section_info = {}
         section_info['text'] = item.text
@@ -187,9 +179,6 @@ class Section(MethodMixin):
         question_group = QuestionGroup(item)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
-
-    def set_external_programs(self, item):
-        pass
 
 
 class Application(object):
