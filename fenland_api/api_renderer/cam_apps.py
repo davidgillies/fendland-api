@@ -2,6 +2,9 @@ from lxml import objectify
 import sqlsoup
 import simplejson
 from copy import deepcopy
+import business_layer
+
+local_functions = business_layer.CustomFunctions()
 
 
 class MethodMixin(object):
@@ -62,7 +65,10 @@ class Question(MethodMixin):
         pass
 
     def set_options(self, item):
-        self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
+        if item.optionText.text == 'dynamic':
+            self.template_args['options'] = local_functions.get_options(item.optionValue.text)
+        else:
+            self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
         # dynamic options should have a table reference in xml so they can be loaded and cached? 
         # if options dynamic load from application, which can hold cached data
         # test if option is dynamic and if so load from application cache.  But 
