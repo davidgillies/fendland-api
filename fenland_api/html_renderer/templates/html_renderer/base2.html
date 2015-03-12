@@ -3,8 +3,12 @@
 <div class="section_title">
 {{section.title}}
 </div>
-{{section.position}}
-{{section.info}}
+{% for i in section.info %}
+    {% if i.cssClass == 'new_line' %}<br />
+    {% else %}<div class="{{i.cssClass}}">{{i.text}}</div>    
+    {% endif %}
+
+{% endfor %}
 
     {#% include 'html_renderer/question_groups.html' %#}
 
