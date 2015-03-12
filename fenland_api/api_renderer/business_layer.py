@@ -1,6 +1,7 @@
 import cam_apps
 import sqlsoup
 
+
 def data_prep(section, data):
     for qg in section.section_objects:
         question_list = [q for q in qg.question_group_objects if isinstance(q, cam_apps.Question)]
@@ -14,6 +15,7 @@ def data_prep(section, data):
     return section
 # should get any related data here...
 
+
 class CustomFunctions(object):
     def __init__(self):
         self.db = sqlsoup.SQLSoup('mysql+pymysql://david:david@localhost:3306/sm_db')
@@ -25,6 +27,6 @@ class CustomFunctions(object):
         for surgery in surgeries:
             result.append({'text': surgery.full_name, 'value': surgery.id})
         return result
-        
+
     def get_options(self, func_call):
         return {'surgeries': self.surgeries}[func_call]
