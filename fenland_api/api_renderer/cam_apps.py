@@ -72,7 +72,7 @@ class Question(MethodMixin):
         # dynamic options should have a table reference in xml so they can be loaded and cached? 
         # if options dynamic load from application, which can hold cached data
         # test if option is dynamic and if so load from application cache.  But 
-        # application should get this from specific business layer.  
+        # application should get this from specific business layer.
 
     def set_variable(self, item):
         pass
