@@ -1,8 +1,9 @@
-1. Multiline output which can't be completely defined in xml, how?
-2. Generic API for multi-models, joins etc.
-3. Develop more output templates.
-4. More generic application methods.
-5. Best way to use custom functionality?
+1. Sort id/names for multiline output.  
+2. How do I deal with it as input?
+3. Generic API for multi-models, joins etc.
+4. Develop more output templates.
+5. More generic application methods.
+6. Best way to use custom functionality?
 
 
 XML -> Application Object
