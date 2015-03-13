@@ -7,6 +7,11 @@ import business_layer
 local_functions = business_layer.CustomFunctions()
 
 
+class TextNode(dict):
+    def __init__(self):
+        self.rendering_hints = {}
+        super(TextNode, self).__init__()
+
 class MethodMixin(object):
     def set_rendering_hint(self, item):
         key = item.rhType.text
@@ -90,7 +95,7 @@ class Question(MethodMixin):
         for item in question_object.getchildren():
             self.tag_type(item.tag)(item)
         self.set_template()
-        
+
     def set_options(self, item):
         if item.optionText.text == 'dynamic':
             self.template_args['options'] = local_functions.get_options(item.optionValue.text)
@@ -129,20 +134,19 @@ class QuestionGroup(MethodMixin):
         self.question_group_objects.append(qg_info)
 
     def set_text_node(self, item):
-        text_node = {}
+        text_node = TextNode()
         try:
             text_node['id'] = item.attrib['ID']
         except:
             text_node['id'] = None
         text_node['position'] = item.attrib['position']
-        text_node['rendering_hints'] = {}
         text_node['text'] = item.info.text
         for rh in item.renderingHint:
             key = rh.rhType.text
-            text_node['rendering_hints'][key] = ''
+            text_node.rendering_hints[key] = ''
             for rhdata in rh.rhData:
-                text_node['rendering_hints'][key] = text_node['rendering_hints'][key] + ' ' + str(rhdata)
-            text_node['rendering_hints'][key] = text_node['rendering_hints'][key].strip()
+                text_node.rendering_hints[key] = text_node.rendering_hints[key] + ' ' + str(rhdata)
+            text_node.rendering_hints[key] = text_node.rendering_hints[key].strip()
         self.question_group_objects.append(text_node)
 
     def set_question(self, item):
