@@ -12,6 +12,7 @@ class TextNode(dict):
         self.rendering_hints = {}
         super(TextNode, self).__init__()
 
+
 class MethodMixin(object):
     def set_rendering_hint(self, item):
         key = item.rhType.text
@@ -19,7 +20,7 @@ class MethodMixin(object):
         for rhdata in item.rhData:
             self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
         self.rendering_hints[key] = self.rendering_hints[key].strip()
-        
+
     def tag_type(self, tag_type):
         return {'{http://www.mrc-epid.cam.ac.uk/schema/common/epi}title': self.set_title, 
                 '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}info': self.set_info,

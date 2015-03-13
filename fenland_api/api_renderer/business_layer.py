@@ -10,28 +10,21 @@ def get_multi_data(table, id):
     objs = db.table.filter(db.appointments.volunteer_id==id).all()
     return objs
 
+
 def data_prep(section, data):
     for qg in section.section_objects:
-        
         multi_lines = []
         multi = False
         multi_line = []
         for q in qg.question_group_objects:
-            
-            
-            
             if 'multi' in q.rendering_hints.keys() or multi:
-                if multi == False:
+                if multi is False:
                     multi_index = qg.question_group_objects.index(q)
                 multi_line.append(q)
-                # qg.question_group_objects.pop(multi_index)
                 multi = True
                 if 'endoftr' in q.rendering_hints.keys():
                     multi = False
-                    #multi_line.append(q)
-                    # print multi_line, multi_line[0].rendering_hints
                     multi_data = get_multi_data(multi_line[0].rendering_hints['multi'], data['volunteer_id'])
-                    #multi_line = len(multi_data)*[multi_line]
                     multi_line_adder = []
                     for i in range(len(multi_data)):
                         multi_line_adder.append(deepcopy(multi_line))
@@ -40,10 +33,8 @@ def data_prep(section, data):
                         for i in range(len(multi_line[index])):
                             if isinstance(multi_line[index][i], cam_apps.Question):
                                 multi_line[index][i].var_value = multi_data[index].__dict__[multi_line[index][i].variable]
-                                print "%s: %s" % (multi_line[index][i].variable, multi_line[index][i].var_value )
                     multi_line = list(chain.from_iterable(multi_line))
                     multi_lines.append([multi_line, multi_index])
-        
             elif isinstance(q, cam_apps.Question):
                 if q.variable == 'surgery':
                     q.var_value = data['surgery_id']
@@ -55,11 +46,7 @@ def data_prep(section, data):
         for ml in multi_lines:
             print len(ml[0])
             qg.question_group_objects[ml[1]:ml[1]+(len(ml[0])/len(multi_data))] = ml[0]
-            #print ml[0], ml[1]
-            
     return section
-
-# should get any related data here...
 
 
 class CustomFunctions(object):

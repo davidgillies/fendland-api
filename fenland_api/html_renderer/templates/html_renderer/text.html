@@ -1,1 +1,1 @@
-<input type="text" name="{{c.variable}}" value="{{c.var_value}}" />
+<input type="text" name="{{c.variable}}" value="{% if c.var_value != None %}{{c.var_value}}{% endif %}" />
