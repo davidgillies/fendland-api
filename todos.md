@@ -9,6 +9,7 @@
 9. Write up method for database introspection.
 10. Inject js into output for validation, other jquery shit?
 11. Plan work for next few weeks
+12. Integrate REST framework
 
 
 XML -> Application Object
