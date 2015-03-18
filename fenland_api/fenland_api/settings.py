@@ -67,9 +67,19 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    'db2': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sm_db',
+        'USER': 'david',
+        'PASSWORD': 'david',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
 }
 
+DATABASE_ROUTERS = ['api_renderer.routers.PlayRouter',]
+ 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )

@@ -238,13 +238,11 @@ class Application(object):
         if self.models:
             pass
         else:
-            self.db.table = self.db.entity(self.get_table_name(section))
+            self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
             # problem: can't put a variable into this filter_by must be a
             # database column name
-            # data = self.db.table.filter_by(volunteer_id=int(id_variable_value)).update(json_dict)
             data = self.db.table.filter_by(volunteer_id=int(id_variable_value)).update(json_dict)
-            # TEST data = self.db.table.get(int(id_variable_value)).update(json_dict)
             data = json_dict
             self.db.commit()
             return data
