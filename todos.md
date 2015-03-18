@@ -6,12 +6,11 @@
 6. More generic application methods.
 7. Best way to use custom functionality?
 8. Add in database introspection to create admin interface.
-9. Write up method for database introspection.
-10. Inject js into output for validation, other jquery shit?
-11. Plan work for next few weeks
-12. Integrate REST framework
-13. Test out delete with json, line 243, cam_apps.py
-14. Sort out question and question_group views.
+9. Inject js into output for validation, other jquery shit?
+10. Plan work for next few weeks
+11. Integrate REST framework
+12. Test out delete with json, line 243, cam_apps.py
+13. Sort out question and question_group views.
 
 
 XML -> Application Object
