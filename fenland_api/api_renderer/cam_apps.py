@@ -203,41 +203,59 @@ class Application(object):
         self.studyname = self.xml_object.studyName
         self.sections = self.get_sections()
 
-    def get_data(self, section_number, id_variable, id_variable_value):
-        self.db.table = self.db.entity(self.get_table_name(section_number))
-        data = self.db.table.get(int(id_variable_value)).__dict__
-        data.pop('_sa_instance_state')
-        data['dob'] = str(data['dob'])
+    def get_data(self, section, id_variable, id_variable_value):
+        if self.models:
+            pass
+        else:
+            self.db.table = self.db.entity(self.get_table_name(section.position))
+            data = self.db.table.get(int(id_variable_value)).__dict__
+            data.pop('_sa_instance_state')
+            if self.custom:
+                pass
+            self.tidy(data)
         return data
+        
+    def tidy(self, data):
+        pass
 
     def insert_data(self, section_number, id_variable, id_variable_value, body):
-        self.db.table = self.db.entity(self.get_table_name(section_number))
-        json_dict = simplejson.JSONDecoder().decode(body)
-        data = self.db.table.insert(**json_dict).__dict__
-        # import prep data for fenland from fenland business logic
-        data.pop('_sa_instance_state')
-        self.db.commit()
-        return data
+        if self.models:
+            pass
+        else:
+            self.db.table = self.db.entity(self.get_table_name(section_number))
+            json_dict = simplejson.JSONDecoder().decode(body)
+            data = self.db.table.insert(**json_dict).__dict__
+            # import prep data for fenland from fenland business logic
+            data.pop('_sa_instance_state')
+            self.db.commit()
+            return data
 
     def update_data(self, section_number, id_variable, id_variable_value, body):
-        self.db.table = self.db.entity(self.get_table_name(section_number))
-        json_dict = simplejson.JSONDecoder().decode(body)
-        # problem: can't put a variable into this filter_by must be a
-        # database column name
-        data = self.db.table.filter_by(volunteer_id=int(id_variable_value)).update(json_dict)
-        data = json_dict
-        self.db.commit()
-        return data
+        if self.models:
+            pass
+        else:
+            self.db.table = self.db.entity(self.get_table_name(section.position))
+            json_dict = simplejson.JSONDecoder().decode(body)
+            # problem: can't put a variable into this filter_by must be a
+            # database column name
+            data = self.db.table.filter_by(volunteer_id=int(id_variable_value)).update(json_dict)
+            data = json_dict
+            self.db.commit()
+            return data
 
     def delete_data(self, section_number, id_variable, id_variable_value):
-        self.db.table = self.db.entity(self.get_table_name(section_number))
-        instance = self.db.table.get(int(id_variable_value))
-        self.db.delete(instance)
-        self.db.commit()
-        return
+        if self.models:
+            pass
+        else:
+            self.db.table = self.db.entity(self.get_table_name(section.position))
+            instance = self.db.table.get(int(id_variable_value))
+            self.db.delete(instance)
+            self.db.commit()
+            return
 
     def get_table_name(self, section_number):
-        return 'volunteers' # add in a mapping from section to tables in business logic?
+        print section_number
+        return local_settings.SECTION_MAPPING[int(section_number)] # add in a mapping from section to tables in business logic?
 
     def get_section(self, section_number):
         return deepcopy(self.sections[str(section_number)])
