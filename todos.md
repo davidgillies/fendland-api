@@ -11,6 +11,7 @@
 11. Plan work for next few weeks
 12. Integrate REST framework
 13. Test out delete with json, line 243, cam_apps.py
+14. Sort out question and question_group views.
 
 
 XML -> Application Object
