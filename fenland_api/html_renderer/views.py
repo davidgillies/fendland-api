@@ -35,13 +35,13 @@ class TestView(View):
         result = {}
         if section is None:
             return HttpResponseNotFound('Page Not Found')
-        section = fenland_app.get_section(section)
+        section_obj = fenland_app.get_section(section)
         if request.GET:
             id_variable_value = request.GET['id']
             data = fenland_app.get_data(section, 'id', id_variable_value)
-            section = data_prep(section, data)
+            section = data_prep(section_obj, data)
         if question_group is None:
-            result['section'] = section
+            result['section'] = section_obj
             return render(request, 'html_renderer/fenland_template.html', result)
         question_group = get_question_group(section, question_group)
         if question is None:

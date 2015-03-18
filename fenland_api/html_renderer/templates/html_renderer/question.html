@@ -3,13 +3,12 @@
 
 
                     {% if question.position == "1" %}<tr>{% endif %}
-                  <td class="{{question.rendering_hints.tdclass}}"> {{ question.text }}  {% if question.template %}{% include question.template %}{% endif %}</td>
-
-                        {% if question.rendering_hints.endoftr == 'True' and not forloop.last %}
+                    <td class="{{question.rendering_hints.tdclass}}"> {{ question.text }}  {% if question.template %}{% include question.template %}{% endif %}</td>
+                    {% if question.rendering_hints.endoftr == 'True' and not forloop.last %}
                             </tr><tr>
-                        {% elif question.rendering_hints.endoftr == 'True' and forloop.last %}
+                    {% elif question.rendering_hints.endoftr == 'True' and forloop.last %}
                             </tr>
-                        {% endif %}
+                    {% endif %}
 
 
 

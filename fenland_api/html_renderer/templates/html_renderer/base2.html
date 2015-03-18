@@ -1,20 +1,14 @@
 <div class="section">
-<form style="height: 212px;" onscroll="moveScroll();" id="questionnaire_form">
-<div class="section_title">
-{{section.title}}
-</div>
-{% for i in section.info %}
-    {% if i.cssClass == 'new_line' %}<br />
-    {% else %}<div class="{{i.cssClass}}">{{i.text}}</div>    
-    {% endif %}
-
-{% endfor %}
-
-    {% include 'html_renderer/question_groups.html' %}
-
-
-        
-
+    <form style="height: 212px;" onscroll="moveScroll();" id="questionnaire_form">
+        <div class="section_title">
+            {{section.title}}
+        </div>
+            {% for i in section.info %}
+                {% if i.cssClass == 'new_line' %}<br />
+                    {% else %}<div class="{{i.cssClass}}">{{i.text}}</div>    
+                {% endif %}
+            {% endfor %}
+            {% include 'html_renderer/question_groups.html' %}
 </form>
 </div>    
 

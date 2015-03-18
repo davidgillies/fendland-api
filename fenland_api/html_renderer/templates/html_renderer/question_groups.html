@@ -2,8 +2,6 @@
 
 
     {% for question_group in section.section_objects %}
-            {{question_group.title}}<br />
-           
-            {% include 'html_renderer/question_group.html'%}
-
-        {% endfor %}
+        {{question_group.title}}<br />
+        {% include 'html_renderer/question_group.html'%}
+    {% endfor %}
