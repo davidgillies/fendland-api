@@ -12,6 +12,7 @@
 12. Test out delete with json, line 243, cam_apps.py
 13. Sort out question and question_group views.
 14. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
+15. Set up fieldsets on Volunteer admin.
 
 
 XML -> Application Object
