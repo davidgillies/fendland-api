@@ -10,31 +10,10 @@
 
 {% endfor %}
 
-    {#% include 'html_renderer/question_groups.html' %#}
+    {% include 'html_renderer/question_groups.html' %}
 
 
-        {% for question_group in section.section_objects %}
-            {{question_group.title}}<br />
-           
-            {#% include 'html_renderer/question_group.html'%#}
-            <table class="{{ question_group.rendering_hints.tdclass }}">
-
-            {% for c in question_group.question_group_objects %}
-                 
-                    
-                    {% if c.position == "1" %}<tr>{% endif %}
-                  <td class="{{c.rendering_hints.tdclass}}"> {{ c.text }}  {% if c.template %}{% include c.template %}{% endif %}</td>
-
-                        {% if c.rendering_hints.endoftr == 'True' and not forloop.last %}
-                            </tr><tr>
-                        {% elif c.rendering_hints.endoftr == 'True' and forloop.last %}
-                            </tr>
-                        {% endif %}
-
-                
-            {% endfor %}
-            </tr></table>
-        {% endfor %}
+        
 
 </form>
 </div>    

@@ -1,14 +1,17 @@
 
 
+            {% for question in question_group.question_group_objects %}
+                 
+                    
+
+
+                 {% include 'html_renderer/question.html' %}
+        
 
 
 
-        {% for question in questionGroup.question_group_objects %}
-            {% include 'html_renderer/question.html' %}
-            
-        {% endfor %}
    
-
+    {% endfor %}
 
 
     

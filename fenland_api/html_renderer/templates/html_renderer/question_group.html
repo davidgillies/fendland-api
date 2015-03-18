@@ -1,9 +1,12 @@
 
 
-
+{{question_group}}
       
-            qG Postion {{questionGroup.position}}
-            {% include 'html_renderer/questions.html' %}
+            <table class="{{ question_group.rendering_hints.tdclass }}">
+{% include 'html_renderer/questions.html' %}
+
+            </tr></table>
+            
 
 
             

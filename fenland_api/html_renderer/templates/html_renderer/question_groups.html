@@ -1,28 +1,9 @@
 
 
 
-        {% for questionGroup in section.questionGroup %}
-            {{questionGroup.title}}<br />
-            
-            {#% include 'html_renderer/question_group.html'%#}
-            <table class="{% for rh in questionGroup.renderingHint %}{% if rh.rhType == 'tdclass' %} {% for data in rh.rhData %}{{data}} {% endfor %}{% endif %}{% endfor %}">
+    {% for question_group in section.section_objects %}
+            {{question_group.title}}<br />
+           
+            {% include 'html_renderer/question_group.html'%}
 
-            {% for c in questionGroup.getchildren %}
-                 
-                 {% if c.tag == '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}textNode'  %}
-                    {% if c.attrib.position == "1" %}<tr>{% endif %}
-                  <td class="{{c.info.attrib.cssClass}} {% for rh in c.renderingHint %}{% if rh.rhType == 'tdclass' %} {% for data in rh.rhData %}{{data}} {% endfor %}{% endif %}{% endfor %}"> {{c.attrib.position}}.  {{  c.info }} </td>
-                 {% endif%}
-                 {% if c.tag == '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}question'  %}
-                         {% if c.attrib.position == '1' %}<tr>{% endif %}
-                            <td>     {{c.attrib.position}}.  {{c.variable.varName}} = {{c.variable.var_value.value}} </td>
-                    {% for rh in c.renderingHint %}
-                        {% if rh.rhType == 'endoftr'%}
-                            </tr><tr>
-                        {% endif %}
-                    {% endfor %}
-                 {% endif%}
-                
-            {% endfor %}
-            </tr></table>
         {% endfor %}
