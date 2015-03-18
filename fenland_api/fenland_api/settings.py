@@ -30,8 +30,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -79,6 +84,11 @@ DATABASES = {
 }
 
 DATABASE_ROUTERS = ['api_renderer.routers.PlayRouter',]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+)
  
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
@@ -97,6 +107,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE = 1
+
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

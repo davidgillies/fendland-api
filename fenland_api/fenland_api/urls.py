@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 urlpatterns = patterns('',
+    url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^html/(\w+)/(\w+)/(\w+)', csrf_exempt(html_renderer_views.HTMLView.as_view())),
