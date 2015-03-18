@@ -10,6 +10,7 @@
 10. Inject js into output for validation, other jquery shit?
 11. Plan work for next few weeks
 12. Integrate REST framework
+13. Test out delete with json, line 243, cam_apps.py
 
 
 XML -> Application Object
