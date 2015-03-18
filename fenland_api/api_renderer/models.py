@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 
 class Surgery(models.Model):
@@ -19,8 +20,13 @@ class Surgery(models.Model):
     modified = models.DateTimeField(blank=True, null=True)
     surgeriescol = models.CharField(max_length=45, blank=True)
 
+    def __unicode__(self):
+        return "%s" % (self.full_name)
+        
     class Meta:
         db_table = 'surgeries'
+        verbose_name = 'Surgery'
+        verbose_name_plural = 'Surgeries'
 
 
 class Volunteer(models.Model):
@@ -53,6 +59,32 @@ class Volunteer(models.Model):
     volunteerscol = models.CharField(max_length=45, blank=True)
     modified = models.DateTimeField(blank=True, null=True)
     surgeries = models.ForeignKey(Surgery)
+	
+    def calculate_age(self):
+        today = date.today()
+        born = self.dob
+        try: 
+            birthday = born.replace(year=today.year)
+        except ValueError: # raised when birth date is February 29 and the current year is not a leap year
+            birthday = born.replace(year=today.year, month=born.month+1, day=1)
+        if birthday > today:
+            age = today.year - born.year - 1
+        else:
+            age = today.year - born.year
+        if age > 70:
+            return '<span style="color: red;">%s</span>' % age
+        else:
+            return age
+    
+    calculate_age.allow_tags= True
+    calculate_age.short_description = "Age"
+    
+    def __unicode__(self):
+        return "%s, %s" % (self.surname, self.forenames)
+        
+    def __str__(self):
+        return "%s, %s" % (self.surname, self.forenames)
+    
 
     class Meta:
         db_table = 'volunteers'
@@ -81,6 +113,8 @@ class AuditLog(models.Model):
 
     class Meta:
         db_table = 'audit_log'
+        verbose_name = 'Audit Log'
+        verbose_name_plural = 'Audit Log'
 
 
 class Status(models.Model):
@@ -89,3 +123,5 @@ class Status(models.Model):
 
     class Meta:
         db_table = 'status'
+        verbose_name = 'Status'
+        verbose_name_plural = 'Status'
