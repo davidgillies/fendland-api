@@ -4,13 +4,15 @@ import simplejson
 from copy import deepcopy
 import business_layer
 import local_settings
+import datetime
 
 local_functions = business_layer.CustomFunctions()
 
 
 class TextNode(dict):
-    def __init__(self):
+    def __init__(self, position):
         self.rendering_hints = {}
+        self.position = position
         super(TextNode, self).__init__()
 
 
@@ -136,7 +138,7 @@ class QuestionGroup(MethodMixin):
         self.question_group_objects.append(qg_info)
 
     def set_text_node(self, item):
-        text_node = TextNode()
+        text_node = TextNode(item.attrib['position'])
         try:
             text_node['id'] = item.attrib['ID']
         except:
@@ -207,16 +209,18 @@ class Application(object):
         if self.models:
             pass
         else:
-            self.db.table = self.db.entity(self.get_table_name(section.position))
+            self.db.table = self.db.entity(self.get_table_name(section))
             data = self.db.table.get(int(id_variable_value)).__dict__
             data.pop('_sa_instance_state')
             if self.custom:
                 pass
             self.tidy(data)
         return data
-        
+
     def tidy(self, data):
-        pass
+        for k in data.keys():
+            if isinstance(data[k], datetime.date) :
+                data[k] = str(data[k])
 
     def insert_data(self, section_number, id_variable, id_variable_value, body):
         if self.models:
@@ -234,11 +238,13 @@ class Application(object):
         if self.models:
             pass
         else:
-            self.db.table = self.db.entity(self.get_table_name(section.position))
+            self.db.table = self.db.entity(self.get_table_name(section))
             json_dict = simplejson.JSONDecoder().decode(body)
             # problem: can't put a variable into this filter_by must be a
             # database column name
+            # data = self.db.table.filter_by(volunteer_id=int(id_variable_value)).update(json_dict)
             data = self.db.table.filter_by(volunteer_id=int(id_variable_value)).update(json_dict)
+            # TEST data = self.db.table.get(int(id_variable_value)).update(json_dict)
             data = json_dict
             self.db.commit()
             return data
@@ -247,15 +253,14 @@ class Application(object):
         if self.models:
             pass
         else:
-            self.db.table = self.db.entity(self.get_table_name(section.position))
+            self.db.table = self.db.entity(self.get_table_name(section))
             instance = self.db.table.get(int(id_variable_value))
             self.db.delete(instance)
             self.db.commit()
             return
 
     def get_table_name(self, section_number):
-        print section_number
-        return local_settings.SECTION_MAPPING[int(section_number)] # add in a mapping from section to tables in business logic?
+        return self.mapping[int(section_number)] # add in a mapping from section to tables in business logic?
 
     def get_section(self, section_number):
         return deepcopy(self.sections[str(section_number)])
