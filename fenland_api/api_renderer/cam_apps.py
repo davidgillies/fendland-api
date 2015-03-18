@@ -3,6 +3,7 @@ import sqlsoup
 import simplejson
 from copy import deepcopy
 import business_layer
+import local_settings
 
 local_functions = business_layer.CustomFunctions()
 
@@ -191,7 +192,10 @@ class Application(object):
         self.name = name
         self.xml = xml
         self.xml_object = objectify.fromstring(self.xml)
-        self.db = sqlsoup.SQLSoup('mysql+pymysql://david:david@localhost:3306/sm_db') # extract to business logic
+        self.db = sqlsoup.SQLSoup(local_settings.DATABASE) # extract to business logic
+        self.models = local_settings.MODELS
+        self.custom = local_settings.CUSTOM
+        self.mapping = local_settings.SECTION_MAPPING
         self.author = self.xml_object.author
         self.version_number = self.xml_object.versionNumber
         self.version_date = self.xml_object.versionDate
