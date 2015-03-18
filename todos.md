@@ -1,9 +1,15 @@
-1. Sort id/names for multiline output.  
-2. How do I deal with it as input?
-3. Generic API for multi-models, joins etc.
-4. Develop more output templates.
-5. More generic application methods.
-6. Best way to use custom functionality?
+1. Redesign layer structure
+2. Sort id/names for multiline output.  
+3. How do I deal with it as input?
+4. Generic API for multi-models, joins etc.
+5. Develop more output templates.
+6. More generic application methods.
+7. Best way to use custom functionality?
+8. Add in database introspection to create admin interface.
+9. Write up method for database introspection.
+10. Inject js into output for validation, other jquery shit?
+11. Plan work for next few weeks
+12. Integrate REST framework
 
 
 XML -> Application Object
