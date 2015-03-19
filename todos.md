@@ -8,17 +8,12 @@
 8. Add in database introspection to create admin interface.
 9. Inject js into output for validation, other jquery shit?
 10. Plan work for next few weeks
-11. Integrate REST framework
-12. Test out delete with json, line 243, cam_apps.py
-13. Sort out question and question_group views.
-14. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
-15. Set up fieldsets on Volunteer admin. (24 mins 39 secs into video)
-16. Maybe have a surgery view have a list of read-only volunteers (28 mins 34 secs)
-17. Extend primary secondary generic table method and what's needed.
-18. Pass a generic SQL statement and return result.
-19. Fix posts, delete, update for Models.
-20. Use djangorestframework with models directly as normal, is models set to true redirect to url.
-21. Perhaps use convertion for whatever query I get e.g. post or json etc. and just forward to a view?
+11. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
+12. Set up fieldsets on Volunteer admin. (24 mins 39 secs into video)
+13. Extend primary, secondary generic table method and what's needed.
+14. Pass a generic SQL statement and return result.
+15. if models set to true redirect to url for DRF?
+16. Perhaps use convertion for whatever query I get e.g. post or json etc. and just forward to a view?
 
 
 XML -> Application Object
