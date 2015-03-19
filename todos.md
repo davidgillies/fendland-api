@@ -14,6 +14,8 @@
 14. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
 15. Set up fieldsets on Volunteer admin. (24 mins 39 secs into video)
 16. Maybe have a surgery view have a list of read-only volunteers (28 mins 34 secs)
+17. Extend primary secondary generic table method and what's needed.
+18. Pass a generic SQL statement and return result.
 
 
 XML -> Application Object
