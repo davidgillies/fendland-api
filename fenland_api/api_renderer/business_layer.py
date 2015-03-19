@@ -34,6 +34,10 @@ def data_prep(section, data):
                             for i in range(len(multi_line[index])):
                                 if isinstance(multi_line[index][i], cam_apps.Question):
                                     multi_line[index][i].var_value = multi_data[index].__dict__[multi_line[index][i].variable]
+                                    try:
+                                        multi_line[index][i].var_id = multi_data[index].__dict__['id']
+                                    except:
+                                        pass
                                     multi_line[index][i].variable = multi_line[index][i].variable + '[]'
                         multi_line = list(chain.from_iterable(multi_line))
                         multi_lines.append([multi_line, multi_index])

@@ -77,6 +77,7 @@ class Question(MethodMixin):
         self.title = question_object.attrib['position']
         self.variable = question_object.variable.varName.text
         self.var_value = None
+        self.var_id = None
         self.id = question_object.attrib['ID']
         self.position = question_object.attrib['position']
         self.rendering_hints = {}
@@ -194,7 +195,7 @@ class Application(object):
         self.name = name
         self.xml = xml
         self.xml_object = objectify.fromstring(self.xml)
-        self.db = sqlsoup.SQLSoup(local_settings.DATABASE) # extract to business logic
+        self.db = sqlsoup.SQLSoup(local_settings.DATABASE) 
         self.models = local_settings.MODELS
         self.custom = local_settings.CUSTOM
         self.mapping = local_settings.SECTION_MAPPING

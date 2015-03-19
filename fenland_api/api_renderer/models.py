@@ -22,7 +22,7 @@ class Surgery(models.Model):
 
     def __unicode__(self):
         return "%s" % (self.full_name)
-        
+
     class Meta:
         db_table = 'surgeries'
         verbose_name = 'Surgery'
@@ -59,11 +59,11 @@ class Volunteer(models.Model):
     volunteerscol = models.CharField(max_length=45, blank=True)
     modified = models.DateTimeField(blank=True, null=True)
     surgeries = models.ForeignKey(Surgery)
-	
+
     def calculate_age(self):
         today = date.today()
         born = self.dob
-        try: 
+        try:
             birthday = born.replace(year=today.year)
         except ValueError: # raised when birth date is February 29 and the current year is not a leap year
             birthday = born.replace(year=today.year, month=born.month+1, day=1)
@@ -75,16 +75,15 @@ class Volunteer(models.Model):
             return '<span style="color: red;">%s</span>' % age
         else:
             return age
-    
-    calculate_age.allow_tags= True
+
+    calculate_age.allow_tags = True
     calculate_age.short_description = "Age"
-    
+
     def __unicode__(self):
         return "%s, %s" % (self.surname, self.forenames)
-        
+
     def __str__(self):
         return "%s, %s" % (self.surname, self.forenames)
-    
 
     class Meta:
         db_table = 'volunteers'

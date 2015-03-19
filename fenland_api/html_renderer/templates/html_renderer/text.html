@@ -1,1 +1,1 @@
-<input type="text" name="{{question.variable}}" value="{% if question.var_value != None %}{{question.var_value}}{% endif %}" />
+<input {% if question.var_value != None %}id="{{question.var_id}}"{% endif %} type="text" name="{{question.variable}}" value="{% if question.var_value != None %}{{question.var_value}}{% endif %}" />

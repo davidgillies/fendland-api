@@ -83,13 +83,13 @@ DATABASES = {
     },
 }
 
-DATABASE_ROUTERS = ['api_renderer.routers.PlayRouter',]
+DATABASE_ROUTERS = ['api_renderer.routers.PlayRouter', ]
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
 )
- 
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
