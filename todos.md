@@ -17,6 +17,8 @@
 17. Extend primary secondary generic table method and what's needed.
 18. Pass a generic SQL statement and return result.
 19. Fix posts, delete, update for Models.
+20. Use djangorestframework with models directly as normal, is models set to true redirect to url.
+21. Perhaps use convertion for whatever query I get e.g. post or json etc. and just forward to a view?
 
 
 XML -> Application Object
