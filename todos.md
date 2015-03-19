@@ -16,6 +16,7 @@
 16. Maybe have a surgery view have a list of read-only volunteers (28 mins 34 secs)
 17. Extend primary secondary generic table method and what's needed.
 18. Pass a generic SQL statement and return result.
+19. Fix posts, delete, update for Models.
 
 
 XML -> Application Object
