@@ -57,7 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'html_renderer.middleware.BeautifulMiddleware',
+#    'html_renderer.middleware.BeautifulMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 

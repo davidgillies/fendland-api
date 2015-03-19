@@ -58,7 +58,7 @@ class Volunteer(models.Model):
     phase2_comment = models.TextField(blank=True)
     volunteerscol = models.CharField(max_length=45, blank=True)
     modified = models.DateTimeField(blank=True, null=True)
-    surgeries = models.ForeignKey(Surgery)
+    surgeries = models.ForeignKey(Surgery, blank=True, null=True)
 
     def calculate_age(self):
         today = date.today()

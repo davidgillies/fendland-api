@@ -227,7 +227,8 @@ class Application(object):
 
     def insert_data(self, section_number, id_variable, id_variable_value, body):
         if self.models:
-            pass
+            json_dict = simplejson.JSONDecoder().decode(body)
+            Volunteer.objects.create(**json_dict)
         else:
             self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
@@ -239,7 +240,9 @@ class Application(object):
 
     def update_data(self, section_number, id_variable, id_variable_value, body):
         if self.models:
-            pass
+            json_dict = simplejson.JSONDecoder().decode(body)
+            Volunteer.objects.filter(pk=id_variable_value).update(**json_dict)
+            data = model_to_dict(Volunteer.objects.get(volunteer_id=id_variable_value))
         else:
             self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
@@ -252,7 +255,7 @@ class Application(object):
 
     def delete_data(self, section_number, id_variable, id_variable_value):
         if self.models:
-            pass
+            Volunteer.objects.get(volunteer_id=id_variable_value).delete()
         else:
             self.db.table = self.db.entity(self.get_table_name(section))
             instance = self.db.table.get(int(id_variable_value))
