@@ -18,8 +18,6 @@ class HTMLView(View):
         if request.GET:
             id_variable_value = request.GET['id']
             data = fenland_app.get_data(section, 'id', id_variable_value)
-            if local_settings.MODELS:
-                data = model_to_dict(data)
             section_obj = data_prep(section_obj, data)
         if question_group is None:
             result['section'] = section_obj

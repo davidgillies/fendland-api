@@ -22,28 +22,22 @@ class APIView(APIView):
             return HttpResponseNotFound('<h1>Page not found</h1>')
         else:
             data = fenland_app.get_data(section, id_variable, id_variable_value)
-            if local_settings.MODELS:
-                # out = serializers.serialize("json", [data])
-                out = model_to_dict(data)
-                # return HttpResponse(response)
-                response = Response(out, status=status.HTTP_200_OK)
-                return response
-            else:
-                response = Response(data, status=status.HTTP_200_OK)
-                return response
-
+            response = Response(data, status=status.HTTP_200_OK)
+            return response
             
     def post(self, request, section=None, id_variable=None,
              id_variable_value=None):
         data = fenland_app.insert_data(section, id_variable, id_variable_value, request.body)
-        return HttpResponse(json.dumps(data), content_type='application/json; charset=UTF-8', status=201)
+        response = Response(data, status=status.HTTP_201_CREATED)
+        return response
 
     def put(self, request, section=None, id_variable=None,
             id_variable_value=None):
         data = fenland_app.update_data(section, id_variable, id_variable_value, request.body)
-        return HttpResponse(json.dumps(data), content_type='application/json; charset=UTF-8')
+        response = Response(data, status=status.HTTP_200_OK)
+        return response
 
     def delete(self, request, section=None, id_variable=None,
                id_variable_value=None):
         fenland_app.delete_data(section, id_variable, id_variable_value)
-        return HttpResponse(None, status=204)
+        return Response(status=status.HTTP_204_NO_CONTENT)

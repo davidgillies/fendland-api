@@ -6,6 +6,7 @@ import business_layer
 import local_settings
 import datetime
 from .models import *
+from django.forms.models import model_to_dict
 
 local_functions = business_layer.CustomFunctions()
 
@@ -209,7 +210,7 @@ class Application(object):
 
     def get_data(self, section, id_variable, id_variable_value):
         if self.models:
-            data = Volunteer.objects.get(volunteer_id=id_variable_value)
+            data = model_to_dict(Volunteer.objects.get(volunteer_id=id_variable_value))
         else:
             self.db.table = self.db.entity(self.get_table_name(section))
             data = self.db.table.get(int(id_variable_value)).__dict__
@@ -226,7 +227,7 @@ class Application(object):
 
     def insert_data(self, section_number, id_variable, id_variable_value, body):
         if self.models:
-            data = Volunteer.objects.get(id=id_variable_value)
+            pass
         else:
             self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
