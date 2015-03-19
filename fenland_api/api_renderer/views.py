@@ -1,14 +1,6 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from django.core import serializers
-from django.views.generic import View
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponseNotFound
 from cam_apps import Application
 from .models import *
-import json
-import local_settings
-from django.forms.models import model_to_dict
 
 
 xml_string = open('U:/Data/forms_api/forms_api/xmlfiles/Fenland.xml', 'r').read()
