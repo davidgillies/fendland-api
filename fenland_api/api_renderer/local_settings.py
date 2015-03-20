@@ -8,6 +8,6 @@ DB_MAPPING = {'surgery': 'surgery_id', 'diabetes': 'diabetes_diagnosed'}
 
 SECTION_MAPPING = {0: 'volunteers', 1: 'volunteers', 2: 'volunteers'}
 
-MODELS = True
+MODELS = False
 
 CUSTOM = False

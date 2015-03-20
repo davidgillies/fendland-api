@@ -14,7 +14,7 @@ class CustomQuestion(cam_apps.Question):
             self.template_args['options'] = self.get_options(item.optionValue.text)
         else:
             self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
-            
+
     def get_surgeries(self):
         surgeries = self.db.surgeries.all()
         result = []
@@ -25,7 +25,7 @@ class CustomQuestion(cam_apps.Question):
     def get_options(self, option):
         return {'surgeries': self.surgeries}[option]
 
-   
+
 class CustomQuestionGroup(cam_apps.QuestionGroup):
     def set_question(self, item):
         question = CustomQuestion(item)
@@ -35,22 +35,17 @@ class CustomQuestionGroup(cam_apps.QuestionGroup):
 class CustomSection(cam_apps.Section):
     def __init__(self, section_xml_object):
         super(CustomSection, self).__init__(section_xml_object)
-    
+
     def set_question_group(self, item):
         question_group = CustomQuestionGroup(item)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
-        
-    def __unicode__(self):
-        return "Position: %s" % self.position
-        
-    def __str__(self):
-        return "Position: %s" % self.position
+
 
 class CustomApplication(cam_apps.Application):
     def __init__(self, name, xml):
         super(CustomApplication, self).__init__(name, xml)
-    
+
     def get_sections(self):
         sections = {}
         for section in self.xml_object.section:
