@@ -9,7 +9,7 @@ class VolunteerInline(admin.TabularInline):
     model = Volunteer
     fields = ('surname', 'forenames', 'town', 'postcode', 'calculate_age')
     readonly_fields = ('surname', 'forenames', 'town', 'postcode',
-                       'calculate_age' )
+                       'calculate_age')
     can_delete = False
 
 
@@ -57,10 +57,9 @@ class AppointmentAdmin(admin.ModelAdmin):
     search_fields = ('volunteer__surname', 'volunteer_forenames',)
     list_per_page = 5
 
-    
     def get_volunteer(self, obj):
         return obj.volunteer
-    
+
     get_volunteer.short_description = 'Volunteer'
     get_volunteer.admin_order_field = 'appointment__volunteer'
 

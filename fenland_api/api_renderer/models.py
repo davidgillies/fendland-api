@@ -99,14 +99,14 @@ class Appointment(models.Model):
     modified_by = models.CharField(max_length=45, blank=True)
     modified = models.DateTimeField(blank=True, null=True)
     volunteer = models.ForeignKey(Volunteer)
-    
+
     def __unicode__(self):
-        return "%s, %s, %s" % (self.volunteer.surname, self.volunteer.forenames,
-                           self.appt_date)
+        return "%s, %s, %s" % (self.volunteer.surname,
+                               self.volunteer.forenames, self.appt_date)
 
     def __str__(self):
-        return "%s, %s, %s" % (self.volunteer.surname, self.volunteer.forenames,
-                           self.appt_date)
+        return "%s, %s, %s" % (self.volunteer.surname,
+                               self.volunteer.forenames, self.appt_date)
 
     class Meta:
         db_table = 'appointments'
