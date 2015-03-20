@@ -32,12 +32,36 @@ class VolunteerAdmin(admin.ModelAdmin):
                     'calculate_age')
     list_filter = ('town', )
     date_hierarchy = 'dob'
+    fieldsets = (
+        (None, {'fields': (('surname', 'forenames'),
+                           ('initials', 'dob'),
+                           ('title', 'sex'))}),
+        ('Address', {'classes': ('collapse',),
+                     'fields': (('addr1', 'home_tel'), ('addr2', 'work_tel'),
+                                ('town', 'mobile'), ('county', 'email'),
+                                    'postcode')
+                }
+        ),
+        ('Details', {'classes': ('collapse', 'extrapretty'),
+                     'description': 'Extra <b>details</b>',
+                     'fields': (('nhs_no', 'surgeries'),
+                                ('modified', 'modified_by'))}),
+    )
 
 admin.site.register(Volunteer, VolunteerAdmin)
 
 
 class AppointmentAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('get_volunteer', 'appt_date', 'appt_time', 'test_site')
+    search_fields = ('volunteer__surname', 'volunteer_forenames',)
+    list_per_page = 5
+
+    
+    def get_volunteer(self, obj):
+        return obj.volunteer
+    
+    get_volunteer.short_description = 'Volunteer'
+    get_volunteer.admin_order_field = 'appointment__volunteer'
 
 admin.site.register(Appointment, AppointmentAdmin)
 
