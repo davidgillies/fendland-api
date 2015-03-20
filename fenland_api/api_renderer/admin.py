@@ -22,6 +22,7 @@ admin.site.register(Surgery, SurgeryAdmin)
 class AppointmentInline(admin.TabularInline):
     model = Appointment
     fields = ('appt_date', 'appt_time', 'test_site')
+    extra = 0
 
 
 class VolunteerAdmin(admin.ModelAdmin):
