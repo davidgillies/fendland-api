@@ -61,6 +61,7 @@ class Volunteer(models.Model):
     surgeries = models.ForeignKey(Surgery, blank=True, null=True)
 
     def calculate_age(self):
+        """Calculates age for the admin screens."""
         today = date.today()
         born = self.dob
         try:

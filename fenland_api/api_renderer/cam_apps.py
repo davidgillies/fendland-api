@@ -1,7 +1,6 @@
 from lxml import objectify
 import sqlsoup
 import simplejson
-from copy import deepcopy
 import business_layer
 import local_settings
 import datetime
@@ -275,14 +274,10 @@ class Application(object):
         return self.mapping[int(section_number)] # add in a mapping from section to tables in business logic?
 
     def get_section(self, section_number):
-        return deepcopy(self.sections[str(section_number)])
+        return self.sections[str(section_number)]
 
     def get_sections(self):
         sections = {}
         for section in self.xml_object.section:
             sections[section.attrib['position']] = Section(section)
         return sections
-
-
-class CustomLayer(Application):
-    pass

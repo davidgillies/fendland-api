@@ -2,12 +2,12 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import HttpResponseNotFound
-from cam_apps import CustomLayer
+from custom_logic import CustomApplication
 from .models import *
 
 
 xml_string = open('U:/Data/forms_api/forms_api/xmlfiles/Fenland.xml', 'r').read()
-fenland_app = CustomLayer('fenland', xml_string)
+fenland_app = CustomApplication('fenland', xml_string)
 
 
 class APIView(APIView):
