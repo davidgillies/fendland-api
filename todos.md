@@ -14,6 +14,7 @@
 14. Pass a generic SQL statement and return result.
 15. if models set to true redirect to url for DRF?
 16. Perhaps use convertion for whatever query I get e.g. post or json etc. and just forward to a view?
+17. Add in choices to sex etc. admin screens.
 
 
 XML -> Application Object
