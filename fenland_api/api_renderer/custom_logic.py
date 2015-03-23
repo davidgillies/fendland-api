@@ -2,10 +2,11 @@ import cam_apps
 import local_settings
 import sqlsoup
 
+db = sqlsoup.SQLSoup(local_settings.DATABASE)
+
 
 class CustomQuestion(cam_apps.Question):
     def __init__(self, question_object):
-        self.db = sqlsoup.SQLSoup(local_settings.DATABASE)
         self.surgeries = self.get_surgeries()
         super(CustomQuestion, self).__init__(question_object)
 
@@ -16,7 +17,7 @@ class CustomQuestion(cam_apps.Question):
             self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
 
     def get_surgeries(self):
-        surgeries = self.db.surgeries.all()
+        surgeries = db.surgeries.all()
         result = []
         for surgery in surgeries:
             result.append({'text': surgery.full_name, 'value': surgery.id})

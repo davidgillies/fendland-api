@@ -6,6 +6,7 @@ import local_settings
 import datetime
 from .models import *
 from django.forms.models import model_to_dict
+from copy import deepcopy
 
 local_functions = business_layer.CustomFunctions()
 
@@ -274,7 +275,7 @@ class Application(object):
         return self.mapping[int(section_number)] # add in a mapping from section to tables in business logic?
 
     def get_section(self, section_number):
-        return self.sections[str(section_number)]
+        return deepcopy(self.sections[str(section_number)])
 
     def get_sections(self):
         sections = {}
