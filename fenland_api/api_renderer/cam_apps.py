@@ -1,7 +1,6 @@
 from lxml import objectify
 import sqlsoup
 import simplejson
-import business_layer
 import local_settings
 import datetime
 from .models import *
@@ -219,12 +218,12 @@ class Application(object):
 
     def tidy(self, data):
         for k in data.keys():
-            if isinstance(data[k], datetime.date) :
+            if isinstance(data[k], datetime.date):
                 data[k] = str(data[k])
 
     def insert_data(self, section_number, id_variable, id_variable_value, body):
         if self.custom:
-            pass # use a custom method to get data
+            pass  # use a custom method to get data
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
             Volunteer.objects.create(**json_dict)
@@ -239,7 +238,7 @@ class Application(object):
 
     def update_data(self, section_number, id_variable, id_variable_value, body):
         if self.custom:
-            pass # use a custom method to get data
+            pass  # use a custom method to get data
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
             Volunteer.objects.filter(pk=id_variable_value).update(**json_dict)
@@ -256,7 +255,7 @@ class Application(object):
 
     def delete_data(self, section_number, id_variable, id_variable_value):
         if self.custom:
-            pass # use a custom method to get data
+            pass  # use a custom method to get data
         if self.models:
             Volunteer.objects.get(id=id_variable_value).delete()
         else:
@@ -267,7 +266,7 @@ class Application(object):
             return
 
     def get_table_name(self, section_number):
-        return self.mapping[int(section_number)] # add in a mapping from section to tables in business logic?
+        return self.mapping[int(section_number)]  # add in a mapping from section to tables in business logic?
 
     def get_section(self, section_number):
         return deepcopy(self.sections[str(section_number)])
