@@ -1,7 +1,6 @@
 """
 Django app settings for api_renderer and html_renderer.
 """
-import models
 
 XML_FILE = 'U:/Data/forms_api/forms_api/xmlfiles/Fenland.xml'
 
@@ -13,6 +12,4 @@ SECTION_MAPPING = {0: 'volunteers', 1: 'volunteers', 2: 'volunteers'}
 
 MODELS = False
 
-CUSTOM = False
-
-
+CUSTOM = True

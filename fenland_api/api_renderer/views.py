@@ -4,10 +4,14 @@ from rest_framework import status
 from django.http import HttpResponseNotFound
 from custom_logic import CustomApplication
 from .models import *
+import local_settings
 
-
-xml_string = open('U:/Data/forms_api/forms_api/xmlfiles/Fenland.xml', 'r').read()
-fenland_app = CustomApplication('fenland', xml_string)
+xml_string = open(local_settings.XML_FILE, 'r').read()
+if local_settings.CUSTOM:
+    fenland_app = CustomApplication('fenland', xml_string)
+else:
+    from cam_apps import Application
+    fenland_app = Application('fenland', xml_string)
 
 
 class APIView(APIView):

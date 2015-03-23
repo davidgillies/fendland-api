@@ -3,7 +3,7 @@ from api_renderer.views import fenland_app
 from django.shortcuts import render
 from helpers import get_question_group, get_question
 from django.http import HttpResponseNotFound
-from api_renderer.business_layer import data_prep
+from api_renderer.custom_logic import data_prep
 
 
 class HTMLView(View):

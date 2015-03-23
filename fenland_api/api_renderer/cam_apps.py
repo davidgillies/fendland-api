@@ -203,8 +203,6 @@ class Application(object):
         self.sections = self.get_sections()
 
     def get_data(self, section, id_variable, id_variable_value):
-        if self.custom:
-            pass # use a custom method to get data
         if self.models:
             data = model_to_dict(Volunteer.objects.get(id=id_variable_value))
         else:
@@ -222,8 +220,6 @@ class Application(object):
                 data[k] = str(data[k])
 
     def insert_data(self, section_number, id_variable, id_variable_value, body):
-        if self.custom:
-            pass  # use a custom method to get data
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
             Volunteer.objects.create(**json_dict)
@@ -237,8 +233,6 @@ class Application(object):
             return data
 
     def update_data(self, section_number, id_variable, id_variable_value, body):
-        if self.custom:
-            pass  # use a custom method to get data
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
             Volunteer.objects.filter(pk=id_variable_value).update(**json_dict)
@@ -254,8 +248,6 @@ class Application(object):
             return data
 
     def delete_data(self, section_number, id_variable, id_variable_value):
-        if self.custom:
-            pass  # use a custom method to get data
         if self.models:
             Volunteer.objects.get(id=id_variable_value).delete()
         else:
