@@ -87,7 +87,7 @@ class Volunteer(models.Model):
 
 
 class Appointment(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
+    id = models.AutoField(primary_key=True)  # AutoField?
     repeat = models.IntegerField(blank=True, null=True)
     studyphase = models.IntegerField(blank=True, null=True)
     appt_date = models.DateField(blank=True, null=True)
