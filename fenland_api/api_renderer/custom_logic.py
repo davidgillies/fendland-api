@@ -56,18 +56,10 @@ def data_prep(section, data):
         return section
 
 
-
-
 class CustomQuestion(cam_apps.Question):
     def __init__(self, question_object):
         self.surgeries = self.get_surgeries()
         super(CustomQuestion, self).__init__(question_object)
-
-    def set_options(self, item):
-        if item.optionText.text == 'dynamic':
-            self.template_args['options'] = self.get_options(item.optionValue.text)
-        else:
-            self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
 
     def get_surgeries(self):
         surgeries = db.surgeries.all()
@@ -78,12 +70,6 @@ class CustomQuestion(cam_apps.Question):
 
     def get_options(self, option):
         return {'surgeries': self.surgeries}[option]
-        
-    def set_options(self, item):
-        if item.optionText.text == 'dynamic':
-            self.template_args['options'] = self.get_options(item.optionValue.text)
-        else:
-            self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
 
 
 class CustomQuestionGroup(cam_apps.QuestionGroup):

@@ -101,7 +101,10 @@ class Question(MethodMixin):
         self.set_template()
 
     def set_options(self, item):
-        pass
+        if item.optionText.text == 'dynamic':
+            self.template_args['options'] = self.get_options(item.optionValue.text)
+        else:
+            self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
 
     def set_info(self, item):
         q_info = {}
@@ -210,8 +213,6 @@ class Application(object):
             self.db.table = self.db.entity(self.get_table_name(section))
             data = self.db.table.get(int(id_variable_value)).__dict__
             data.pop('_sa_instance_state')
-            if self.custom:
-                pass
             self.tidy(data)
         return data
 
@@ -228,7 +229,6 @@ class Application(object):
             self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
             data = self.db.table.insert(**json_dict).__dict__
-            # import prep data for fenland from fenland business logic
             data.pop('_sa_instance_state')
             self.db.commit()
             return data
@@ -241,8 +241,6 @@ class Application(object):
         else:
             self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
-            # problem: can't put a variable into this filter_by must be a
-            # database column name
             data = self.db.table.filter_by(id=int(id_variable_value)).update(json_dict)
             data = json_dict
             self.db.commit()
@@ -259,7 +257,7 @@ class Application(object):
             return
 
     def get_table_name(self, section_number):
-        return self.mapping[int(section_number)]  # add in a mapping from section to tables in business logic?
+        return self.mapping[int(section_number)]
 
     def get_section(self, section_number):
         return deepcopy(self.sections[str(section_number)])
