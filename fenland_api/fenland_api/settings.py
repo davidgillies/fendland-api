@@ -76,7 +76,7 @@ DATABASES = {
     },
     'db2': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sm_db',
+        'NAME': 'mydb',
         'USER': 'david',
         'PASSWORD': 'david',
         'HOST': 'localhost',
@@ -99,6 +99,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+STATIC_ROOT = 'U:/Data/fenland_api/fendland-api/static'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

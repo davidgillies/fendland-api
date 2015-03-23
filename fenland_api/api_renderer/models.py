@@ -3,20 +3,20 @@ from datetime import date
 
 
 class Surgery(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    full_name = models.CharField(max_length=50, blank=True)
-    name = models.CharField(max_length=50, blank=True)
-    addr1 = models.CharField(max_length=50, blank=True)
-    addr2 = models.CharField(max_length=50, blank=True)
-    town = models.CharField(max_length=50, blank=True)
-    county = models.CharField(max_length=50, blank=True)
-    postcode = models.CharField(max_length=50, blank=True)
+    id = models.AutoField(primary_key=True)  # AutoField?
+    full_name = models.CharField(max_length=45)
+    name = models.CharField(max_length=45)
+    addr1 = models.CharField(max_length=45, blank=True)
+    addr2 = models.CharField(max_length=45, blank=True)
+    town = models.CharField(max_length=45, blank=True)
+    county = models.CharField(max_length=45, blank=True)
+    postcode = models.CharField(max_length=45, blank=True)
     telephone = models.CharField(max_length=12, blank=True)
-    admin_contact_name = models.CharField(max_length=50, blank=True)
-    admin_contact_number = models.CharField(max_length=50, blank=True)
+    admin_contact_name = models.CharField(max_length=45, blank=True)
+    admin_contact_number = models.CharField(max_length=45, blank=True)
     hscic_code = models.CharField(max_length=45, blank=True)
-    area = models.CharField(max_length=50, blank=True)
-    modified_by = models.CharField(db_column='modified by', max_length=50, blank=True)  # Field renamed to remove unsuitable characters.
+    area = models.CharField(max_length=45, blank=True)
+    modified_by = models.CharField(max_length=45, blank=True)
     modified = models.DateTimeField(blank=True, null=True)
     surgeriescol = models.CharField(max_length=45, blank=True)
 
@@ -30,35 +30,31 @@ class Surgery(models.Model):
 
 
 class Volunteer(models.Model):
-    volunteer_id = models.IntegerField(primary_key=True)
-    surname = models.CharField(max_length=50, blank=True)
-    forenames = models.CharField(max_length=50, blank=True)
-    initials = models.CharField(max_length=10, blank=True)
+    id = models.AutoField(primary_key=True)  # AutoField?
+    surname = models.CharField(max_length=45)
+    forenames = models.CharField(max_length=45)
+    initials = models.CharField(max_length=5, blank=True)
     dob = models.DateField(blank=True, null=True)
-    title = models.CharField(max_length=10, blank=True)
+    title = models.CharField(max_length=12, blank=True)
     sex = models.CharField(max_length=1, blank=True)
-    addr1 = models.CharField(max_length=50, blank=True)
-    addr2 = models.CharField(max_length=50, blank=True)
-    town = models.CharField(max_length=50, blank=True)
-    county = models.CharField(max_length=50, blank=True)
-    postcode = models.CharField(max_length=50, blank=True)
-    home_tel = models.CharField(max_length=50, blank=True)
-    work_tel = models.CharField(max_length=50, blank=True)
-    mobile = models.CharField(max_length=50, blank=True)
-    email = models.CharField(max_length=50, blank=True)
-    nhs_no = models.CharField(max_length=10, blank=True)
-    surgery_id = models.IntegerField(blank=True, null=True)
-    gp_id = models.IntegerField(blank=True, null=True)
+    addr1 = models.CharField(max_length=45, blank=True)
+    addr2 = models.CharField(max_length=45, blank=True)
+    town = models.CharField(max_length=45, blank=True)
+    county = models.CharField(max_length=45, blank=True)
+    postcode = models.CharField(max_length=45, blank=True)
+    home_tel = models.CharField(max_length=45, blank=True)
+    work_tel = models.CharField(max_length=45, blank=True)
+    mobile = models.CharField(max_length=45, blank=True)
+    email = models.CharField(max_length=100, blank=True)
+    nhs_no = models.CharField(max_length=45, blank=True)
     moved_away = models.IntegerField(blank=True, null=True)
     diabetes_diagnosed = models.IntegerField(blank=True, null=True)
-    modified_by = models.CharField(max_length=50, blank=True)
-    curr_status = models.IntegerField(blank=True, null=True)
+    modified_by = models.CharField(max_length=45, blank=True)
     reason = models.IntegerField(blank=True, null=True)
     phase1_comment = models.TextField(blank=True)
     phase2_comment = models.TextField(blank=True)
-    volunteerscol = models.CharField(max_length=45, blank=True)
     modified = models.DateTimeField(blank=True, null=True)
-    surgeries = models.ForeignKey(Surgery, blank=True, null=True)
+    surgeries = models.ForeignKey(Surgery)
 
     def calculate_age(self):
         """Calculates age for the admin screens."""
@@ -99,25 +95,26 @@ class Appointment(models.Model):
     test_site = models.CharField(max_length=10, blank=True)
     modified_by = models.CharField(max_length=45, blank=True)
     modified = models.DateTimeField(blank=True, null=True)
-    volunteer = models.ForeignKey(Volunteer)
+    volunteers = models.ForeignKey(Volunteer)
 
     def __unicode__(self):
-        return "%s, %s, %s" % (self.volunteer.surname,
-                               self.volunteer.forenames, self.appt_date)
+        return "%s, %s, %s" % (self.volunteers.surname,
+                               self.volunteers.forenames, self.appt_date)
 
     def __str__(self):
-        return "%s, %s, %s" % (self.volunteer.surname,
-                               self.volunteer.forenames, self.appt_date)
+        return "%s, %s, %s" % (self.volunteers.surname,
+                               self.volunteers.forenames, self.appt_date)
 
     class Meta:
         db_table = 'appointments'
 
 
 class AuditLog(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
+    id = models.AutoField(primary_key=True)  # AutoField?
     reason = models.TextField(blank=True)
     edit_date = models.DateField(blank=True, null=True)
-    editor = models.CharField(max_length=50, blank=True)
+    editor = models.CharField(max_length=45, blank=True)
+    volunteers = models.ForeignKey(Volunteer)
 
     class Meta:
         db_table = 'audit_log'
@@ -126,8 +123,9 @@ class AuditLog(models.Model):
 
 
 class Status(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
+    id = models.AutoField(primary_key=True)  # AutoField?
     curr_status = models.CharField(max_length=45, blank=True)
+    volunteers = models.ForeignKey(Volunteer)
 
     class Meta:
         db_table = 'status'

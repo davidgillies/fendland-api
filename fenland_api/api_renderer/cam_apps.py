@@ -8,8 +8,6 @@ from .models import *
 from django.forms.models import model_to_dict
 from copy import deepcopy
 
-local_functions = business_layer.CustomFunctions()
-
 
 class TextNode(dict):
     def __init__(self, position):
@@ -104,10 +102,7 @@ class Question(MethodMixin):
         self.set_template()
 
     def set_options(self, item):
-        if item.optionText.text == 'dynamic':
-            self.template_args['options'] = local_functions.get_options(item.optionValue.text)
-        else:
-            self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
+        pass
 
     def set_info(self, item):
         q_info = {}
@@ -212,7 +207,7 @@ class Application(object):
         if self.custom:
             pass # use a custom method to get data
         if self.models:
-            data = model_to_dict(Volunteer.objects.get(volunteer_id=id_variable_value))
+            data = model_to_dict(Volunteer.objects.get(id=id_variable_value))
         else:
             self.db.table = self.db.entity(self.get_table_name(section))
             data = self.db.table.get(int(id_variable_value)).__dict__
@@ -248,13 +243,13 @@ class Application(object):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
             Volunteer.objects.filter(pk=id_variable_value).update(**json_dict)
-            data = model_to_dict(Volunteer.objects.get(volunteer_id=id_variable_value))
+            data = model_to_dict(Volunteer.objects.get(id=id_variable_value))
         else:
             self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
             # problem: can't put a variable into this filter_by must be a
             # database column name
-            data = self.db.table.filter_by(volunteer_id=int(id_variable_value)).update(json_dict)
+            data = self.db.table.filter_by(id=int(id_variable_value)).update(json_dict)
             data = json_dict
             self.db.commit()
             return data
@@ -263,7 +258,7 @@ class Application(object):
         if self.custom:
             pass # use a custom method to get data
         if self.models:
-            Volunteer.objects.get(volunteer_id=id_variable_value).delete()
+            Volunteer.objects.get(id=id_variable_value).delete()
         else:
             self.db.table = self.db.entity(self.get_table_name(section))
             instance = self.db.table.get(int(id_variable_value))

@@ -25,6 +25,12 @@ class CustomQuestion(cam_apps.Question):
 
     def get_options(self, option):
         return {'surgeries': self.surgeries}[option]
+        
+    def set_options(self, item):
+        if item.optionText.text == 'dynamic':
+            self.template_args['options'] = self.get_options(item.optionValue.text)
+        else:
+            self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
 
 
 class CustomQuestionGroup(cam_apps.QuestionGroup):

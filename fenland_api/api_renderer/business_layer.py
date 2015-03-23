@@ -5,9 +5,9 @@ from copy import deepcopy
 
 
 def get_multi_data(table, id):
-    db = sqlsoup.SQLSoup('mysql+pymysql://david:david@localhost:3306/sm_db')
+    db = sqlsoup.SQLSoup('mysql+pymysql://david:david@localhost:3306/mydb')
     db.table = db.entity(table)
-    objs = db.table.filter(db.appointments.volunteer_id==id).all()
+    objs = db.table.filter(db.appointments.volunteers_id==id).all()
     return objs
 
 
@@ -25,7 +25,7 @@ def data_prep(section, data):
                     multi = True
                     if 'endoftr' in q.rendering_hints.keys():
                         multi = False
-                        multi_data = get_multi_data(multi_line[0].rendering_hints['multi'], data['volunteer_id'])
+                        multi_data = get_multi_data(multi_line[0].rendering_hints['multi'], data['id'])
                         multi_line_adder = []
                         for i in range(len(multi_data)):
                             multi_line_adder.append(deepcopy(multi_line))
@@ -43,12 +43,11 @@ def data_prep(section, data):
                         multi_lines.append([multi_line, multi_index])
                 elif isinstance(q, cam_apps.Question):
                     if q.variable == 'surgery':
-                        q.var_value = data['surgery_id']
+                        q.var_value = data['surgeries_id']
                     elif q.variable == "diabetes":
                         q.var_value = data['diabetes_diagnosed']
                     else:
                         q.var_value = data[q.variable]
-    
             for ml in multi_lines:
                 qg.question_group_objects[ml[1]:ml[1]+(len(ml[0])/len(multi_data))] = ml[0]
         return section
@@ -56,17 +55,3 @@ def data_prep(section, data):
         return section
 
 
-class CustomFunctions(object):
-    def __init__(self):
-        self.db = sqlsoup.SQLSoup('mysql+pymysql://david:david@localhost:3306/sm_db')
-        self.surgeries = self.get_surgeries()
-
-    def get_surgeries(self):
-        surgeries = self.db.surgeries.all()
-        result = []
-        for surgery in surgeries:
-            result.append({'text': surgery.full_name, 'value': surgery.id})
-        return result
-
-    def get_options(self, option):
-        return {'surgeries': self.surgeries}[option]

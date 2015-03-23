@@ -58,7 +58,7 @@ class AppointmentAdmin(admin.ModelAdmin):
     list_per_page = 5
 
     def get_volunteer(self, obj):
-        return obj.volunteer
+        return obj.volunteers
 
     get_volunteer.short_description = 'Volunteer'
     get_volunteer.admin_order_field = 'appointment__volunteer'
