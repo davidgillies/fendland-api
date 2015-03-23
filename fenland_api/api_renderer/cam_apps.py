@@ -195,6 +195,7 @@ class Application(object):
         self.models = local_settings.MODELS
         self.custom = local_settings.CUSTOM
         self.mapping = local_settings.SECTION_MAPPING
+        self.model_mapping = local_settings.MODEL_MAPPING
         self.author = self.xml_object.author
         self.version_number = self.xml_object.versionNumber
         self.version_date = self.xml_object.versionDate
@@ -204,7 +205,7 @@ class Application(object):
 
     def get_data(self, section, id_variable, id_variable_value):
         if self.models:
-            data = model_to_dict(Volunteer.objects.get(id=id_variable_value))
+            data = model_to_dict(self.model_mapping[int(section)].objects.get(id=id_variable_value))
         else:
             self.db.table = self.db.entity(self.get_table_name(section))
             data = self.db.table.get(int(id_variable_value)).__dict__
@@ -222,7 +223,7 @@ class Application(object):
     def insert_data(self, section_number, id_variable, id_variable_value, body):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
-            Volunteer.objects.create(**json_dict)
+            self.model_mapping[int(section)].objects.create(**json_dict)
         else:
             self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
@@ -235,7 +236,7 @@ class Application(object):
     def update_data(self, section_number, id_variable, id_variable_value, body):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
-            Volunteer.objects.filter(pk=id_variable_value).update(**json_dict)
+            self.model_mapping[int(section)].objects.filter(pk=id_variable_value).update(**json_dict)
             data = model_to_dict(Volunteer.objects.get(id=id_variable_value))
         else:
             self.db.table = self.db.entity(self.get_table_name(section_number))
@@ -249,7 +250,7 @@ class Application(object):
 
     def delete_data(self, section_number, id_variable, id_variable_value):
         if self.models:
-            Volunteer.objects.get(id=id_variable_value).delete()
+            self.model_mapping[int(section)].objects.get(id=id_variable_value).delete()
         else:
             self.db.table = self.db.entity(self.get_table_name(section))
             instance = self.db.table.get(int(id_variable_value))
