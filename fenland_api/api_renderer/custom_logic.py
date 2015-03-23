@@ -73,6 +73,9 @@ class CustomQuestion(cam_apps.Question):
 
 
 class CustomQuestionGroup(cam_apps.QuestionGroup):
+    def __init__(self, question_group_object):
+        super(CustomQuestionGroup, self).__init__(question_group_object)
+
     def set_question(self, item):
         question = CustomQuestion(item)
         self.question_group_objects.append(question)
