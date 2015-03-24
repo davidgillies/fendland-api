@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'api_renderer',
     'html_renderer',
+    'questionnaire',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,9 +83,17 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
     },
+    'db3': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mrc_epid_fenland',
+        'USER': 'david',
+        'PASSWORD': 'david',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
 }
 
-DATABASE_ROUTERS = ['api_renderer.routers.PlayRouter', ]
+DATABASE_ROUTERS = ['api_renderer.routers.PlayRouter', 'questionnaire.routers.PlayRouter', ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
