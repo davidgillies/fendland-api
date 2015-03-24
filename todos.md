@@ -14,6 +14,7 @@
 14. Add in choices to sex etc. admin screens.
 15. Data visualization in a canvas?
 16. Try out Django CBV and Forms to build default object views for models with a bootstrap template. 
+17. Do validation against Application object, derived from XML and possibly from models if you use models.  Could use forms for this, or directly via models and forms...??
 
 
 XML -> Application Object
