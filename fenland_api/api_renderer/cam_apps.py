@@ -156,6 +156,11 @@ class QuestionGroup(MethodMixin):
     def set_question(self, item):
         question = Question(item)
         self.question_group_objects.append(question)
+        
+    def get_question(self, question):
+        for q in self.question_group_objects:
+            if q.position == question:
+                return q
 
 
 class Section(MethodMixin):
@@ -187,6 +192,11 @@ class Section(MethodMixin):
         question_group = QuestionGroup(item)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
+        
+    def get_question_group(self, question_group):
+        for qg in self.question_groups:
+            if qg.position == question_group:
+                return qg
 
 
 class Application(object):

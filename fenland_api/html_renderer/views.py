@@ -20,11 +20,11 @@ class HTMLView(View):
         if question_group is None:
             result['section'] = section_obj
             return render(request, 'html_renderer/base2.html', result)
-        question_group = get_question_group(section_obj, question_group)
+        question_group = section_obj.get_question_group(question_group)
         if question is None:
             result['question_group'] = question_group
             return render(request, 'html_renderer/question_group.html', result)
-        question = get_question(question_group, question)
+        question = question_group.get_question(question)
         result['question'] = question
         return render(request, 'html_renderer/question.html', result)
 
