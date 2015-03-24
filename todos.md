@@ -5,16 +5,14 @@
 5. Develop more output templates.
 6. More generic application methods.
 7. Best way to use custom functionality?
-8. Add in database introspection to create admin interface.
 9. Inject js into output for validation, other jquery shit?
-10. Plan work for next few weeks
-11. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
-12. Set up fieldsets on Volunteer admin. (24 mins 39 secs into video)
-13. Extend primary, secondary generic table method and what's needed.
-14. Pass a generic SQL statement and return result.
-15. if models set to true redirect to url for DRF?
-16. Perhaps use convertion for whatever query I get e.g. post or json etc. and just forward to a view?
-17. Add in choices to sex etc. admin screens.
+10. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
+11. Extend primary, secondary generic table method and what's needed.
+12. Pass a generic SQL statement and return result.
+13. if models set to true redirect to url for DRF?
+14. Perhaps use convertion for whatever query I get e.g. post or json etc. and just forward to a view?
+15. Add in choices to sex etc. admin screens.
+16. Data visualization in a canvas?
 
 
 XML -> Application Object
