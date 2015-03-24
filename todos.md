@@ -5,14 +5,15 @@
 5. Develop more output templates.
 6. More generic application methods.
 7. Best way to use custom functionality?
-9. Inject js into output for validation, other jquery shit?
-10. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
-11. Extend primary, secondary generic table method and what's needed.
-12. Pass a generic SQL statement and return result.
-13. if models set to true redirect to url for DRF?
-14. Perhaps use convertion for whatever query I get e.g. post or json etc. and just forward to a view?
-15. Add in choices to sex etc. admin screens.
-16. Data visualization in a canvas?
+8. Inject js into output for validation, other jquery shit?
+9. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
+10. Extend primary, secondary generic table method and what's needed.
+11. Pass a generic SQL statement and return result.
+12. if models set to true redirect to url for DRF?
+13. Perhaps use convertion for whatever query I get e.g. post or json etc. and just forward to a view?
+14. Add in choices to sex etc. admin screens.
+15. Data visualization in a canvas?
+16. Try out Django CBV and Forms to build default object views for models with a bootstrap template. 
 
 
 XML -> Application Object
