@@ -49,7 +49,8 @@ class VolunteerAdmin(admin.ModelAdmin):
         ('Details', {'classes': ('collapse', 'extrapretty'),
                      'description': 'Extra <b>details</b>',
                      'fields': (('nhs_no', 'surgeries'),
-                                ('modified', 'modified_by'))}),
+                                ('modified', 'modified_by'),
+                                ('diabetes_diagnosed', 'moved_away'),)}),
     )
 
 admin.site.register(Volunteer, VolunteerAdmin)

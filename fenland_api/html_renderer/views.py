@@ -41,6 +41,7 @@ class HTMLView(View):
         myDict2 = json.dumps(myDict)
         data = fenland_app.update_data(section, 'id_variable',
                                        request.POST['id'], myDict2)
+        result['data_id'] = data['id']
         section_obj = data_prep(section_obj, data)
         result['section'] = section_obj
         return render(request, 'html_renderer/base2.html', result)

@@ -42,6 +42,11 @@ class Volunteer(models.Model):
         ('Dr', 'Dr'),
         ('Prof', 'Prof'),
     )
+    boolean_choices = (
+        (1, 'True'),
+        (2, 'False'),
+        (3, 'None'),    
+    )
 
     id = models.AutoField(primary_key=True)  # AutoField?
     surname = models.CharField(max_length=45)
@@ -60,8 +65,8 @@ class Volunteer(models.Model):
     mobile = models.CharField(max_length=45, blank=True)
     email = models.CharField(max_length=100, blank=True)
     nhs_no = models.CharField(max_length=45, blank=True)
-    moved_away = models.IntegerField(blank=True, null=True)
-    diabetes_diagnosed = models.IntegerField(blank=True, null=True)
+    moved_away = models.IntegerField(blank=True, null=True, choices=boolean_choices)
+    diabetes_diagnosed = models.IntegerField(blank=True, null=True, choices=boolean_choices)
     modified_by = models.CharField(max_length=45, blank=True)
     reason = models.IntegerField(blank=True, null=True)
     phase1_comment = models.TextField(blank=True)
