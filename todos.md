@@ -17,6 +17,7 @@
 17. Do validation against Application object, derived from XML and possibly from models if you use models.  Could use forms for this, or directly via models and forms...??
 18. Form based validation for html posts, what about API?
 19. Add new appointment button or something on template.  It needs to know it's a mutli.
+20. modified_by should match up to User model for models but not for tomcat...
 
 
 XML -> Application Object
