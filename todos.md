@@ -9,13 +9,14 @@
 9. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
 10. Extend primary, secondary generic table method and what's needed.
 11. Pass a generic SQL statement and return result.
-12. if models set to true redirect to url for DRF?
+12. if models set to true redirect to url for rest framework?
 13. Perhaps use convertion for whatever query I get e.g. post or json etc. and just forward to a view?
 14. Add in choices to sex etc. admin screens.
 15. Data visualization in a canvas?
 16. Try out Django CBV and Forms to build default object views for models with a bootstrap template. 
 17. Do validation against Application object, derived from XML and possibly from models if you use models.  Could use forms for this, or directly via models and forms...??
 18. Form based validation for html posts, what about API?
+19. Add new appointment button or something on template.  It needs to know it's a mutli.
 
 
 XML -> Application Object
