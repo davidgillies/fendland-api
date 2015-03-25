@@ -30,13 +30,26 @@ class Surgery(models.Model):
 
 
 class Volunteer(models.Model):
+    sex_types = (
+        ('M', 'M'),
+        ('F', 'F'),    
+    )
+    title_types = (
+        ('Mr', 'Mr'),
+        ('Mrs', 'Mrs'),
+        ('Ms', 'Ms'),
+        ('Miss', 'Miss'),
+        ('Dr', 'Dr'),
+        ('Prof', 'Prof'),
+    )
+
     id = models.AutoField(primary_key=True)  # AutoField?
     surname = models.CharField(max_length=45)
     forenames = models.CharField(max_length=45)
     initials = models.CharField(max_length=5, blank=True)
     dob = models.DateField(blank=True, null=True)
-    title = models.CharField(max_length=12, blank=True)
-    sex = models.CharField(max_length=1, blank=True)
+    title = models.CharField(max_length=12, blank=True, choices=title_types)
+    sex = models.CharField(max_length=1, blank=True, choices=sex_types)
     addr1 = models.CharField(max_length=45, blank=True)
     addr2 = models.CharField(max_length=45, blank=True)
     town = models.CharField(max_length=45, blank=True)

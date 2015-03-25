@@ -11,6 +11,9 @@ class VolunteerInline(admin.TabularInline):
     readonly_fields = ('surname', 'forenames', 'town', 'postcode',
                        'calculate_age')
     can_delete = False
+    extra = 0
+    def has_add_permission(self, request):
+        return False
 
 
 class SurgeryAdmin(admin.ModelAdmin):
