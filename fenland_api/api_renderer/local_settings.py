@@ -16,3 +16,5 @@ MODELS = True
 MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer}
 
 CUSTOM = True
+
+TESTING = True

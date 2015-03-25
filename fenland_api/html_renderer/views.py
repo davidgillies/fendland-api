@@ -15,6 +15,7 @@ class HTMLView(View):
         section_obj = fenland_app.get_section(section)
         if request.GET:
             id_variable_value = request.GET['id']
+            result['id_variable_value'] = id_variable_value
             data = fenland_app.get_data(section, 'id', id_variable_value)
             section_obj = data_prep(section_obj, data)
         if question_group is None:

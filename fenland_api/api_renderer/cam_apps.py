@@ -168,6 +168,7 @@ class Section(MethodMixin):
         self.section_xml_object = section_xml_object
         self.title = section_xml_object.title
         self.position = section_xml_object.attrib['position']
+        self.testing = local_settings.TESTING
         self.info = []
         self.question_groups = []
         self.section_objects = []
@@ -209,6 +210,7 @@ class Application(object):
         self.custom = local_settings.CUSTOM
         self.mapping = local_settings.SECTION_MAPPING
         self.model_mapping = local_settings.MODEL_MAPPING
+        self.testing = local_settings.TESTING
         self.author = self.xml_object.author
         self.version_number = self.xml_object.versionNumber
         self.version_date = self.xml_object.versionDate
@@ -235,13 +237,14 @@ class Application(object):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
             self.model_mapping[int(section)].objects.create(**json_dict)
+            data = model_to_dict(self.model_mapping[int(section)].objects.get(id=id_variable_value))
         else:
             self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
             data = self.db.table.insert(**json_dict).__dict__
             data.pop('_sa_instance_state')
             self.db.commit()
-            return data
+        return data
 
     def update_data(self, section_number, id_variable, id_variable_value, body):
         if self.models:
@@ -254,7 +257,7 @@ class Application(object):
             data = self.db.table.filter_by(id=int(id_variable_value)).update(json_dict)
             data = json_dict
             self.db.commit()
-            return data
+        return data
 
     def delete_data(self, section_number, id_variable, id_variable_value):
         if self.models:
@@ -264,7 +267,7 @@ class Application(object):
             instance = self.db.table.get(int(id_variable_value))
             self.db.delete(instance)
             self.db.commit()
-            return
+        return
 
     def get_table_name(self, section_number):
         return self.mapping[int(section_number)]

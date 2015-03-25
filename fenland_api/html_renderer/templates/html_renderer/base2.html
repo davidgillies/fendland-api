@@ -1,5 +1,6 @@
 <div class="section">
-    <form style="height: 212px;" onscroll="moveScroll();" id="questionnaire_form">
+    <form style="height: 212px;" onscroll="moveScroll();" id="questionnaire_form" method="POST">
+        <input type="hidden" name="id" value="{{id_variable_value}}" />
         <div class="section_title">
             {{section.title}}
         </div>
@@ -9,6 +10,7 @@
                 {% endif %}
             {% endfor %}
             {% include 'html_renderer/question_groups.html' %}
+            {% if section.testing %} <input type="submit" value="submit" /> {% endif %}
 </form>
 </div>    
 
