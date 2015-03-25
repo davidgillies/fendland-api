@@ -27,6 +27,7 @@ class AppointmentInline(admin.TabularInline):
     fields = ('appt_date', 'appt_time', 'test_site')
     extra = 0
 
+
 class VolunteerAdmin(admin.ModelAdmin):
     inlines = [AppointmentInline, ]
     search_fields = ('surname', 'forenames', 'town', 'postcode',

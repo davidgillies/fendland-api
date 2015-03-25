@@ -156,7 +156,7 @@ class QuestionGroup(MethodMixin):
     def set_question(self, item):
         question = Question(item)
         self.question_group_objects.append(question)
-        
+
     def get_question(self, question):
         for q in self.question_group_objects:
             if q.position == question:
@@ -193,7 +193,7 @@ class Section(MethodMixin):
         question_group = QuestionGroup(item)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
-        
+
     def get_question_group(self, question_group):
         for qg in self.question_groups:
             if qg.position == question_group:
@@ -205,10 +205,11 @@ class Application(object):
         self.name = name
         self.xml = xml
         self.xml_object = objectify.fromstring(self.xml)
-        self.db = sqlsoup.SQLSoup(local_settings.DATABASE) 
+        self.db = sqlsoup.SQLSoup(local_settings.DATABASE)
         self.models = local_settings.MODELS
         self.custom = local_settings.CUSTOM
         self.mapping = local_settings.SECTION_MAPPING
+        self.db_mapping = local_settings.DB_MAPPING
         self.model_mapping = local_settings.MODEL_MAPPING
         self.testing = local_settings.TESTING
         self.author = self.xml_object.author
@@ -225,6 +226,7 @@ class Application(object):
             self.db.table = self.db.entity(self.get_table_name(section))
             data = self.db.table.get(int(id_variable_value)).__dict__
             data.pop('_sa_instance_state')
+            data['id'] = id_variable_value
             self.tidy(data)
         return data
 
@@ -233,20 +235,25 @@ class Application(object):
             if isinstance(data[k], datetime.date):
                 data[k] = str(data[k])
 
-    def insert_data(self, section_number, id_variable, id_variable_value, body):
+    def insert_data(self, section_number, id_variable, body):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
-            self.model_mapping[int(section)].objects.create(**json_dict)
-            data = model_to_dict(self.model_mapping[int(section)].objects.get(id=id_variable_value))
+            self.model_mapping[int(section_number)].objects.create(**json_dict)
+            #data = model_to_dict(self.model_mapping[int(section)].objects.get(id=id_variable_value))
         else:
             self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
+            for k in json_dict.keys():
+                if k in self.db_mapping.keys():
+                    json_dict[self.db_mapping[k]] = json_dict[k]
+                    json_dict.pop(k)
             data = self.db.table.insert(**json_dict).__dict__
             data.pop('_sa_instance_state')
             self.db.commit()
         return data
 
-    def update_data(self, section_number, id_variable, id_variable_value, body):
+    def update_data(self, section_number, id_variable, id_variable_value,
+                    body):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
             self.model_mapping[int(section)].objects.filter(pk=id_variable_value).update(**json_dict)
@@ -254,6 +261,10 @@ class Application(object):
         else:
             self.db.table = self.db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
+            for k in json_dict.keys():
+                if k in self.db_mapping.keys():
+                    json_dict[self.db_mapping[k]] = json_dict[k]
+                    json_dict.pop(k)
             data = self.db.table.filter_by(id=int(id_variable_value)).update(json_dict)
             data = json_dict
             self.db.commit()

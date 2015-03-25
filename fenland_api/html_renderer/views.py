@@ -4,11 +4,11 @@ from django.shortcuts import render
 from helpers import get_question_group, get_question
 from django.http import HttpResponseNotFound
 from api_renderer.custom_logic import data_prep
+import json
 
 
 class HTMLView(View):
-    def get(self, request, section=None, question_group=None,
-            question=None):
+    def get(self, request, section=None, question_group=None, question=None):
         result = {}
         if section is None:
             return HttpResponseNotFound('Page Not Found')
@@ -20,6 +20,7 @@ class HTMLView(View):
             section_obj = data_prep(section_obj, data)
         if question_group is None:
             result['section'] = section_obj
+            result['data_id'] = data['id']
             return render(request, 'html_renderer/base2.html', result)
         question_group = section_obj.get_question_group(question_group)
         if question is None:
@@ -28,6 +29,21 @@ class HTMLView(View):
         question = question_group.get_question(question)
         result['question'] = question
         return render(request, 'html_renderer/question.html', result)
+
+    def post(self, request, section=None, question_group=None, question=None):
+        result = {}
+        if section is None:
+            return HttpResponseNotFound('Page Not Found')
+        section_obj = fenland_app.get_section(section)
+        myDict = dict(request.POST.iterlists())
+        for k in myDict.keys():
+            myDict[k] = myDict[k][0]
+        myDict2 = json.dumps(myDict)
+        data = fenland_app.update_data(section, 'id_variable',
+                                       request.POST['id'], myDict2)
+        section_obj = data_prep(section_obj, data)
+        result['section'] = section_obj
+        return render(request, 'html_renderer/base2.html', result)
 
 
 class TestView(View):
@@ -43,7 +59,8 @@ class TestView(View):
             section = data_prep(section_obj, data)
         if question_group is None:
             result['section'] = section_obj
-            return render(request, 'html_renderer/fenland_template.html', result)
+            return render(request, 'html_renderer/fenland_template.html',
+                          result)
         question_group = get_question_group(section, question_group)
         if question is None:
             result['questionGroup'] = question_group
