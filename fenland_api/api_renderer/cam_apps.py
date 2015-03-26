@@ -8,6 +8,12 @@ from django.forms.models import model_to_dict
 from copy import deepcopy
 
 
+def logger(func):
+    def inner(*args, **kwargs):
+        print "Args: %s, %s" % (args, kwargs)
+        return func(*args, **kwargs)
+    return inner        
+
 class TextNode(dict):
     def __init__(self, position):
         self.rendering_hints = {}
@@ -219,6 +225,7 @@ class Application(object):
         self.studyname = self.xml_object.studyName
         self.sections = self.get_sections()
 
+    @logger
     def get_data(self, section, id_variable, id_variable_value):
         if self.models:
             data = model_to_dict(self.model_mapping[int(section)].objects.get(id=id_variable_value))
