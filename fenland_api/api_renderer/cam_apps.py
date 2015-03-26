@@ -78,7 +78,8 @@ class MethodMixin(object):
 
 
 class Question(MethodMixin):
-    def __init__(self, question_object):
+    def __init__(self, question_object, app_object):
+        self.app_object = app_object
         self.question_objects = []
         self.title = question_object.attrib['position']
         self.variable = question_object.variable.varName.text
@@ -92,6 +93,7 @@ class Question(MethodMixin):
         self.template = ''
         self.template_args = {'options': []}
         self.build_question(question_object)
+        print self.app_object
 
     def get_template(self, selection):
         return {'radio': 'html_renderer/radio.html',
@@ -120,7 +122,7 @@ class Question(MethodMixin):
         q_info['text'] = item.text
         q_info['cssClass'] = item.attrib['cssClass']
         self.question_objects.append(q_info)
-    
+
     def set_restrictions(self, item):
         for rule in item.getchildren():
             parameters = {}
@@ -145,7 +147,8 @@ class Question(MethodMixin):
 # that doesn't have any data...  First sections etc.  Does it help?
 
 class QuestionGroup(MethodMixin):
-    def __init__(self, question_group_object):
+    def __init__(self, question_group_object, app_object):
+        self.app_object = app_object
         self.question_group_objects = []
         self.title = question_group_object.title
         self.position = question_group_object.attrib['position']
@@ -179,7 +182,7 @@ class QuestionGroup(MethodMixin):
         self.question_group_objects.append(text_node)
 
     def set_question(self, item):
-        question = Question(item)
+        question = Question(item, self.app_object)
         self.question_group_objects.append(question)
 
     def get_question(self, question):
@@ -189,7 +192,8 @@ class QuestionGroup(MethodMixin):
 
 
 class Section(MethodMixin):
-    def __init__(self, section_xml_object):
+    def __init__(self, section_xml_object, app_object):
+        self.app_object = app_object
         self.section_xml_object = section_xml_object
         self.title = section_xml_object.title
         self.position = section_xml_object.attrib['position']
@@ -215,7 +219,7 @@ class Section(MethodMixin):
         self.section_objects.append(section_info)
 
     def set_question_group(self, item):
-        question_group = QuestionGroup(item)
+        question_group = QuestionGroup(item, self.app_object)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
 
@@ -315,5 +319,5 @@ class Application(object):
     def get_sections(self):
         sections = {}
         for section in self.xml_object.section:
-            sections[section.attrib['position']] = Section(section)
+            sections[section.attrib['position']] = Section(section, self)
         return sections

@@ -57,9 +57,9 @@ def data_prep(section, data):
 
 
 class CustomQuestion(cam_apps.Question):
-    def __init__(self, question_object):
+    def __init__(self, question_object, app_object):
         self.surgeries = self.get_surgeries()
-        super(CustomQuestion, self).__init__(question_object)
+        super(CustomQuestion, self).__init__(question_object, app_object)
 
     def get_surgeries(self):
         surgeries = db.surgeries.all()
@@ -73,20 +73,20 @@ class CustomQuestion(cam_apps.Question):
 
 
 class CustomQuestionGroup(cam_apps.QuestionGroup):
-    def __init__(self, question_group_object):
-        super(CustomQuestionGroup, self).__init__(question_group_object)
+    def __init__(self, question_group_object, app_object):
+        super(CustomQuestionGroup, self).__init__(question_group_object, app_object)
 
     def set_question(self, item):
-        question = CustomQuestion(item)
+        question = CustomQuestion(item, self.app_object)
         self.question_group_objects.append(question)
 
 
 class CustomSection(cam_apps.Section):
-    def __init__(self, section_xml_object):
-        super(CustomSection, self).__init__(section_xml_object)
+    def __init__(self, section_xml_object, app_object):
+        super(CustomSection, self).__init__(section_xml_object, app_object)
 
     def set_question_group(self, item):
-        question_group = CustomQuestionGroup(item)
+        question_group = CustomQuestionGroup(item, self.app_object)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
 
@@ -98,5 +98,5 @@ class CustomApplication(cam_apps.Application):
     def get_sections(self):
         sections = {}
         for section in self.xml_object.section:
-            sections[section.attrib['position']] = CustomSection(section)
+            sections[section.attrib['position']] = CustomSection(section, self)
         return sections
