@@ -8,6 +8,8 @@ from django.forms.models import model_to_dict
 from copy import deepcopy
 
 
+db = sqlsoup.SQLSoup(local_settings.DATABASE)
+
 def logger(func):
     def inner(*args, **kwargs):
         print "Args: %s, %s" % (args, kwargs)
@@ -92,8 +94,8 @@ class Question(MethodMixin):
         self.restrictions = {}
         self.template = ''
         self.template_args = {'options': []}
-        self.build_question(question_object)
-        print self.app_object
+        self.build_question(question_object) 
+        print "RESTRICTIONS: %s\nDATA_TYPE: %s\n" % (self.restrictions, self.data_type)
 
     def get_template(self, selection):
         return {'radio': 'html_renderer/radio.html',
@@ -233,8 +235,9 @@ class Application(object):
     def __init__(self, name, xml):
         self.name = name
         self.xml = xml
+        self.validator = {}
         self.xml_object = objectify.fromstring(self.xml)
-        self.db = sqlsoup.SQLSoup(local_settings.DATABASE)
+        #self.db = sqlsoup.SQLSoup(local_settings.DATABASE)
         self.models = local_settings.MODELS
         self.custom = local_settings.CUSTOM
         self.mapping = local_settings.SECTION_MAPPING
@@ -253,8 +256,8 @@ class Application(object):
         if self.models:
             data = model_to_dict(self.model_mapping[int(section)].objects.get(id=id_variable_value))
         else:
-            self.db.table = self.db.entity(self.get_table_name(section))
-            data = self.db.table.get(int(id_variable_value)).__dict__
+            db.table = db.entity(self.get_table_name(section))
+            data = db.table.get(int(id_variable_value)).__dict__
             data.pop('_sa_instance_state')
             data['id'] = id_variable_value
             self.tidy(data)
@@ -271,15 +274,16 @@ class Application(object):
             self.model_mapping[int(section_number)].objects.create(**json_dict)
             #data = model_to_dict(self.model_mapping[int(section)].objects.get(id=id_variable_value))
         else:
-            self.db.table = self.db.entity(self.get_table_name(section_number))
+            db.table = db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
             for k in json_dict.keys():
-                if k in self.db_mapping.keys():
-                    json_dict[self.db_mapping[k]] = json_dict[k]
+                if k in db_mapping.keys():
+                    json_dict[db_mapping[k]] = json_dict[k]
                     json_dict.pop(k)
-            data = self.db.table.insert(**json_dict).__dict__
+            # validate here?
+            data = db.table.insert(**json_dict).__dict__
             data.pop('_sa_instance_state')
-            self.db.commit()
+            db.commit()
         return data
 
     def update_data(self, section_number, id_variable, id_variable_value,
@@ -289,25 +293,26 @@ class Application(object):
             self.model_mapping[int(section)].objects.filter(pk=id_variable_value).update(**json_dict)
             data = model_to_dict(Volunteer.objects.get(id=id_variable_value))
         else:
-            self.db.table = self.db.entity(self.get_table_name(section_number))
+            db.table = db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
             for k in json_dict.keys():
-                if k in self.db_mapping.keys():
-                    json_dict[self.db_mapping[k]] = json_dict[k]
+                if k in db_mapping.keys():
+                    json_dict[db_mapping[k]] = json_dict[k]
                     json_dict.pop(k)
-            data = self.db.table.filter_by(id=int(id_variable_value)).update(json_dict)
+            # validate here?
+            data = db.table.filter_by(id=int(id_variable_value)).update(json_dict)
             data = json_dict
-            self.db.commit()
+            db.commit()
         return data
 
     def delete_data(self, section_number, id_variable, id_variable_value):
         if self.models:
             self.model_mapping[int(section)].objects.get(id=id_variable_value).delete()
         else:
-            self.db.table = self.db.entity(self.get_table_name(section))
-            instance = self.db.table.get(int(id_variable_value))
-            self.db.delete(instance)
-            self.db.commit()
+            db.table = db.entity(self.get_table_name(section))
+            instance = db.table.get(int(id_variable_value))
+            db.delete(instance)
+            db.commit()
         return
 
     def get_table_name(self, section_number):

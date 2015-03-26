@@ -58,7 +58,7 @@ admin.site.register(Volunteer, VolunteerAdmin)
 
 class AppointmentAdmin(admin.ModelAdmin):
     list_display = ('get_volunteer', 'appt_date', 'appt_time', 'test_site')
-    search_fields = ('volunteer__surname', 'volunteer_forenames',)
+    search_fields = ('volunteers__surname', 'volunteers__forenames',)
     list_per_page = 5
 
     def get_volunteer(self, obj):
