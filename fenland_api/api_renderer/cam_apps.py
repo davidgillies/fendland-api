@@ -12,7 +12,8 @@ def logger(func):
     def inner(*args, **kwargs):
         print "Args: %s, %s" % (args, kwargs)
         return func(*args, **kwargs)
-    return inner        
+    return inner
+
 
 class TextNode(dict):
     def __init__(self, position):
@@ -83,9 +84,11 @@ class Question(MethodMixin):
         self.variable = question_object.variable.varName.text
         self.var_value = None
         self.var_id = None
+        self.data_type = {}
         self.id = question_object.attrib['ID']
         self.position = question_object.attrib['position']
         self.rendering_hints = {}
+        self.restrictions = {}
         self.template = ''
         self.template_args = {'options': []}
         self.build_question(question_object)
@@ -117,7 +120,23 @@ class Question(MethodMixin):
         q_info['text'] = item.text
         q_info['cssClass'] = item.attrib['cssClass']
         self.question_objects.append(q_info)
+    
+    def set_restrictions(self, item):
+        for rule in item.getchildren():
+            parameters = {}
+            for p in rule.getchildren():
+                parameters[p.attrib['use']] = p.text
+            self.restrictions[rule.attrib['name']] = parameters
 
+    def set_variable(self, item):
+        """Sets the variable data type.  Variable name has already been set."""
+        try:
+            for dt in item.dataType.getchildren():
+                self.data_type['type'] = dt.tag.replace('{http://www.mrc-epid.cam.ac.uk/schema/common/epi}', '')
+                for child in dt.getchildren():
+                    self.data_type[child.tag.replace('{http://www.mrc-epid.cam.ac.uk/schema/common/epi}', '')] = child.text
+        except:
+            pass
 
 # Tod dos:
 # 1. set table and shownumber on the QuestionGroup object, they come from
