@@ -18,6 +18,7 @@
 18. Form based validation for html posts, what about API?
 19. Add new appointment button or something on template.  It needs to know it's a mutli.
 20. modified_by should match up to User model for models but not for tomcat...
+21. How will validation work in interface?
 
 
 XML -> Application Object
