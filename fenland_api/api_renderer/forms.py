@@ -1,6 +1,13 @@
 from django import forms
 
 
+def fields(field_type):
+    return {'text': forms.CharField, 'integer': forms.IntegerField,
+            'real': forms.FloatField, 'date': forms.DateField,
+            'dateTime': forms.DateTimeField, 'time': forms.TimeField,
+            }[field_type]
+
+
 class ValidationForm(forms.Form):
     def __init__(self, *args, **kwargs):
         extra = kwargs.pop('extra')
