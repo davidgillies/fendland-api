@@ -85,7 +85,7 @@ class Roles(models.Model):
     role = models.CharField(max_length=50)
 
     def __unicode__(self):
-        return "%s, %s" % (self.user_id, self.role)
+        return "%s, %s" % (self.user_id)
 
     class Meta:
         db_table = 'roles'
