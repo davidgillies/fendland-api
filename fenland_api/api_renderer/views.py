@@ -13,6 +13,7 @@ else:
     from cam_apps import Application
     fenland_app = Application('fenland', xml_string)
 
+print fenland_app.validator
 
 class APIView(APIView):
     def get(self, request, section=None, id_variable=None,

@@ -95,7 +95,7 @@ class Question(MethodMixin):
         self.template = ''
         self.template_args = {'options': []}
         self.build_question(question_object) 
-        print "RESTRICTIONS: %s\nDATA_TYPE: %s\n" % (self.restrictions, self.data_type)
+        self.app_object.validator[self.variable] = [self.restrictions, self.data_type]
 
     def get_template(self, selection):
         return {'radio': 'html_renderer/radio.html',
@@ -237,7 +237,6 @@ class Application(object):
         self.xml = xml
         self.validator = {}
         self.xml_object = objectify.fromstring(self.xml)
-        #self.db = sqlsoup.SQLSoup(local_settings.DATABASE)
         self.models = local_settings.MODELS
         self.custom = local_settings.CUSTOM
         self.mapping = local_settings.SECTION_MAPPING
@@ -277,8 +276,8 @@ class Application(object):
             db.table = db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
             for k in json_dict.keys():
-                if k in db_mapping.keys():
-                    json_dict[db_mapping[k]] = json_dict[k]
+                if k in self.db_mapping.keys():
+                    json_dict[self.db_mapping[k]] = json_dict[k]
                     json_dict.pop(k)
             # validate here?
             data = db.table.insert(**json_dict).__dict__
@@ -296,8 +295,8 @@ class Application(object):
             db.table = db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
             for k in json_dict.keys():
-                if k in db_mapping.keys():
-                    json_dict[db_mapping[k]] = json_dict[k]
+                if k in self.db_mapping.keys():
+                    json_dict[self.db_mapping[k]] = json_dict[k]
                     json_dict.pop(k)
             # validate here?
             data = db.table.filter_by(id=int(id_variable_value)).update(json_dict)
