@@ -6,6 +6,8 @@ import datetime
 from .models import *
 from django.forms.models import model_to_dict
 from copy import deepcopy
+from .forms import VolunteerForm
+import arrow
 
 
 db = sqlsoup.SQLSoup(local_settings.DATABASE)
@@ -270,8 +272,14 @@ class Application(object):
     def insert_data(self, section_number, id_variable, body):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
-            self.model_mapping[int(section_number)].objects.create(**json_dict)
-            #data = model_to_dict(self.model_mapping[int(section)].objects.get(id=id_variable_value))
+            dob = arrow.get(json_dict['dob'], 'MMMM D, YYYY')
+            json_dict['dob'] = dob.format('YYYY-MM-DD')
+            validator_form = VolunteerForm(json_dict)
+            if validator_form.is_valid():
+                print "got here"
+                model = self.model_mapping[int(section_number)].objects.create(**json_dict)
+                data = model_to_dict(model)
+                
         else:
             db.table = db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
@@ -289,7 +297,13 @@ class Application(object):
                     body):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
-            self.model_mapping[int(section)].objects.filter(pk=id_variable_value).update(**json_dict)
+            dob = arrow.get(json_dict['dob'], 'MMMM D, YYYY')
+            json_dict['dob'] = dob.format('YYYY-MM-DD')
+            for k in json_dict.keys():
+                if k in self.db_mapping.keys():
+                    json_dict[self.db_mapping[k]] = json_dict[k]
+                    json_dict.pop(k)
+            self.model_mapping[int(section_number)].objects.filter(pk=id_variable_value).update(**json_dict)
             data = model_to_dict(Volunteer.objects.get(id=id_variable_value))
         else:
             db.table = db.entity(self.get_table_name(section_number))

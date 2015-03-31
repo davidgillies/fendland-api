@@ -1,0 +1,11 @@
+{'surname': [None], 'title': [None], 'dob': [None], 'forenames': [None], 'appt_time': [None], 'test_site': [None], 'surgery': [None], 'appt_date': [None], 'diabetes': [None]}
+<api_renderer.custom_logic.CustomApplication object at 0x0000000004333160>
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 31, 2015 - 11:01:43
+Django version 1.7.5, using settings 'fenland_api.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+{'surname': [None], 'title': [None], 'dob': [None], 'forenames': [None], 'appt_time': [None], 'test_site': [None], 'surgery': [None], 'appt_date': [None], 'diabetes': [None]}
+<api_renderer.custom_logic.CustomApplication object at 0x000000000430D0F0>

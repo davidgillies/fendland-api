@@ -1,4 +1,5 @@
 from django import forms
+from .models import Volunteer
 
 
 def fields(field_type):
@@ -17,3 +18,9 @@ class ValidationForm(forms.Form):
                 self.fields[field_name] = forms.CharField(max_length=extra[field_name]['max_length'])
             else:
                 self.fields[field_name] = forms.EmailField(required=False)
+
+
+class VolunteerForm(forms.ModelForm):
+    class Meta:
+        model = Volunteer
+    
