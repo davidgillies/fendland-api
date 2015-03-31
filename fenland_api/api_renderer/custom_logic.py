@@ -4,6 +4,7 @@ import sqlsoup
 from itertools import chain
 from copy import deepcopy
 
+
 db = sqlsoup.SQLSoup(local_settings.DATABASE)
 
 def get_multi_data(table, id):
@@ -13,7 +14,10 @@ def get_multi_data(table, id):
 
 
 def data_prep(section, data):
+    if 'errors' in data.keys():
+        section.errors = data['errors']
     try:
+        
         for qg in section.section_objects:
             multi_lines = []
             multi = False

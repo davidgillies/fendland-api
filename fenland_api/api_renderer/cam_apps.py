@@ -8,6 +8,7 @@ from django.forms.models import model_to_dict
 from copy import deepcopy
 from .forms import VolunteerForm
 import arrow
+from validator import Validator
 
 
 db = sqlsoup.SQLSoup(local_settings.DATABASE)
@@ -97,7 +98,16 @@ class Question(MethodMixin):
         self.template = ''
         self.template_args = {'options': []}
         self.build_question(question_object) 
-        self.app_object.validator[self.variable] = [self.restrictions, self.data_type]
+        self.app_object.validator[self.variable] = self.validator_rules()
+        
+    def validator_rules(self):
+        rules = {}
+        if 'CheckMaxLength' in self.restrictions.keys():
+            rules['CheckMaxLength'] = self.data_type['maxLength']
+        if 'IsAnswered' in self.restrictions.keys():
+            if self.restrictions['IsAnswered']['AllowError'] == 'false':
+                rules['IsAnswered'] = True
+        return rules
 
     def get_template(self, selection):
         return {'radio': 'html_renderer/radio.html',
@@ -204,6 +214,7 @@ class Section(MethodMixin):
         self.testing = local_settings.TESTING
         self.info = []
         self.question_groups = []
+        self.errors = {}
         self.section_objects = []
         self.rendering_hints = {}
         self.build_section()
@@ -276,21 +287,25 @@ class Application(object):
             json_dict['dob'] = dob.format('YYYY-MM-DD')
             validator_form = VolunteerForm(json_dict)
             if validator_form.is_valid():
-                print "got here"
                 model = self.model_mapping[int(section_number)].objects.create(**json_dict)
                 data = model_to_dict(model)
                 
         else:
             db.table = db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
-            for k in json_dict.keys():
-                if k in self.db_mapping.keys():
-                    json_dict[self.db_mapping[k]] = json_dict[k]
-                    json_dict.pop(k)
-            # validate here?
-            data = db.table.insert(**json_dict).__dict__
-            data.pop('_sa_instance_state')
-            db.commit()
+            validator = Validator(self.validator, json_dict)
+            if validator.is_valid():
+                for k in json_dict.keys():
+                    if k in self.db_mapping.keys():
+                        json_dict[self.db_mapping[k]] = json_dict[k]
+                        json_dict.pop(k)
+                # validate here?
+                data = db.table.insert(**json_dict).__dict__
+                data.pop('_sa_instance_state')
+                db.commit()
+            else:
+                data = json_dict
+                data['errors'] = validator.errors
         return data
 
     def update_data(self, section_number, id_variable, id_variable_value,
@@ -308,14 +323,19 @@ class Application(object):
         else:
             db.table = db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
-            for k in json_dict.keys():
-                if k in self.db_mapping.keys():
-                    json_dict[self.db_mapping[k]] = json_dict[k]
-                    json_dict.pop(k)
-            # validate here?
-            data = db.table.filter_by(id=int(id_variable_value)).update(json_dict)
-            data = json_dict
-            db.commit()
+            validator = Validator(self.validator, json_dict)
+            if validator.is_valid():
+                for k in json_dict.keys():
+                    if k in self.db_mapping.keys():
+                        json_dict[self.db_mapping[k]] = json_dict[k]
+                        json_dict.pop(k)
+                # validate here?
+                data = db.table.filter_by(id=int(id_variable_value)).update(json_dict)
+                data = json_dict
+                db.commit()
+            else:
+                data = json_dict
+                data['errors'] = validator.errors
         return data
 
     def delete_data(self, section_number, id_variable, id_variable_value):
