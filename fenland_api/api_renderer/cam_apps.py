@@ -289,7 +289,6 @@ class Application(object):
             if validator_form.is_valid():
                 model = self.model_mapping[int(section_number)].objects.create(**json_dict)
                 data = model_to_dict(model)
-                
         else:
             db.table = db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)

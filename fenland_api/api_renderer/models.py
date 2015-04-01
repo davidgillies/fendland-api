@@ -32,7 +32,7 @@ class Surgery(models.Model):
 class Volunteer(models.Model):
     sex_types = (
         ('M', 'M'),
-        ('F', 'F'),    
+        ('F', 'F'),
     )
     title_types = (
         ('Mr', 'Mr'),
@@ -45,7 +45,7 @@ class Volunteer(models.Model):
     boolean_choices = (
         (1, 'True'),
         (2, 'False'),
-        (3, 'None'),    
+        (3, 'None'),
     )
 
     id = models.AutoField(primary_key=True)  # AutoField?

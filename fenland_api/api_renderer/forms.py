@@ -21,6 +21,7 @@ class ValidationForm(forms.Form):
 
 
 class VolunteerForm(forms.ModelForm):
+    # this is deprecatded without either the fields or exclude property!!
     class Meta:
         model = Volunteer
     
