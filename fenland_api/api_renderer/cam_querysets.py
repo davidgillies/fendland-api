@@ -28,16 +28,16 @@ class QuerySet(object):
         self.tidy(data)
         return data
 
-    def create(self):
-        data = self.table.insert(**self.query_dict).__dict__
+    def create(self, query_dict):
+        data = self.table.insert(**query_dict).__dict__
         data.pop('_sa_instance_state')
         db.commit()
         self.data = data
-        return
+        return data
 
-    def update(self):
-        data = self.table.filter_by(id=int(self.id_variable_value)).update(self.query_dict)
-        data = self.query_dict
+    def update(self, query_dict, id_variable_value):
+        data = self.table.filter_by(id=int(id_variable_value)).update(query_dict)
+        data = query_dict
         db.commit()
         self.data = data
         return

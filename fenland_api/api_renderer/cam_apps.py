@@ -297,10 +297,8 @@ class Application(object):
                     if k in self.db_mapping.keys():
                         json_dict[self.db_mapping[k]] = json_dict[k]
                         json_dict.pop(k)
-                queryset = QuerySet(table_name=self.get_table_name(section_number),
-                                query_dict=json_dict)
-                queryset.create()
-                data = queryset.data
+                queryset = QuerySet(table_name=self.get_table_name(section_number))
+                data = queryset.create(json_dict)
             else:
                 data = json_dict
                 data['errors'] = validator.errors
@@ -326,10 +324,8 @@ class Application(object):
                     if k in self.db_mapping.keys():
                         json_dict[self.db_mapping[k]] = json_dict[k]
                         json_dict.pop(k)
-                queryset = QuerySet(table_name=self.get_table_name(section_number),
-                                id_variable_value=id_variable_value,
-                                query_dict=json_dict)
-                queryset.update()
+                queryset = QuerySet(table_name=self.get_table_name(section_number))
+                queryset.update(json_dict, id_variable_value)
                 data = queryset.data
             else:
                 data = json_dict
