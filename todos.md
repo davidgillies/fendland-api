@@ -19,6 +19,7 @@
 19. Add new appointment button or something on template.  It needs to know it's a mutli.
 20. modified_by should match up to User model for models but not for tomcat...
 21. How will validation work in interface?
+22. If you know datetime objects are there from Question data type, you have to know that when modifying data to strings and back to dates etc.
 
 
 XML -> Application Object
