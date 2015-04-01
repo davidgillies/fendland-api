@@ -21,6 +21,7 @@
 21. How will validation work in interface?
 22. If you know datetime objects are there from Question data type, you have to know that when modifying data to strings and back to dates etc.
 23. Need to return errors to frontend for models.
+24. Need to add error outputs to templates.
 
 
 XML -> Application Object
