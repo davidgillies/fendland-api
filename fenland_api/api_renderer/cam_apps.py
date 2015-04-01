@@ -9,9 +9,11 @@ from copy import deepcopy
 from .forms import VolunteerForm
 import arrow
 from validator import Validator
+from .cam_querysets import QuerySet
 
 
 db = sqlsoup.SQLSoup(local_settings.DATABASE)
+
 
 def logger(func):
     def inner(*args, **kwargs):
