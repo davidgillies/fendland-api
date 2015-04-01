@@ -266,15 +266,13 @@ class Application(object):
         self.sections = self.get_sections()
 
     @logger
-    def get_data(self, section, id_variable, id_variable_value):
+    def get_data(self, section_number, id_variable, id_variable_value):
         if self.models:
             data = model_to_dict(self.model_mapping[int(section)].objects.get(id=id_variable_value))
         else:
-            db.table = db.entity(self.get_table_name(section))
-            data = db.table.get(int(id_variable_value)).__dict__
-            data.pop('_sa_instance_state')
-            data['id'] = id_variable_value
-            self.tidy(data)
+            queryset = QuerySet(table_name=self.get_table_name(section_number),
+                                id_variable_value=id_variable_value)
+            data = queryset.get()
         return data
 
     def tidy(self, data):
@@ -292,7 +290,6 @@ class Application(object):
                 model = self.model_mapping[int(section_number)].objects.create(**json_dict)
                 data = model_to_dict(model)
         else:
-            db.table = db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
             validator = Validator(self.validator, json_dict)
             if validator.is_valid():
@@ -300,10 +297,10 @@ class Application(object):
                     if k in self.db_mapping.keys():
                         json_dict[self.db_mapping[k]] = json_dict[k]
                         json_dict.pop(k)
-                # validate here?
-                data = db.table.insert(**json_dict).__dict__
-                data.pop('_sa_instance_state')
-                db.commit()
+                queryset = QuerySet(table_name=self.get_table_name(section_number),
+                                query_dict=json_dict)
+                queryset.create()
+                data = queryset.data
             else:
                 data = json_dict
                 data['errors'] = validator.errors
@@ -322,7 +319,6 @@ class Application(object):
             self.model_mapping[int(section_number)].objects.filter(pk=id_variable_value).update(**json_dict)
             data = model_to_dict(Volunteer.objects.get(id=id_variable_value))
         else:
-            db.table = db.entity(self.get_table_name(section_number))
             json_dict = simplejson.JSONDecoder().decode(body)
             validator = Validator(self.validator, json_dict)
             if validator.is_valid():
@@ -330,10 +326,11 @@ class Application(object):
                     if k in self.db_mapping.keys():
                         json_dict[self.db_mapping[k]] = json_dict[k]
                         json_dict.pop(k)
-                # validate here?
-                data = db.table.filter_by(id=int(id_variable_value)).update(json_dict)
-                data = json_dict
-                db.commit()
+                queryset = QuerySet(table_name=self.get_table_name(section_number),
+                                id_variable_value=id_variable_value,
+                                query_dict=json_dict)
+                queryset.update()
+                data = queryset.data
             else:
                 data = json_dict
                 data['errors'] = validator.errors
@@ -343,10 +340,9 @@ class Application(object):
         if self.models:
             self.model_mapping[int(section)].objects.get(id=id_variable_value).delete()
         else:
-            db.table = db.entity(self.get_table_name(section))
-            instance = db.table.get(int(id_variable_value))
-            db.delete(instance)
-            db.commit()
+            queryset = QuerySet(table_name=self.get_table_name(section_number),
+                                id_variable_value=id_variable_value)
+            queryset.delete()
         return
 
     def get_table_name(self, section_number):

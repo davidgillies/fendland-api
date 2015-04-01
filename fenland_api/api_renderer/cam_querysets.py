@@ -11,6 +11,7 @@ class QuerySet(object):
         self.query_dict = query_dict
         self.table_name = table_name
         self.sql = sql
+        self.data = None
         self.id_variable_value = id_variable_value
         if self.table_name:
             self.table = db.entity(table_name)
@@ -31,13 +32,15 @@ class QuerySet(object):
         data = self.table.insert(**self.query_dict).__dict__
         data.pop('_sa_instance_state')
         db.commit()
-        return data
+        self.data = data
+        return
 
     def update(self):
         data = self.table.filter_by(id=int(self.id_variable_value)).update(self.query_dict)
         data = self.query_dict
         db.commit()
-        return data
+        self.data = data
+        return
 
     def delete(self):
         instance = self.table.get(int(self.id_variable_value))
