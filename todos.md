@@ -10,7 +10,7 @@
 10. Extend primary, secondary generic table method and what's needed.
 11. Pass a generic SQL statement and return result.
 12. if models set to true redirect to url for rest framework?
-13. Perhaps use convertion for whatever query I get e.g. post or json etc. and just forward to a view?
+13. Perhaps use conversion for whatever query I get e.g. post or json etc. and just forward to a view?
 14. Add in choices to sex etc. admin screens.
 15. Data visualization in a canvas?
 16. Try out Django CBV and Forms to build default object views for models with a bootstrap template. 
@@ -22,6 +22,7 @@
 22. If you know datetime objects are there from Question data type, you have to know that when modifying data to strings and back to dates etc.
 23. Need to return errors to frontend for models.
 24. Need to add error outputs to templates.
+25. Fix the select template Hack I did to match string to integer.
 
 
 XML -> Application Object
