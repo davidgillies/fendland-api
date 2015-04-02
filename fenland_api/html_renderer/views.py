@@ -3,7 +3,7 @@ from api_renderer.views import fenland_app
 from django.shortcuts import render
 from helpers import get_question_group, get_question
 from django.http import HttpResponseNotFound
-from api_renderer.custom_logic import data_prep
+from api_renderer.custom_logic import CustomDataPrep as DataPrep
 import json
 
 
@@ -17,7 +17,8 @@ class HTMLView(View):
             id_variable_value = request.GET['id']
             result['id_variable_value'] = id_variable_value
             data = fenland_app.get_data(section, 'id', id_variable_value)
-            section_obj = data_prep(section_obj, data)
+            section_obj = DataPrep(section_obj, data)
+            section_obj = section_obj.data_prep()
         if question_group is None:
             result['section'] = section_obj
             result['data_id'] = data['id']
@@ -42,7 +43,8 @@ class HTMLView(View):
         data = fenland_app.update_data(section, 'id_variable',
                                        request.POST['id'], myDict2)
         result['data_id'] = data['id']
-        section_obj = data_prep(section_obj, data)
+        section_obj = DataPrep(section_obj, data)
+        section_obj = section_obj.data_prep()
         result['section'] = section_obj
         return render(request, 'html_renderer/base2.html', result)
 
@@ -57,7 +59,8 @@ class TestView(View):
         if request.GET:
             id_variable_value = request.GET['id']
             data = fenland_app.get_data(section, 'id', id_variable_value)
-            section = data_prep(section_obj, data)
+            section_obj = DataPrep(section_obj, data)
+            section_obj = section_obj.data_prep()
         if question_group is None:
             result['section'] = section_obj
             return render(request, 'html_renderer/fenland_template.html',

@@ -22,6 +22,9 @@ def logger(func):
     return inner
 
 
+
+        
+
 class TextNode(dict):
     def __init__(self, position):
         self.rendering_hints = {}
@@ -300,6 +303,10 @@ class Application(object):
                 queryset = QuerySet(table_name=self.get_table_name(section_number))
                 data = queryset.create(json_dict)
             else:
+                for k in json_dict.keys():
+                    if k in self.db_mapping.keys():
+                        json_dict[self.db_mapping[k]] = json_dict[k]
+                        json_dict.pop(k)
                 data = json_dict
                 data['errors'] = validator.errors
         return data
@@ -328,6 +335,10 @@ class Application(object):
                 queryset.update(json_dict, id_variable_value)
                 data = queryset.data
             else:
+                for k in json_dict.keys():
+                    if k in self.db_mapping.keys():
+                        json_dict[self.db_mapping[k]] = json_dict[k]
+                        json_dict.pop(k)
                 data = json_dict
                 data['errors'] = validator.errors
         return data
@@ -352,3 +363,57 @@ class Application(object):
         for section in self.xml_object.section:
             sections[section.attrib['position']] = Section(section, self)
         return sections
+
+
+class DataPrep(object):
+    def __init__(self, section, data):
+        self.data = data
+        self.section = section
+        self.Question = Question
+        
+    def data_prep(self):
+        if 'errors' in self.data.keys():
+            self.section.errors = self.data['errors']
+
+        
+        for qg in self.section.section_objects:
+            multi_lines = []
+            multi = False
+            multi_line = []
+            for q in qg.question_group_objects:
+                if 'multi' in q.rendering_hints.keys() or multi:
+                    if multi is False:
+                        multi_index = qg.question_group_objects.index(q)
+                    multi_line.append(q)
+                    multi = True
+                    if 'endoftr' in q.rendering_hints.keys():
+                        multi = False
+                        multi_data = get_multi_data(multi_line[0].rendering_hints['multi'], data['id'])
+                        multi_line_adder = []
+                        for i in range(len(multi_data)):
+                            multi_line_adder.append(deepcopy(multi_line))
+                        multi_line = multi_line_adder
+                        for index in range(len(multi_line)):
+                            for i in range(len(multi_line[index])):
+                                if isinstance(multi_line[index][i], self.Question):
+                                    multi_line[index][i].var_value = multi_data[index].__dict__[multi_line[index][i].variable]
+                                    try:
+                                        multi_line[index][i].var_id = multi_data[index].__dict__['id']
+                                    except:
+                                        pass
+                                    multi_line[index][i].variable = multi_line[index][i].variable + '[]'
+                        multi_line = list(chain.from_iterable(multi_line))
+                        multi_lines.append([multi_line, multi_index])
+                elif isinstance(q, self.Question):
+                    self.add_question(q)
+            for ml in multi_lines:
+                qg.question_group_objects[ml[1]:ml[1]+(len(ml[0])/len(multi_data))] = ml[0]
+        return self.section
+  
+        return self.section
+            
+    def get_multi_data(self, table, id):
+        pass
+    
+    def add_question(self, q):
+        q.var_value = data[q.variable]
