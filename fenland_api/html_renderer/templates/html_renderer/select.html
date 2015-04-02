@@ -1,5 +1,6 @@
 <select id="{{question.var_id}}" name="{{question.variable}}">
 {% for item in question.template_args.options %}
-    <option id="{{item.text}}" value="{{item.value}}"  {% if item.value == question.var_value %} selected {% endif %}>{{item.text}}  </option>
+
+    {{question.var_value}}<option id="{{item.text}}" value="{{item.value}}"  {% if item.value|add:"0" == question.var_value|add:"0" %} selected {% endif %}>{{item.text}}  </option>
 {% endfor %}
 </select>

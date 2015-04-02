@@ -10,7 +10,6 @@ class CustomDataPrep(cam_apps.DataPrep):
     def __init__(self, section, data):
         super(CustomDataPrep, self).__init__(section, data)
         self.Question = cam_apps.Question
-        print "Data: %s" % data
 
     def get_multi_data(self, table, id):
         db.table = db.entity(table)
