@@ -23,6 +23,7 @@
 23. Need to return errors to frontend for models.
 24. Need to add error outputs to templates.
 25. Fix the select template Hack I did to match string to integer.
+26. change over to showcase logs.
 
 
 XML -> Application Object
