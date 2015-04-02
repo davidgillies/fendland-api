@@ -10,6 +10,7 @@ from .forms import VolunteerForm
 import arrow
 from validator import Validator
 from .cam_querysets import QuerySet
+from itertools import chain
 
 
 db = sqlsoup.SQLSoup(local_settings.DATABASE)
@@ -271,7 +272,7 @@ class Application(object):
     @logger
     def get_data(self, section_number, id_variable, id_variable_value):
         if self.models:
-            data = model_to_dict(self.model_mapping[int(section)].objects.get(id=id_variable_value))
+            data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
         else:
             queryset = QuerySet(table_name=self.get_table_name(section_number),
                                 id_variable_value=id_variable_value)
@@ -388,7 +389,7 @@ class DataPrep(object):
                     multi = True
                     if 'endoftr' in q.rendering_hints.keys():
                         multi = False
-                        multi_data = get_multi_data(multi_line[0].rendering_hints['multi'], data['id'])
+                        multi_data = self.get_multi_data(multi_line[0].rendering_hints['multi'], self.data['id'])
                         multi_line_adder = []
                         for i in range(len(multi_data)):
                             multi_line_adder.append(deepcopy(multi_line))

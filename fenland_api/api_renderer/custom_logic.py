@@ -12,13 +12,17 @@ class CustomDataPrep(cam_apps.DataPrep):
         self.Question = cam_apps.Question
 
     def get_multi_data(self, table, id):
+        # should really have a models based version for this too...?
         db.table = db.entity(table)
         objs = db.table.filter(db.appointments.volunteers_id==id).all()
         return objs
 
     def add_question(self, q):
         if q.variable == 'surgery':
-            q.var_value = self.data['surgeries_id']
+            if local_settings.MODELS == True:
+                q.var_value = self.data['surgeries']
+            else:
+                q.var_value = self.data['surgeries_id']
         elif q.variable == "diabetes":
             q.var_value = self.data['diabetes_diagnosed']
         else:
