@@ -7,7 +7,6 @@ from .models import *
 from django.forms.models import model_to_dict
 from copy import deepcopy
 from .forms import VolunteerForm
-import arrow
 from validator import Validator
 from .cam_querysets import QuerySet
 from itertools import chain
@@ -261,6 +260,7 @@ class Application(object):
         self.mapping = local_settings.SECTION_MAPPING
         self.db_mapping = local_settings.DB_MAPPING
         self.model_mapping = local_settings.MODEL_MAPPING
+        self.model_form_mapping = local_settings.MODEL_FORM_MAPPING
         self.testing = local_settings.TESTING
         self.author = self.xml_object.author
         self.version_number = self.xml_object.versionNumber
@@ -287,13 +287,10 @@ class Application(object):
     def insert_data(self, section_number, id_variable, body):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
-            if 'dob' in json_dict.keys():
-                dob = arrow.get(json_dict['dob'], 'MMMM D, YYYY')
-                json_dict['dob'] = dob.format('YYYY-MM-DD')
-            validator_form = VolunteerForm(json_dict)
+            json_dict = self.pre_process_keys(json_dict)
+            validator_form = self.model_form_mapping[int(section_number)](json_dict)
             if validator_form.is_valid():
-                if 'surgeries' in json_dict.keys():
-                    json_dict['surgeries'] = Surgery.objects.get(id=int(json_dict['surgeries']))
+                json_dict = self.post_process_keys(json_dict)
                 model = self.model_mapping[int(section_number)].objects.create(**json_dict)
                 data = model_to_dict(model)
             else:
@@ -320,19 +317,24 @@ class Application(object):
                 data = json_dict
                 data['errors'] = validator.errors
         return data
+        
+    def pre_process_keys(self, json_dict):
+        pass
+    
+    def post_process_keys(self, json_dict):
+        pass
 
     def update_data(self, section_number, id_variable, id_variable_value,
                     body):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
-            dob = arrow.get(json_dict['dob'], 'MMMM D, YYYY')
-            json_dict['dob'] = dob.format('YYYY-MM-DD')
+            json_dict = self.pre_process_keys(json_dict)
             for k in json_dict.keys():
                 if k in self.db_mapping.keys():
                     json_dict[self.db_mapping[k]] = json_dict[k]
                     json_dict.pop(k)
             self.model_mapping[int(section_number)].objects.filter(pk=id_variable_value).update(**json_dict)
-            data = model_to_dict(Volunteer.objects.get(id=id_variable_value))
+            data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
         else:
             json_dict = simplejson.JSONDecoder().decode(body)
             validator = Validator(self.validator, json_dict)

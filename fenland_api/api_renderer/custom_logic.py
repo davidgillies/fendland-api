@@ -1,7 +1,8 @@
 import cam_apps
 import local_settings
 import sqlsoup
-
+import arrow
+from .models import Surgery
 
 db = sqlsoup.SQLSoup(local_settings.DATABASE)
 
@@ -73,3 +74,14 @@ class CustomApplication(cam_apps.Application):
         for section in self.xml_object.section:
             sections[section.attrib['position']] = CustomSection(section, self)
         return sections
+
+    def pre_process_keys(self, json_dict):
+        if 'dob' in json_dict.keys():
+                dob = arrow.get(json_dict['dob'], 'MMMM D, YYYY')
+                json_dict['dob'] = dob.format('YYYY-MM-DD')
+        return json_dict
+
+    def post_process_keys(self, json_dict):
+        if 'surgeries' in json_dict.keys():
+            json_dict['surgeries'] = Surgery.objects.get(id=int(json_dict['surgeries']))
+        return json_dict
