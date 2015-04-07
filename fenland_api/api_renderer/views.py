@@ -1,7 +1,7 @@
+from django.http import HttpResponseNotFound
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.http import HttpResponseNotFound
 from custom_logic import CustomApplication
 from .models import *
 import local_settings

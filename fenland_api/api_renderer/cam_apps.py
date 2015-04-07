@@ -1,15 +1,13 @@
 from lxml import objectify
+from copy import deepcopy
+from itertools import chain
+import datetime
 import sqlsoup
 import simplejson
 import local_settings
-import datetime
-from .models import *
 from django.forms.models import model_to_dict
-from copy import deepcopy
-from .forms import VolunteerForm
 from validator import Validator
 from .cam_querysets import QuerySet
-from itertools import chain
 
 
 db = sqlsoup.SQLSoup(local_settings.DATABASE)
@@ -328,13 +326,23 @@ class Application(object):
                     body):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
+            orig_json_dict = json_dict
             json_dict = self.pre_process_keys(json_dict)
             for k in json_dict.keys():
                 if k in self.db_mapping.keys():
                     json_dict[self.db_mapping[k]] = json_dict[k]
                     json_dict.pop(k)
-            self.model_mapping[int(section_number)].objects.filter(pk=id_variable_value).update(**json_dict)
-            data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
+            validator_form = self.model_form_mapping[int(section_number)](json_dict)
+            if validator_form.is_valid():
+                self.model_mapping[int(section_number)].objects.filter(pk=id_variable_value).update(**json_dict)
+                data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
+            else:
+                errors = {}
+                for field in validator_form:
+                    print "Label: %s \nErrors: %s" % (field.label, field.errors)
+                    errors[field.label] = field.errors.as_text()
+                data = orig_json_dict
+                data['errors'] = errors
         else:
             json_dict = simplejson.JSONDecoder().decode(body)
             validator = Validator(self.validator, json_dict)

@@ -1,7 +1,7 @@
-import cam_apps
-import local_settings
 import sqlsoup
 import arrow
+import cam_apps
+import local_settings
 from .models import Surgery
 
 db = sqlsoup.SQLSoup(local_settings.DATABASE)

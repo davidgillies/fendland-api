@@ -1,10 +1,13 @@
-from django.views.generic import View
-from api_renderer.views import fenland_app
-from django.shortcuts import render
-from helpers import get_question_group, get_question
-from django.http import HttpResponseNotFound
-from api_renderer.custom_logic import CustomDataPrep as DataPrep
 import json
+from django.views.generic import View
+from django.http import HttpResponseNotFound
+from django.shortcuts import render
+from api_renderer.views import fenland_app
+from api_renderer import local_settings
+if local_settings.CUSTOM == True:
+    from api_renderer.custom_logic import CustomDataPrep as DataPrep
+else:
+    from api_renderer.cam_apps import DataPrep
 
 
 class HTMLView(View):

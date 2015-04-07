@@ -1,8 +1,8 @@
-from django.contrib import admin
-from api_renderer.models import Surgery, Volunteer, Status, Appointment, AuditLog
-from django.contrib.admin.models import LogEntry, DELETION
-from django.utils.html import escape
 from django.core.urlresolvers import reverse
+from django.utils.html import escape
+from django.contrib import admin
+from django.contrib.admin.models import LogEntry, DELETION
+from api_renderer.models import Surgery, Volunteer, Status, Appointment, AuditLog
 
 
 admin.site.index_title = 'Fenland Database'
