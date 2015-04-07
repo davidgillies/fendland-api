@@ -283,22 +283,21 @@ class Application(object):
                 data[k] = str(data[k])
 
     def insert_data(self, section_number, id_variable, body):
+        json_dict = simplejson.JSONDecoder().decode(body)
         if self.models:
-            json_dict = simplejson.JSONDecoder().decode(body)
             json_dict = self.pre_process_keys(json_dict)
-            validator_form = self.model_form_mapping[int(section_number)](json_dict)
-            if validator_form.is_valid():
+            validator = self.model_form_mapping[int(section_number)](json_dict)
+            if validator.is_valid():
                 json_dict = self.post_process_keys(json_dict)
                 model = self.model_mapping[int(section_number)].objects.create(**json_dict)
                 data = model_to_dict(model)
             else:
                 errors = {}
-                for field in validator_form:
+                for field in validator:
                     errors[field.label] = field.errors
                 data = json_dict
                 data['errors'] = 'errors'
         else:
-            json_dict = simplejson.JSONDecoder().decode(body)
             for k in json_dict.keys():
                     if k in self.db_mapping.keys():
                         json_dict[self.db_mapping[k]] = json_dict[k]
