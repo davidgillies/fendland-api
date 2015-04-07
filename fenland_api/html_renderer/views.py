@@ -4,7 +4,7 @@ from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from api_renderer.views import fenland_app
 from api_renderer import local_settings
-if local_settings.CUSTOM == True:
+if local_settings.CUSTOM is True:
     from api_renderer.custom_logic import CustomDataPrep as DataPrep
 else:
     from api_renderer.cam_apps import DataPrep
@@ -68,10 +68,10 @@ class TestView(View):
             result['section'] = section_obj
             return render(request, 'html_renderer/fenland_template.html',
                           result)
-        question_group = get_question_group(section, question_group)
+        question_group = section_obj.get_question_group(section, question_group)
         if question is None:
             result['questionGroup'] = question_group
             return render(request, 'html_renderer/question_group.html', result)
-        question = get_question(question_group, question)
+        question = question_group.get_question(question_group, question)
         result['question'] = question
         return render(request, 'html_renderer/question.html', result)

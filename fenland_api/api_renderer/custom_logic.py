@@ -20,7 +20,7 @@ class CustomDataPrep(cam_apps.DataPrep):
 
     def add_question_value(self, q):
         if q.variable == 'surgery':
-            if local_settings.MODELS == True:
+            if local_settings.MODELS is True:
                 q.var_value = self.data['surgeries']
             else:
                 q.var_value = self.data['surgeries_id']

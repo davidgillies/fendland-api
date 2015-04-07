@@ -23,7 +23,7 @@ class APIView(APIView):
             data = fenland_app.get_data(section, id_variable, id_variable_value)
             response = Response(data, status=status.HTTP_200_OK)
             return response
-            
+
     def post(self, request, section=None, id_variable=None,
              id_variable_value=None):
         data = fenland_app.insert_data(section, id_variable, request.body)

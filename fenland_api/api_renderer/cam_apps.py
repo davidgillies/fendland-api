@@ -99,7 +99,7 @@ class Question(MethodMixin):
         self.template_args = {'options': []}
         self.build_question(question_object) 
         self.app_object.validator[self.variable] = self.validator_rules()
-        
+
     def validator_rules(self):
         rules = {}
         if 'CheckMaxLength' in self.restrictions.keys():
@@ -130,7 +130,7 @@ class Question(MethodMixin):
             self.template_args['options'] = self.get_options(item.optionValue.text)
         else:
             self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
-            
+
     def get_options(self, item):
         pass
 
@@ -314,10 +314,10 @@ class Application(object):
                 data = json_dict
                 data['errors'] = validator.errors
         return data
-        
+
     def pre_process_keys(self, json_dict):
         pass
-    
+
     def post_process_keys(self, json_dict):
         pass
 
@@ -338,7 +338,6 @@ class Application(object):
             else:
                 errors = {}
                 for field in validator_form:
-                    print "Label: %s \nErrors: %s" % (field.label, field.errors)
                     errors[field.label] = field.errors.as_text()
                 data = orig_json_dict
                 data['errors'] = errors
@@ -389,7 +388,7 @@ class DataPrep(object):
         self.data = data
         self.section = section
         self.Question = Question
-        
+
     def data_prep(self):
         if 'errors' in self.data.keys():
             self.section.errors = self.data['errors']
@@ -430,9 +429,9 @@ class DataPrep(object):
             return self.section
         except:
             return self.section
-            
+
     def get_multi_data(self, table, id):
         pass
-    
+
     def add_question_value(self, q):
-        q.var_value = data[q.variable]
+        q.var_value = self.data[q.variable]

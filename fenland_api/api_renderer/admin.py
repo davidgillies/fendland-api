@@ -15,6 +15,7 @@ class VolunteerInline(admin.TabularInline):
                        'calculate_age')
     can_delete = False
     extra = 0
+
     def has_add_permission(self, request):
         return False
 
@@ -102,7 +103,6 @@ class LogEntryAdmin(admin.ModelAdmin):
         'change_message'
     ]
 
-
     list_display = [
         'action_time',
         'user',
@@ -134,7 +134,7 @@ class LogEntryAdmin(admin.ModelAdmin):
     object_link.allow_tags = True
     object_link.admin_order_field = 'object_repr'
     object_link.short_description = u'object'
-    
+
     def queryset(self, request):
         return super(LogEntryAdmin, self).queryset(request) \
             .prefetch_related('content_type')
