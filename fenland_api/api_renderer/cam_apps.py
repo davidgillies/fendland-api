@@ -304,12 +304,12 @@ class Application(object):
                 data['errors'] = 'errors'
         else:
             json_dict = simplejson.JSONDecoder().decode(body)
-            validator = Validator(self.validator, json_dict)
-            if validator.is_valid():
-                for k in json_dict.keys():
+            for k in json_dict.keys():
                     if k in self.db_mapping.keys():
                         json_dict[self.db_mapping[k]] = json_dict[k]
                         json_dict.pop(k)
+            validator = Validator(self.validator, json_dict)
+            if validator.is_valid():
                 queryset = QuerySet(table_name=self.get_table_name(section_number))
                 data = queryset.create(json_dict)
             else:

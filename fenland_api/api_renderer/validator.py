@@ -8,7 +8,7 @@ class Validator(object):
     def is_valid(self):
         valid = True
         for data_item in self.data.keys():
-            if data_item != 'id':
+            if data_item != 'id' and data_item in self.rules.keys():
                 self.errors[data_item] = ''
                 if 'CheckMaxLength' in self.rules[data_item].keys():
                     if int(self.rules[data_item]['CheckMaxLength']) < len(self.data[data_item]):

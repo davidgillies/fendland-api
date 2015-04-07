@@ -76,20 +76,23 @@ class Volunteer(models.Model):
 
     def calculate_age(self):
         """Calculates age for the admin screens."""
-        today = date.today()
-        born = self.dob
-        try:
-            birthday = born.replace(year=today.year)
-        except ValueError: # raised when birth date is February 29 and the current year is not a leap year
-            birthday = born.replace(year=today.year, month=born.month+1, day=1)
-        if birthday > today:
-            age = today.year - born.year - 1
+        if self.dob:
+            today = date.today()
+            born = self.dob
+            try:
+                birthday = born.replace(year=today.year)
+            except ValueError: # raised when birth date is February 29 and the current year is not a leap year
+                birthday = born.replace(year=today.year, month=born.month+1, day=1)
+            if birthday > today:
+                age = today.year - born.year - 1
+            else:
+                age = today.year - born.year
+            if age > 70:
+                return '<span style="color: red;">%s</span>' % age
+            else:
+                return age
         else:
-            age = today.year - born.year
-        if age > 70:
-            return '<span style="color: red;">%s</span>' % age
-        else:
-            return age
+            return None
 
     calculate_age.allow_tags = True
     calculate_age.short_description = "Age"
