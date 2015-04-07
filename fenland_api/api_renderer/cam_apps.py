@@ -23,9 +23,6 @@ def logger(func):
     return inner
 
 
-
-        
-
 class TextNode(dict):
     def __init__(self, position):
         self.rendering_hints = {}
@@ -136,6 +133,9 @@ class Question(MethodMixin):
             self.template_args['options'] = self.get_options(item.optionValue.text)
         else:
             self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
+            
+    def get_options(self, item):
+        pass
 
     def set_info(self, item):
         q_info = {}
@@ -376,42 +376,42 @@ class DataPrep(object):
         if 'errors' in self.data.keys():
             self.section.errors = self.data['errors']
 
-        
-        for qg in self.section.section_objects:
-            multi_lines = []
-            multi = False
-            multi_line = []
-            for q in qg.question_group_objects:
-                if 'multi' in q.rendering_hints.keys() or multi:
-                    if multi is False:
-                        multi_index = qg.question_group_objects.index(q)
-                    multi_line.append(q)
-                    multi = True
-                    if 'endoftr' in q.rendering_hints.keys():
-                        multi = False
-                        multi_data = self.get_multi_data(multi_line[0].rendering_hints['multi'], self.data['id'])
-                        multi_line_adder = []
-                        for i in range(len(multi_data)):
-                            multi_line_adder.append(deepcopy(multi_line))
-                        multi_line = multi_line_adder
-                        for index in range(len(multi_line)):
-                            for i in range(len(multi_line[index])):
-                                if isinstance(multi_line[index][i], self.Question):
-                                    multi_line[index][i].var_value = multi_data[index].__dict__[multi_line[index][i].variable]
-                                    try:
-                                        multi_line[index][i].var_id = multi_data[index].__dict__['id']
-                                    except:
-                                        pass
-                                    multi_line[index][i].variable = multi_line[index][i].variable + '[]'
-                        multi_line = list(chain.from_iterable(multi_line))
-                        multi_lines.append([multi_line, multi_index])
-                elif isinstance(q, self.Question):
-                    self.add_question(q)
-            for ml in multi_lines:
-                qg.question_group_objects[ml[1]:ml[1]+(len(ml[0])/len(multi_data))] = ml[0]
-        return self.section
-  
-        return self.section
+        try:
+            for qg in self.section.section_objects:
+                multi_lines = []
+                multi = False
+                multi_line = []
+                for q in qg.question_group_objects:
+                    if 'multi' in q.rendering_hints.keys() or multi:
+                        if multi is False:
+                            multi_index = qg.question_group_objects.index(q)
+                        multi_line.append(q)
+                        multi = True
+                        if 'endoftr' in q.rendering_hints.keys():
+                            multi = False
+                            multi_data = self.get_multi_data(multi_line[0].rendering_hints['multi'], self.data['id'])
+                            multi_line_adder = []
+                            for i in range(len(multi_data)):
+                                multi_line_adder.append(deepcopy(multi_line))
+                            multi_line = multi_line_adder
+                            for index in range(len(multi_line)):
+                                for i in range(len(multi_line[index])):
+                                    if isinstance(multi_line[index][i], self.Question):
+                                        multi_line[index][i].var_value = multi_data[index].__dict__[multi_line[index][i].variable]
+                                        try:
+                                            multi_line[index][i].var_id = multi_data[index].__dict__['id']
+                                        except:
+                                            pass
+                                        multi_line[index][i].variable = multi_line[index][i].variable + '[]'
+                            multi_line = list(chain.from_iterable(multi_line))
+                            multi_lines.append([multi_line, multi_index])
+                    elif isinstance(q, self.Question):
+                        self.add_question(q)
+                for ml in multi_lines:
+                    qg.question_group_objects[ml[1]:ml[1]+(len(ml[0])/len(multi_data))] = ml[0]
+            return self.section
+        except:
+            return self.section
             
     def get_multi_data(self, table, id):
         pass

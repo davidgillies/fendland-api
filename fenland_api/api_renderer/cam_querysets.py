@@ -2,7 +2,6 @@ import local_settings
 import sqlsoup
 import datetime
 
-
 db = sqlsoup.SQLSoup(local_settings.DATABASE)
 
 
