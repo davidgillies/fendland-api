@@ -26,7 +26,7 @@ class APIView(APIView):
             
     def post(self, request, section=None, id_variable=None,
              id_variable_value=None):
-        data = fenland_app.insert_data(section, id_variable, id_variable_value, request.body)
+        data = fenland_app.insert_data(section, id_variable, request.body)
         response = Response(data, status=status.HTTP_201_CREATED)
         return response
 

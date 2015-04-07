@@ -287,12 +287,21 @@ class Application(object):
     def insert_data(self, section_number, id_variable, body):
         if self.models:
             json_dict = simplejson.JSONDecoder().decode(body)
-            dob = arrow.get(json_dict['dob'], 'MMMM D, YYYY')
-            json_dict['dob'] = dob.format('YYYY-MM-DD')
+            if 'dob' in json_dict.keys():
+                dob = arrow.get(json_dict['dob'], 'MMMM D, YYYY')
+                json_dict['dob'] = dob.format('YYYY-MM-DD')
             validator_form = VolunteerForm(json_dict)
             if validator_form.is_valid():
+                if 'surgeries' in json_dict.keys():
+                    json_dict['surgeries'] = Surgery.objects.get(id=int(json_dict['surgeries']))
                 model = self.model_mapping[int(section_number)].objects.create(**json_dict)
                 data = model_to_dict(model)
+            else:
+                errors = {}
+                for field in validator_form:
+                    errors[field.label] = field.errors
+                data = json_dict
+                data['errors'] = 'errors'
         else:
             json_dict = simplejson.JSONDecoder().decode(body)
             validator = Validator(self.validator, json_dict)
@@ -406,7 +415,7 @@ class DataPrep(object):
                             multi_line = list(chain.from_iterable(multi_line))
                             multi_lines.append([multi_line, multi_index])
                     elif isinstance(q, self.Question):
-                        self.add_question(q)
+                        self.add_question_value(q)
                 for ml in multi_lines:
                     qg.question_group_objects[ml[1]:ml[1]+(len(ml[0])/len(multi_data))] = ml[0]
             return self.section
@@ -416,5 +425,5 @@ class DataPrep(object):
     def get_multi_data(self, table, id):
         pass
     
-    def add_question(self, q):
+    def add_question_value(self, q):
         q.var_value = data[q.variable]

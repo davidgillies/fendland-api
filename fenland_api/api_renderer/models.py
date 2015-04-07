@@ -72,7 +72,7 @@ class Volunteer(models.Model):
     phase1_comment = models.TextField(blank=True)
     phase2_comment = models.TextField(blank=True)
     modified = models.DateTimeField(blank=True, null=True)
-    surgeries = models.ForeignKey(Surgery)
+    surgeries = models.ForeignKey(Surgery, blank=True, null=True, default=4)
 
     def calculate_age(self):
         """Calculates age for the admin screens."""

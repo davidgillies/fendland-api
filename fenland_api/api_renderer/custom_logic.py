@@ -17,7 +17,7 @@ class CustomDataPrep(cam_apps.DataPrep):
         objs = db.table.filter(db.appointments.volunteers_id==id).all()
         return objs
 
-    def add_question(self, q):
+    def add_question_value(self, q):
         if q.variable == 'surgery':
             if local_settings.MODELS == True:
                 q.var_value = self.data['surgeries']
