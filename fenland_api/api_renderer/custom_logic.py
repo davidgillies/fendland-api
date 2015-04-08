@@ -31,9 +31,9 @@ class CustomDataPrep(cam_apps.DataPrep):
 
 
 class CustomQuestion(cam_apps.Question):
-    def __init__(self, question_object, app_object):
+    def __init__(self, question_object, app_object, section_object):
         self.surgeries = self.get_surgeries()
-        super(CustomQuestion, self).__init__(question_object, app_object)
+        super(CustomQuestion, self).__init__(question_object, app_object, section_object)
 
     def get_surgeries(self):
         surgeries = db.surgeries.all()
@@ -47,11 +47,11 @@ class CustomQuestion(cam_apps.Question):
 
 
 class CustomQuestionGroup(cam_apps.QuestionGroup):
-    def __init__(self, question_group_object, app_object):
-        super(CustomQuestionGroup, self).__init__(question_group_object, app_object)
+    def __init__(self, question_group_object, app_object, section_object):
+        super(CustomQuestionGroup, self).__init__(question_group_object, app_object, section_object)
 
     def set_question(self, item):
-        question = CustomQuestion(item, self.app_object)
+        question = CustomQuestion(item, self.app_object, self.section)
         self.question_group_objects.append(question)
 
 
@@ -60,7 +60,7 @@ class CustomSection(cam_apps.Section):
         super(CustomSection, self).__init__(section_xml_object, app_object)
 
     def set_question_group(self, item):
-        question_group = CustomQuestionGroup(item, self.app_object)
+        question_group = CustomQuestionGroup(item, self.app_object, self)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
 

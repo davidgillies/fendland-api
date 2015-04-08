@@ -19,4 +19,3 @@ class Validator(object):
                         valid = False
                         self.errors[data_item] = 'Please give an answer'
         return valid
-        

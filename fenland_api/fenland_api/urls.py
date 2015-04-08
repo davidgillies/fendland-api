@@ -21,4 +21,5 @@ urlpatterns = patterns('',
     url(r'^test/(\w+)/(\w+)', csrf_exempt(html_renderer_views.TestView.as_view())),
     url(r'^test/(\w+)', csrf_exempt(html_renderer_views.TestView.as_view())),
     url(r'^test/', csrf_exempt(html_renderer_views.TestView.as_view())),
+    url(r'^test_area/', csrf_exempt(html_renderer_views.TestAreaView.as_view())),
 )

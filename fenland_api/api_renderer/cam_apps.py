@@ -83,9 +83,10 @@ class MethodMixin(object):
 
 
 class Question(MethodMixin):
-    def __init__(self, question_object, app_object):
+    def __init__(self, question_object, app_object, section_object):
         self.app_object = app_object
         self.question_objects = []
+        self.section = section_object
         self.title = question_object.attrib['position']
         self.variable = question_object.variable.varName.text
         self.var_value = None
@@ -164,8 +165,9 @@ class Question(MethodMixin):
 # that doesn't have any data...  First sections etc.  Does it help?
 
 class QuestionGroup(MethodMixin):
-    def __init__(self, question_group_object, app_object):
+    def __init__(self, question_group_object, app_object, section_object):
         self.app_object = app_object
+        self.section = section_object
         self.question_group_objects = []
         self.title = question_group_object.title
         self.position = question_group_object.attrib['position']
@@ -199,7 +201,7 @@ class QuestionGroup(MethodMixin):
         self.question_group_objects.append(text_node)
 
     def set_question(self, item):
-        question = Question(item, self.app_object)
+        question = Question(item, self.app_object, self.section)
         self.question_group_objects.append(question)
 
     def get_question(self, question):
@@ -216,6 +218,7 @@ class Section(MethodMixin):
         self.position = section_xml_object.attrib['position']
         self.testing = local_settings.TESTING
         self.info = []
+        self.api = {}
         self.question_groups = []
         self.errors = {}
         self.section_objects = []
@@ -237,7 +240,7 @@ class Section(MethodMixin):
         self.section_objects.append(section_info)
 
     def set_question_group(self, item):
-        question_group = QuestionGroup(item, self.app_object)
+        question_group = QuestionGroup(item, self.app_object, self)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
 
@@ -245,6 +248,14 @@ class Section(MethodMixin):
         for qg in self.question_groups:
             if qg.position == question_group:
                 return qg
+                
+    def section_to_dict(self):
+        data = {}
+        for qg in self.question_groups:
+            for q in qg.question_group_objects:
+                if isinstance(q, Question):
+                    data[q.variable] = q.var_value
+        return data
 
 
 class Application(object):
@@ -435,3 +446,4 @@ class DataPrep(object):
 
     def add_question_value(self, q):
         q.var_value = self.data[q.variable]
+    

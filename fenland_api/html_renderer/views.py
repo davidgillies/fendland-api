@@ -1,6 +1,6 @@
 import json
 from django.views.generic import View
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound, HttpResponse
 from django.shortcuts import render
 from api_renderer.views import fenland_app
 from api_renderer import local_settings
@@ -75,3 +75,7 @@ class TestView(View):
         question = question_group.get_question(question_group, question)
         result['question'] = question
         return render(request, 'html_renderer/question.html', result)
+
+class TestAreaView(View):
+    def post(self, request):
+        return HttpResponse(request.POST.items)

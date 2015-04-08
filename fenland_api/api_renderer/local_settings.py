@@ -15,6 +15,7 @@ SECTION_MAPPING = {0: 'volunteers', 1: 'volunteers', 2: 'volunteers'}
 MODELS = True
 
 MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer}
+
 MODEL_FORM_MAPPING = {0: VolunteerForm, 1: VolunteerForm, 2: VolunteerForm}
 
 CUSTOM = True
