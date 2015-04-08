@@ -19,6 +19,8 @@ class CustomDataPrep(cam_apps.DataPrep):
         return objs
 
     def add_question_value(self, q):
+        print q.variable, q.var_value
+        print 'helllo'
         if q.variable == 'surgery':
             if local_settings.MODELS is True:
                 q.var_value = self.data['surgeries']
@@ -28,6 +30,8 @@ class CustomDataPrep(cam_apps.DataPrep):
             q.var_value = self.data['diabetes_diagnosed']
         else:
             q.var_value = self.data[q.variable]
+
+        self.section.api[q.variable] = q.var_value
 
 
 class CustomQuestion(cam_apps.Question):

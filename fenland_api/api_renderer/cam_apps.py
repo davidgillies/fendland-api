@@ -446,4 +446,12 @@ class DataPrep(object):
 
     def add_question_value(self, q):
         q.var_value = self.data[q.variable]
+        self.section.api[q.variable] = q.var_value
     
+    def section_to_dict(self):
+        data = {}
+        for qg in self.question_groups:
+            for q in qg.question_group_objects:
+                if isinstance(q, Question):
+                    data[q.variable] = q.var_value
+        return data
