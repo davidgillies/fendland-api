@@ -1,29 +1,22 @@
 1. Redesign layer structure
-2. Sort id/names for multiline output.  
-3. How do I deal with it as input?
-4. Generic API for multi-models, joins etc.
-5. Develop more output templates.
-6. More generic application methods.
-7. Best way to use custom functionality?
-8. Inject js into output for validation, other jquery shit?
-9. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
-10. Extend primary, secondary generic table method and what's needed.
-11. Pass a generic SQL statement and return result.
-12. if models set to true redirect to url for rest framework?
-13. Perhaps use conversion for whatever query I get e.g. post or json etc. and just forward to a view?
-14. Add in choices to sex etc. admin screens.
-15. Data visualization in a canvas?
-16. Try out Django CBV and Forms to build default object views for models with a bootstrap template. 
-17. Do validation against Application object, derived from XML and possibly from models if you use models.  Could use forms for this, or directly via models and forms...??
-18. Form based validation for html posts, what about API?
-19. Add new appointment button or something on template.  It needs to know it's a mutli.
-20. modified_by should match up to User model for models but not for tomcat...
-21. How will validation work in interface?
-22. If you know datetime objects are there from Question data type, you have to know that when modifying data to strings and back to dates etc.
-23. Need to return errors to frontend for models.
-24. Need to add error outputs to templates.
-25. Fix the select template Hack I did to match string to integer.
-26. change over to showcase logs.
+2. How do I deal with it as input?
+3. Generic API for sections.
+4. Develop more output templates.
+5. Inject js into output for validation, other jquery shit?
+6. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
+7. Pass a generic SQL statement and return result.
+8. if models set to true redirect to url for rest framework?
+9. Perhaps use conversion for whatever query I get e.g. post or json etc. and just forward to a view?
+10. Data visualization in a canvas?
+11. Try out Django CBV and Forms to build default object views for models with a bootstrap template. 
+12. Form based validation for html posts, what about API?
+13. Add new appointment button or something on template.  It needs to know it's a mutli.
+14. modified_by should match up to User model for models but not for tomcat...
+15. If you know datetime objects are there from Question data type, you have to know that when modifying data to strings and back to dates etc.
+16. Need to return errors to frontend for models.
+17. Need to add errors to select template etc.
+18. Fix the select template Hack I did to match string to integer.
+19. change over to showcase logs.
 
 
 XML -> Application Object
