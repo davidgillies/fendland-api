@@ -264,9 +264,10 @@ class Section(MethodMixin):
                                 data[multi_name] = []
                         data_dict['id'] = q.var_id
                         data_dict[q.variable[:-2]] = q.var_value
-                        data[multi_name].append(data_dict)
+                        
                         if 'endoftr' in q.rendering_hints.keys():
                             multi = False
+                            data[multi_name].append(data_dict)
                             data_dict = {}
                     else:
                         data[q.variable] = q.var_value
