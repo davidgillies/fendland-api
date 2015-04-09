@@ -248,13 +248,28 @@ class Section(MethodMixin):
         for qg in self.question_groups:
             if qg.position == question_group:
                 return qg
-                
+
     def section_to_dict(self):
         data = {}
-        for qg in self.question_groups:
+        multi = False
+        for qg in self.section_objects:
+            data_dict = {}
             for q in qg.question_group_objects:
                 if isinstance(q, Question):
-                    data[q.variable] = q.var_value
+                    if 'multi' in q.rendering_hints.keys() or multi is True:
+                        if multi is False:
+                            multi = True
+                            multi_name = q.rendering_hints['multi']
+                            if multi_name not in data.keys():
+                                data[multi_name] = []
+                        data_dict['id'] = q.var_id
+                        data_dict[q.variable[:-2]] = q.var_value
+                        data[multi_name].append(data_dict)
+                        if 'endoftr' in q.rendering_hints.keys():
+                            multi = False
+                            data_dict = {}
+                    else:
+                        data[q.variable] = q.var_value
         return data
 
 
@@ -447,11 +462,3 @@ class DataPrep(object):
     def add_question_value(self, q):
         q.var_value = self.data[q.variable]
         self.section.api[q.variable] = q.var_value
-    
-    def section_to_dict(self):
-        data = {}
-        for qg in self.question_groups:
-            for q in qg.question_group_objects:
-                if isinstance(q, Question):
-                    data[q.variable] = q.var_value
-        return data

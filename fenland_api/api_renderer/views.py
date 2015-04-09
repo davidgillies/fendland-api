@@ -25,10 +25,10 @@ class APIView(APIView):
             return HttpResponseNotFound('<h1>Page not found</h1>')
         else:
             data = fenland_app.get_data(section, id_variable, id_variable_value)
-            #section_obj = fenland_app.get_section(section)
-            #section_obj = DataPrep(section_obj, data)
-            #section_obj = section_obj.data_prep()
-            #data = section_obj.section_to_dict()
+            section_obj = fenland_app.get_section(section)
+            section_obj = DataPrep(section_obj, data)
+            section_obj = section_obj.data_prep()
+            data = section_obj.section_to_dict()
             response = Response(data, status=status.HTTP_200_OK)
             return response
 
