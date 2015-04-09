@@ -1,3 +1,11 @@
+ {% if section.testing %} 
+<html>
+<head>
+</head>
+<body>
+
+ {% endif %}
+
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 <div class="section">
@@ -19,3 +27,8 @@
 <script>
 $("#questionnaire_form").validate();
 </script>
+ {% if section.testing %} 
+</body>
+</html>
+
+ {% endif %}
