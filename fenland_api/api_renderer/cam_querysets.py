@@ -1,6 +1,7 @@
 import local_settings
 import sqlsoup
 import datetime
+from bunch import Bunch
 
 db = sqlsoup.SQLSoup(local_settings.DATABASE)
 
@@ -17,6 +18,9 @@ class QuerySet(object):
             self.table = db.entity(table_name)
         else:
             self.table = None
+        self.objects = Bunch({'all': self.all, 'get': self.get,
+                        'create': self.create, 'update': self.update,
+                        'delete': self.delete})
 
     def all(self):
         pass
@@ -50,9 +54,6 @@ class QuerySet(object):
 
     def sql(self):
         # execute arbritrary sql
-        pass
-
-    def objects(self):
         pass
 
     def tidy(self, data):
