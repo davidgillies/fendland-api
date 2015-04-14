@@ -19,8 +19,8 @@ class QuerySet(object):
         else:
             self.table = None
         self.objects = Bunch({'all': self.all, 'get': self.get,
-                        'create': self.create, 'update': self.update,
-                        'delete': self.delete})
+                              'create': self.create,
+                              'update': self.update, 'delete': self.delete})
 
     def all(self):
         pass

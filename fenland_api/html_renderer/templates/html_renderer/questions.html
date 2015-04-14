@@ -1,3 +1,5 @@
     {% for question in question_group.question_group_objects %}
         {% include 'html_renderer/question.html' %}
+        {% empty %}
+        <p>No appointments made.</p>
     {% endfor %}
