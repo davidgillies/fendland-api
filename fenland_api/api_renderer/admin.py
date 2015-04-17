@@ -63,6 +63,8 @@ admin.site.register(Volunteer, VolunteerAdmin)
 class MyVolunteer(Volunteer):
     class Meta:
         proxy = True
+        verbose_name = 'Another Volunteer View'
+        verbose_name_plural = 'Another Volunteer View'
 
 
 class VolunteerAdmin2(admin.ModelAdmin):
