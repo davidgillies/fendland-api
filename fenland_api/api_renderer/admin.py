@@ -60,6 +60,39 @@ class VolunteerAdmin(admin.ModelAdmin):
 admin.site.register(Volunteer, VolunteerAdmin)
 
 
+class MyVolunteer(Volunteer):
+    class Meta:
+        proxy = True
+
+
+class VolunteerAdmin2(admin.ModelAdmin):
+    inlines = [AppointmentInline, ]
+    search_fields = ('surname', 'forenames', 'town', 'postcode',
+                     'surgeries__full_name')
+    list_display = ('surname', 'forenames', 'town', 'postcode',
+                    )
+    list_filter = ('town', )
+    date_hierarchy = 'dob'
+    fieldsets = (
+        (None, {'fields': (('surname', 'forenames'),
+                           ('initials', 'dob'),
+                           ('title', 'sex'))}),
+        ('Address', {'classes': ('collapse',),
+                     'fields': (('addr1', 'home_tel'), ('addr2', 'work_tel'),
+                                ('town', 'mobile'), ('county', 'email'),
+                                    'postcode')
+                }
+        ),
+        ('Details', {'classes': ('collapse', 'extrapretty'),
+                     'description': 'Extra <b>details</b>',
+                     'fields': (('nhs_no', 'surgeries'),
+                                ('modified', 'modified_by'),
+                                ('diabetes_diagnosed', 'moved_away'),)}),
+    )
+
+admin.site.register(MyVolunteer, VolunteerAdmin2)
+
+
 class AppointmentAdmin(admin.ModelAdmin):
     list_display = ('get_volunteer', 'appt_date', 'appt_time', 'test_site')
     search_fields = ('volunteers__surname', 'volunteers__forenames',)
