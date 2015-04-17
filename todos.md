@@ -17,6 +17,9 @@
 17. Need to add errors to select template etc.
 18. Fix the select template Hack I did to match string to integer.
 19. change over to showcase logs.
+20. Add db.rollback() on a failure.
+21. When the Queryset gets results stick them in a variable so they can be gotten again without running the query twice.
+22. Subclass User?
 
 
 XML -> Application Object
