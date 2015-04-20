@@ -17,6 +17,17 @@
 17. Need to add errors to select template etc.
 18. Fix the select template Hack I did to match string to integer.
 19. change over to showcase logs.
+20. Add db.rollback() on a failure.
+21. When the Queryset gets results stick them in a variable so they can be gotten again without running the query twice.
+22. Subclass User?
+23. Would it be worth giving error messages an html printout and making them objects?
+24. http://django-uni-form.readthedocs.org/en/latest/index.html # outputs django forms as divs, worth a test.
+25. New stuff that can tell you what apps are installed and what fields they have, it is an API which is now stable.
+26. Form Media - you can add js/css widgets to forms as in admin.  Not sure how it works.
+27. DRF error messaging.
+28. Store templates in your database, try that.
+29. check out template tags available now.
+30. One suggested use case of managers was to have delete just mark things as deleted and have a manager return non-deleted objects.  
 
 
 XML -> Application Object
