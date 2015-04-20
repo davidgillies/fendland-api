@@ -91,6 +91,7 @@ class Question(MethodMixin):
         self.variable = question_object.variable.varName.text
         self.var_value = None
         self.var_id = None
+        self.required = False
         self.data_type = {}
         self.id = question_object.attrib['ID']
         self.position = question_object.attrib['position']
@@ -100,6 +101,7 @@ class Question(MethodMixin):
         self.template_args = {'options': []}
         self.build_question(question_object) 
         self.app_object.validator[self.variable] = self.validator_rules()
+        
 
     def validator_rules(self):
         rules = {}
@@ -108,6 +110,7 @@ class Question(MethodMixin):
         if 'IsAnswered' in self.restrictions.keys():
             if self.restrictions['IsAnswered']['AllowError'] == 'false':
                 rules['IsAnswered'] = True
+                self.required = True
         return rules
 
     def get_template(self, selection):
@@ -435,18 +438,21 @@ class DataPrep(object):
                             multi = False
                             multi_data = self.get_multi_data(multi_line[0].rendering_hints['multi'], self.data['id'])
                             multi_line_adder = []
-                            for i in range(len(multi_data)):
+                            for i in range(len(multi_data)+1):
                                 multi_line_adder.append(deepcopy(multi_line))
                             multi_line = multi_line_adder
                             for index in range(len(multi_line)):
                                 for i in range(len(multi_line[index])):
                                     if isinstance(multi_line[index][i], self.Question):
-                                        multi_line[index][i].var_value = multi_data[index][multi_line[index][i].variable]
+                                        try:
+                                            multi_line[index][i].var_value = multi_data[index][multi_line[index][i].variable]
+                                        except:
+                                            multi_line[index][i].required = False
                                         try:
                                             multi_line[index][i].var_id = multi_data[index]['id']
                                         except:
                                             pass
-                                        multi_line[index][i].variable = multi_line[index][i].variable + '[]'
+                                        multi_line[index][i].variable = 'multi_' + multi_line[index][i].variable + '_' + str(index)
                             multi_line = list(chain.from_iterable(multi_line))
                             multi_lines.append([multi_line, multi_index])
                     elif isinstance(q, self.Question):

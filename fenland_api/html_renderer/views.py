@@ -78,4 +78,8 @@ class TestView(View):
 
 class TestAreaView(View):
     def post(self, request):
-        return HttpResponse(request.POST.items)
+        myDict = dict(request.POST.iterlists())
+        for k in myDict.keys():
+            myDict[k] = myDict[k][0]
+        print myDict
+        return HttpResponse(myDict)
