@@ -3,8 +3,9 @@ import arrow
 import cam_apps
 import local_settings
 from .models import Surgery
+from cam_querysets import QuerySet
 
-db = sqlsoup.SQLSoup(local_settings.DATABASE)
+#db = sqlsoup.SQLSoup(local_settings.DATABASE)
 
 
 class CustomDataPrep(cam_apps.DataPrep):
@@ -14,8 +15,11 @@ class CustomDataPrep(cam_apps.DataPrep):
 
     def get_multi_data(self, table, id):
         # should really have a models based version for this too...?
-        db.table = db.entity(table)
-        objs = db.table.filter(db.appointments.volunteers_id==id).all()
+        #db.table = db.entity(table)
+        #objs = db.table.filter(db.appointments.volunteers_id==id).all()
+        qs = QuerySet(table_name='volunteers', related_table='appointments', related_field='volunteer_id')
+        qs.get(id)
+        objs = qs.related_set()
         return objs
 
     def add_question_value(self, q):
@@ -38,10 +42,11 @@ class CustomQuestion(cam_apps.Question):
         super(CustomQuestion, self).__init__(question_object, app_object, section_object)
 
     def get_surgeries(self):
-        surgeries = db.surgeries.all()
+        # surgeries = db.surgeries.all()
+        surgeries = QuerySet(table_name='surgeries').all()
         result = []
         for surgery in surgeries:
-            result.append({'text': surgery.full_name, 'value': surgery.id})
+            result.append({'text': surgery['full_name'], 'value': surgery['id']})
         return result
 
     def get_options(self, option):

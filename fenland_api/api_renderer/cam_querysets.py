@@ -115,7 +115,9 @@ class QuerySet(object):
     
     def related_set(self, related_table=None, field='id'):
         if related_table == None:
-            related_table = self.related_table
+            related_table = self.related_table_name
+        if self.related_field:
+            field = self.related_field     
         result = self.sql_execute("""select * from %s where %s = %s;""" % (related_table, field, int(self.id_variable_value)))
         return result
 
