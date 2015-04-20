@@ -28,6 +28,7 @@
 28. Store templates in your database, try that.
 29. check out template tags available now.
 30. One suggested use case of managers was to have delete just mark things as deleted and have a manager return non-deleted objects.  
+31. Change validation so app passes questions which have properties set for each rule, e.g. required, max_length etc.  Then compare values to question parameters, seems easier to do than what I've done so far.
 
 
 XML -> Application Object
