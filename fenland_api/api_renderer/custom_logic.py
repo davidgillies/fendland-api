@@ -17,7 +17,7 @@ class CustomDataPrep(cam_apps.DataPrep):
         # should really have a models based version for this too...?
         #db.table = db.entity(table)
         #objs = db.table.filter(db.appointments.volunteers_id==id).all()
-        qs = QuerySet(table_name='volunteers', related_table='appointments', related_field='volunteer_id')
+        qs = QuerySet(table_name='volunteers', related_table='appointments', related_field='volunteers_id')
         qs.get(id)
         objs = qs.related_set()
         return objs

@@ -441,9 +441,9 @@ class DataPrep(object):
                             for index in range(len(multi_line)):
                                 for i in range(len(multi_line[index])):
                                     if isinstance(multi_line[index][i], self.Question):
-                                        multi_line[index][i].var_value = multi_data[index].__dict__[multi_line[index][i].variable]
+                                        multi_line[index][i].var_value = multi_data[index][multi_line[index][i].variable]
                                         try:
-                                            multi_line[index][i].var_id = multi_data[index].__dict__['id']
+                                            multi_line[index][i].var_id = multi_data[index]['id']
                                         except:
                                             pass
                                         multi_line[index][i].variable = multi_line[index][i].variable + '[]'
