@@ -10,7 +10,7 @@ admin.site.index_title = 'Fenland Database'
 
 class VolunteerInline(admin.TabularInline):
     model = Volunteer
-    fields = ('surname', 'forenames', 'town', 'postcode', 'calculate_age')
+    fields = ('town', 'postcode', 'calculate_age')
     readonly_fields = ('surname', 'forenames', 'town', 'postcode',
                        'calculate_age')
     can_delete = False
@@ -99,6 +99,7 @@ class AppointmentAdmin(admin.ModelAdmin):
     list_display = ('get_volunteer', 'appt_date', 'appt_time', 'test_site')
     search_fields = ('volunteers__surname', 'volunteers__forenames',)
     list_per_page = 5
+    date_hierarchy = 'appt_date'
 
     def get_volunteer(self, obj):
         return obj.volunteers
