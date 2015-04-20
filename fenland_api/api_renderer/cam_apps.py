@@ -92,6 +92,8 @@ class Question(MethodMixin):
         self.var_value = None
         self.var_id = None
         self.required = False
+        self.maxlength = 0
+        self.tests = []
         self.data_type = {}
         self.id = question_object.attrib['ID']
         self.position = question_object.attrib['position']
@@ -100,17 +102,21 @@ class Question(MethodMixin):
         self.template = ''
         self.template_args = {'options': []}
         self.build_question(question_object) 
-        self.app_object.validator[self.variable] = self.validator_rules()
+        self.validator_rules()
+        self.app_object.validator[self.variable] = self
         
 
     def validator_rules(self):
         rules = {}
         if 'CheckMaxLength' in self.restrictions.keys():
             rules['CheckMaxLength'] = self.data_type['maxLength']
+            self.maxlength = self.data_type['maxLength']
+            self.tests.append('CheckMaxLength')
         if 'IsAnswered' in self.restrictions.keys():
             if self.restrictions['IsAnswered']['AllowError'] == 'false':
                 rules['IsAnswered'] = True
                 self.required = True
+                self.tests.append('IsAnswered')
         return rules
 
     def get_template(self, selection):
@@ -438,7 +444,7 @@ class DataPrep(object):
                             multi = False
                             multi_data = self.get_multi_data(multi_line[0].rendering_hints['multi'], self.data['id'])
                             multi_line_adder = []
-                            for i in range(len(multi_data)+1):
+                            for i in range(len(multi_data)):
                                 multi_line_adder.append(deepcopy(multi_line))
                             multi_line = multi_line_adder
                             for index in range(len(multi_line)):

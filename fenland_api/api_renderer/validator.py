@@ -1,21 +1,31 @@
 class Validator(object):
-    def __init__(self, rules, data):
-        self.rules = rules
+    def __init__(self, questions, data):
         self.data = data
-        self.local_settings_mapping = {}
+        self.questions = questions
         self.errors = {}
 
     def is_valid(self):
         valid = True
-        for data_item in self.data.keys():
-            if data_item != 'id' and data_item in self.rules.keys():
-                self.errors[data_item] = ''
-                if 'CheckMaxLength' in self.rules[data_item].keys():
-                    if int(self.rules[data_item]['CheckMaxLength']) < len(self.data[data_item]):
+        for k in self.data:
+            if k != 'id':
+                for test in self.questions[k].tests:
+                    result, error = self.do_test(test)(self.questions[k], self.data[k])
+                    if result is False:
+                        self.errors[k] = error
                         valid = False
-                        self.errors[data_item] = 'Your answer should be less than %s characters long' % self.rules[data_item]['CheckMaxLength']
-                if 'IsAnswered' in self.rules[data_item].keys():
-                    if not self.data[data_item]:
-                        valid = False
-                        self.errors[data_item] = 'Please give an answer'
         return valid
+
+    def do_test(self, test):
+        return {'CheckMaxLength': self.maxlength, 'IsAnswered': self.required}[test]
+
+    def maxlength(self, question, answer):
+        if len(answer) > int(question.maxlength):
+            return (False, 'Your answer should be less than %s characters long' % question.maxlength)
+        else:
+            return (True, None)
+
+    def required(self, question, answer):
+        if question.required and not answer:
+            return (False, 'Please give an answer')
+        else:
+            return (True, None)
