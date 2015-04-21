@@ -3,9 +3,17 @@ from django.utils.html import escape
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry, DELETION
 from api_renderer.models import Surgery, Volunteer, Status, Appointment, AuditLog
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
 
 admin.site.index_title = 'Fenland Database'
+
+
+class VolunteerResource(resources.ModelResource):
+    
+    class Meta:
+        model = Volunteer
 
 
 class VolunteerInline(admin.TabularInline):
@@ -32,7 +40,8 @@ class AppointmentInline(admin.TabularInline):
     extra = 0
 
 
-class VolunteerAdmin(admin.ModelAdmin):
+class VolunteerAdmin(ImportExportModelAdmin):
+    resource_class = VolunteerResource
     inlines = [AppointmentInline, ]
     search_fields = ('surname', 'forenames', 'town', 'postcode',
                      'surgeries__full_name')

@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'api_renderer',
     'html_renderer',
     'questionnaire',
+    'import_export',
 )
 
 MIDDLEWARE_CLASSES = (
