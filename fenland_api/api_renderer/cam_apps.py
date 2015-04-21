@@ -93,6 +93,7 @@ class Question(MethodMixin):
         self.var_id = None
         self.required = False
         self.maxlength = 0
+        self.multi = False
         self.tests = []
         self.data_type = {}
         self.id = question_object.attrib['ID']
@@ -452,6 +453,7 @@ class DataPrep(object):
                                     if isinstance(multi_line[index][i], self.Question):
                                         try:
                                             multi_line[index][i].var_value = multi_data[index][multi_line[index][i].variable]
+                                            multi_line[index][i].multi = True
                                         except:
                                             multi_line[index][i].required = False
                                         try:

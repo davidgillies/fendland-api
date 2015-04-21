@@ -81,5 +81,5 @@ class TestAreaView(View):
         myDict = dict(request.POST.iterlists())
         for k in myDict.keys():
             myDict[k] = myDict[k][0]
-        print myDict
+            print "Key: %s,\n\tValue: %s" % (k, myDict[k])
         return HttpResponse(myDict)
