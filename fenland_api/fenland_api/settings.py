@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.flatpages',
     'debug_toolbar',
     'rest_framework',
     'django_extensions',
@@ -59,6 +60,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'html_renderer.middleware.BeautifulMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'fenland_api.urls'
@@ -105,7 +107,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
 )
 
-
 STATIC_ROOT = 'U:/Data/fenland_api/fendland-api/static'
 
 # Internationalization
@@ -123,7 +124,7 @@ USE_TZ = True
 
 SITE = 1
 
-SITE_ID = 1
+SITE_ID = 2
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
