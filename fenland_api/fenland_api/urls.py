@@ -23,4 +23,6 @@ urlpatterns = patterns('',
     url(r'^test/(\w+)', csrf_exempt(html_renderer_views.TestView.as_view())),
     url(r'^test/', csrf_exempt(html_renderer_views.TestView.as_view())),
     url(r'^test_area/', csrf_exempt(html_renderer_views.TestAreaView.as_view())),
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^standard/', api_renderer_views.StandardView.as_view()),
 )

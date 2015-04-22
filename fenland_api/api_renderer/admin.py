@@ -5,13 +5,36 @@ from django.contrib.admin.models import LogEntry, DELETION
 from api_renderer.models import Surgery, Volunteer, Status, Appointment, AuditLog
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
+from django.contrib.flatpages.admin import FlatpageForm, FlatPageAdmin
+from django.contrib.flatpages.models import FlatPage
+from tinymce.widgets import TinyMCE
 import arrow
 
 admin.site.index_title = 'Fenland Database'
 
 
+
+class PageForm(FlatpageForm):
+
+    class Meta:
+        model = FlatPage
+        widgets = {
+            'content' : TinyMCE(attrs={'cols': 100, 'rows': 15}),
+        }
+
+
+class PageAdmin(FlatPageAdmin):
+    """
+    Page Admin
+    """
+    form = PageForm
+
+
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, PageAdmin)
+
 class VolunteerResource(resources.ModelResource):
-    
+
     class Meta:
         model = Volunteer
 
@@ -37,12 +60,12 @@ class SurgeryAdmin(admin.ModelAdmin):
                            ('addr1', 'hscic_code'),
                            ('addr2', 'area'),
                            ('town',),
-                            ('county'),
-                            ('postcode'),
-                            ('telephone'))}),
+                           ('county'),
+                           ('postcode'),
+                           ('telephone'))}),
         ('Modified', {'fields': (('modified_by', 'modified'))})
     )
-    
+
     def save_model(self, request, obj, form, change):
         obj.modified_by = request.user.get_username()
         obj.modified = str(arrow.now()).replace('+01:00', '')
@@ -75,16 +98,14 @@ class VolunteerAdmin(ImportExportModelAdmin):
         ('Address', {'classes': ('collapse',),
                      'fields': (('addr1', 'home_tel'), ('addr2', 'work_tel'),
                                 ('town', 'mobile'), ('county', 'email'),
-                                    'postcode')
-                }
-        ),
+                                'postcode')}),
         ('Details', {'classes': ('collapse', 'extrapretty'),
                      'description': 'Extra <b>details</b>',
                      'fields': (('nhs_no', 'surgeries'),
                                 ('modified', 'modified_by'),
                                 ('diabetes_diagnosed', 'moved_away'),)}),
     )
-    
+
     def save_model(self, request, obj, form, change):
         obj.modified_by = request.user.get_username()
         obj.modified = str(arrow.now()).replace('+01:00', '')
@@ -115,9 +136,7 @@ class VolunteerAdmin2(admin.ModelAdmin):
         ('Address', {'classes': ('collapse',),
                      'fields': (('addr1', 'home_tel'), ('addr2', 'work_tel'),
                                 ('town', 'mobile'), ('county', 'email'),
-                                    'postcode')
-                }
-        ),
+                                'postcode')}),
         ('Details', {'classes': ('collapse', 'extrapretty'),
                      'description': 'Extra <b>details</b>',
                      'fields': (('nhs_no', 'surgeries'),

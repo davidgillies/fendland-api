@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from custom_logic import CustomApplication
+from django.views import generic
 from .models import *
 import local_settings
 if local_settings.CUSTOM is True:
@@ -48,3 +49,7 @@ class APIView(APIView):
                id_variable_value=None):
         fenland_app.delete_data(section, id_variable, id_variable_value)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class StandardView(generic.ListView): 
+    model = Volunteer
