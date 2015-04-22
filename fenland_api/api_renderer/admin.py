@@ -5,7 +5,7 @@ from django.contrib.admin.models import LogEntry, DELETION
 from api_renderer.models import Surgery, Volunteer, Status, Appointment, AuditLog
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
-
+import arrow
 
 admin.site.index_title = 'Fenland Database'
 
@@ -30,6 +30,23 @@ class VolunteerInline(admin.TabularInline):
 
 class SurgeryAdmin(admin.ModelAdmin):
     inlines = [VolunteerInline, ]
+    readonly_fields = ('modified', 'modified_by')
+    fieldsets = (
+        (None, {'fields': (('full_name', 'admin_contact_name'),
+                           ('name', 'admin_contact_number'),
+                           ('addr1', 'hscic_code'),
+                           ('addr2', 'area'),
+                           ('town',),
+                            ('county'),
+                            ('postcode'),
+                            ('telephone'))}),
+        ('Modified', {'fields': (('modified_by', 'modified'))})
+    )
+    
+    def save_model(self, request, obj, form, change):
+        obj.modified_by = request.user.get_username()
+        obj.modified = str(arrow.now()).replace('+01:00', '')
+        obj.save()
 
 admin.site.register(Surgery, SurgeryAdmin)
 
@@ -42,6 +59,7 @@ class AppointmentInline(admin.TabularInline):
 
 class VolunteerAdmin(ImportExportModelAdmin):
     resource_class = VolunteerResource
+    readonly_fields = ('modified', 'modified_by')
     inlines = [AppointmentInline, ]
     search_fields = ('surname', 'forenames', 'town', 'postcode',
                      'surgeries__full_name')
@@ -65,6 +83,11 @@ class VolunteerAdmin(ImportExportModelAdmin):
                                 ('modified', 'modified_by'),
                                 ('diabetes_diagnosed', 'moved_away'),)}),
     )
+    
+    def save_model(self, request, obj, form, change):
+        obj.modified_by = request.user.get_username()
+        obj.modified = str(arrow.now()).replace('+01:00', '')
+        obj.save()
 
 admin.site.register(Volunteer, VolunteerAdmin)
 
