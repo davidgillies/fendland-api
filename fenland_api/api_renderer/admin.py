@@ -65,7 +65,8 @@ class VolunteerAdmin(ImportExportModelAdmin):
                      'surgeries__full_name')
     list_display = ('surname', 'forenames', 'town', 'postcode',
                     'calculate_age')
-    list_filter = ('town', )
+    list_filter = ('town', 'surgeries__full_name')
+    # save_on_top = True
     date_hierarchy = 'dob'
     fieldsets = (
         (None, {'fields': (('surname', 'forenames'),
