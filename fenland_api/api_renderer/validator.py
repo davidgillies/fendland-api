@@ -1,3 +1,6 @@
+
+
+
 class Validator(object):
     def __init__(self, questions, data):
         self.data = data
@@ -16,7 +19,11 @@ class Validator(object):
         return valid
 
     def do_test(self, test):
-        return {'CheckMaxLength': self.maxlength, 'IsAnswered': self.required}[test]
+        return {'CheckMaxLength': self.maxlength, 'IsAnswered': self.required,
+                'type': self.test_type}[test]
+                
+    def get_type_test(self, the_type):
+        return {'string': str, 'date': str, 'datetime': str}[the_type]
 
     def maxlength(self, question, answer):
         if len(answer) > int(question.maxlength):
@@ -29,3 +36,7 @@ class Validator(object):
             return (False, 'Please give an answer')
         else:
             return (True, None)
+    
+    def test_type(self, question, answer):
+        return (True, None)
+        

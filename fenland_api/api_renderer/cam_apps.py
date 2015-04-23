@@ -109,6 +109,11 @@ class Question(MethodMixin):
 
     def validator_rules(self):
         rules = {}
+        try:
+            rules['type'] = self.data_type['type']
+            self.tests.append('type')
+        except:
+            pass
         if 'CheckMaxLength' in self.restrictions.keys():
             rules['CheckMaxLength'] = self.data_type['maxLength']
             self.maxlength = self.data_type['maxLength']
