@@ -22,6 +22,9 @@ class HTMLView(View):
             data = fenland_app.get_data(section, 'id', id_variable_value)
             section_obj = DataPrep(section_obj, data)
             section_obj = section_obj.data_prep()
+        else:
+            data = {}
+            data['id'] = None
         if question_group is None:
             result['section'] = section_obj
             result['data_id'] = data['id']
