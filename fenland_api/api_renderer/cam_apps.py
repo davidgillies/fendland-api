@@ -131,7 +131,8 @@ class Question(MethodMixin):
                 'text': 'html_renderer/text.html',
                 'multiline': 'html_renderer/textarea.html',
                 'range': 'html_renderer/range.html',
-                'datalist': 'html_renderer/datalist.html'}[selection]
+                'datalist': 'html_renderer/datalist.html',
+                'search': 'html_renderer/search.html'}[selection]
 
     def set_template(self):
         self.template = self.get_template(self.rendering_hints['qtype'])
@@ -239,6 +240,7 @@ class Section(MethodMixin):
         self.section_objects = []
         self.rendering_hints = {}
         self.build_section()
+        print self.section_objects
 
     def build_section(self):
         for item in self.section_xml_object.getchildren():
@@ -252,7 +254,7 @@ class Section(MethodMixin):
         except:
             section_info['cssClass'] = ''
         self.info.append(section_info)
-        self.section_objects.append(section_info)
+        # self.section_objects.append(section_info)
 
     def set_question_group(self, item):
         question_group = QuestionGroup(item, self.app_object, self)
@@ -423,6 +425,15 @@ class Application(object):
         for section in self.xml_object.section:
             sections[section.attrib['position']] = Section(section, self)
         return sections
+        
+    def search(self, search_term, section_number):
+        if self.models:
+            # data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
+            do_something = 1
+        else:
+            queryset = QuerySet(table_name=self.get_table_name(section_number))
+            data = queryset.filter('surname', search_term)
+        return data
 
 
 class DataPrep(object):

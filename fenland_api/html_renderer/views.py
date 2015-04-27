@@ -42,10 +42,14 @@ class HTMLView(View):
         myDict = dict(request.POST.iterlists())
         for k in myDict.keys():
             myDict[k] = myDict[k][0]
-        myDict2 = json.dumps(myDict)
-        data = fenland_app.update_data(section, 'id_variable',
-                                       request.POST['id'], myDict2)
-        result['data_id'] = data['id']
+        if 'search' in myDict.keys():
+            result['search_results'] = fenland_app.search(myDict['search'], section)
+            data = {}
+        else:
+            myDict = json.dumps(myDict)
+            data = fenland_app.update_data(section, 'id_variable',
+                                           request.POST['id'], myDict)
+            result['data_id'] = data['id']
         section_obj = DataPrep(section_obj, data)
         section_obj = section_obj.data_prep()
         result['section'] = section_obj
