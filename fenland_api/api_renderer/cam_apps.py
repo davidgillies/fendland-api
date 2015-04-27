@@ -429,6 +429,7 @@ class Application(object):
     def search(self, search_term, section_number):
         if self.models:
             # data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
+            data = self.model_mapping[int(section_number)].objects.filter(surname__contains=search_term) 
             do_something = 1
         else:
             queryset = QuerySet(table_name=self.get_table_name(section_number))
