@@ -49,7 +49,6 @@ INSTALLED_APPS = (
     'html_renderer',
     'questionnaire',
     'import_export',
-    'tinymce',
 )
 
 MIDDLEWARE_CLASSES = (

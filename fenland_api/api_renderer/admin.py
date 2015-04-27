@@ -5,33 +5,10 @@ from django.contrib.admin.models import LogEntry, DELETION
 from api_renderer.models import Surgery, Volunteer, Status, Appointment, AuditLog
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
-from django.contrib.flatpages.admin import FlatpageForm, FlatPageAdmin
-from django.contrib.flatpages.models import FlatPage
-from tinymce.widgets import TinyMCE
 import arrow
 
 admin.site.index_title = 'Fenland Database'
 
-
-
-class PageForm(FlatpageForm):
-
-    class Meta:
-        model = FlatPage
-        widgets = {
-            'content' : TinyMCE(attrs={'cols': 100, 'rows': 15}),
-        }
-
-
-class PageAdmin(FlatPageAdmin):
-    """
-    Page Admin
-    """
-    form = PageForm
-
-
-admin.site.unregister(FlatPage)
-admin.site.register(FlatPage, PageAdmin)
 
 class VolunteerResource(resources.ModelResource):
 
