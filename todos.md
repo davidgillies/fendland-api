@@ -4,32 +4,29 @@
 4. Develop more output templates.
 5. Inject js into output for validation, other jquery shit?
 6. Changing strings to dates etc. needs to be done by custom shit as you need to which string is a date.
-7. Pass a generic SQL statement and return result.
-8. if models set to true redirect to url for rest framework?
-9. Perhaps use conversion for whatever query I get e.g. post or json etc. and just forward to a view?
-10. Data visualization in a canvas?
-11. Try out Django CBV and Forms to build default object views for models with a bootstrap template. 
-12. Form based validation for html posts, what about API?
-13. Add new appointment button or something on template.  It needs to know it's a mutli.
-14. modified_by should match up to User model for models but not for tomcat...
-15. If you know datetime objects are there from Question data type, you have to know that when modifying data to strings and back to dates etc.
-16. Need to return errors to frontend for models.
-17. Need to add errors to select template etc.
-18. Fix the select template Hack I did to match string to integer.
-19. change over to showcase logs.
-20. Add db.rollback() on a failure.
-21. When the Queryset gets results stick them in a variable so they can be gotten again without running the query twice.
-22. Subclass User?
-23. Would it be worth giving error messages an html printout and making them objects?
-24. http://django-uni-form.readthedocs.org/en/latest/index.html # outputs django forms as divs, worth a test.
-25. New stuff that can tell you what apps are installed and what fields they have, it is an API which is now stable.
-26. Form Media - you can add js/css widgets to forms as in admin.  Not sure how it works.
-27. DRF error messaging.
-28. Store templates in your database, try that.
-29. check out template tags available now.
-30. One suggested use case of managers was to have delete just mark things as deleted and have a manager return non-deleted objects.  
-31. Change validation so app passes questions which have properties set for each rule, e.g. required, max_length etc.  Then compare values to question parameters, seems easier to do than what I've done so far.
-
+7. if models set to true redirect to url for rest framework?
+8. Perhaps use conversion for whatever query I get e.g. post or json etc. and just forward to a view?
+9. Data visualization in a canvas?
+10. Try out Django CBV and Forms to build default object views for models with a bootstrap template. 
+11. Form based validation for html posts, what about API?
+12. Add new appointment button or something on template.  It needs to know it's a mutli.
+13. If you know datetime objects are there from Question data type, you have to know that when modifying data to strings and back to dates etc.
+14. Need to return errors to frontend for models.
+15. Need to add errors to select template etc.
+16. Fix the select template Hack I did to match string to integer.
+17. change over to showcase logs.
+18. Add db.rollback() on a failure.
+19. When the Queryset gets results stick them in a variable so they can be gotten again without running the query twice.
+20. Subclass User?
+21. Would it be worth giving error messages an html printout and making them objects?
+22. http://django-uni-form.readthedocs.org/en/latest/index.html # outputs django forms as divs, worth a test.
+23. New stuff that can tell you what apps are installed and what fields they have, it is an API which is now stable.
+24. Form Media - you can add js/css widgets to forms as in admin.  Not sure how it works.
+25. DRF error messaging.
+26. Store templates in your database, try that.
+27. check out template tags available now.
+28. One suggested use case of managers was to have delete just mark things as deleted and have a manager return non-deleted objects.  
+29. Change validation so app passes questions which have properties set for each rule, e.g. required, max_length etc.  Then compare values to question parameters, seems easier to do than what I've done so far.
 
 XML -> Application Object
 
