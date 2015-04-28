@@ -240,7 +240,6 @@ class Section(MethodMixin):
         self.section_objects = []
         self.rendering_hints = {}
         self.build_section()
-        print self.section_objects
 
     def build_section(self):
         for item in self.section_xml_object.getchildren():
