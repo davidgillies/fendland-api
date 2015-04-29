@@ -1,3 +1,4 @@
+#import re
 
 
 class Validator(object):
@@ -37,4 +38,11 @@ class Validator(object):
             return (True, None)
 
     def test_type(self, question, answer):
+#        if question.data_type['type'] in ['date', 'dateTime']:
+#            pattern = re.compile(question.pattern)
+#            print question.pattern
+#            if pattern:
+#                return (True, None)
+#            else:
+#                return (False, 'Incorrect Format')
         return (True, None)

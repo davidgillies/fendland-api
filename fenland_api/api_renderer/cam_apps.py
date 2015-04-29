@@ -96,6 +96,7 @@ class Question(MethodMixin):
         self.multi = False
         self.tests = []
         self.data_type = {}
+        self.pattern = ''
         self.id = question_object.attrib['ID']
         self.position = question_object.attrib['position']
         self.rendering_hints = {}
@@ -105,12 +106,17 @@ class Question(MethodMixin):
         self.build_question(question_object)
         self.validator_rules()
         self.app_object.validator[self.variable] = self
+        print self.data_type
 
     def validator_rules(self):
         rules = {}
         try:
             rules['type'] = self.data_type['type']
             self.tests.append('type')
+            try:
+                self.pattern = self.data_type['pattern']
+            except:
+                pass
         except:
             pass
         if 'CheckMaxLength' in self.restrictions.keys():
