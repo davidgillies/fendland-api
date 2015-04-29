@@ -88,3 +88,12 @@ class CustomApplication(cam_apps.Application):
         if 'surgeries' in json_dict.keys():
             json_dict['surgeries'] = Surgery.objects.get(id=int(json_dict['surgeries']))
         return json_dict
+        
+    def search(self, search_term, section_number):
+        if self.models:
+            # data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
+            data = self.model_mapping[int(section_number)].objects.filter(surname__contains=search_term) 
+        else:
+            queryset = QuerySet(table_name=self.get_table_name(section_number))
+            data = queryset.filter('surname', search_term)
+        return data

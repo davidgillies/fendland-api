@@ -102,10 +102,9 @@ class Question(MethodMixin):
         self.restrictions = {}
         self.template = ''
         self.template_args = {'options': []}
-        self.build_question(question_object) 
+        self.build_question(question_object)
         self.validator_rules()
         self.app_object.validator[self.variable] = self
-        
 
     def validator_rules(self):
         rules = {}
@@ -179,6 +178,7 @@ class Question(MethodMixin):
 # the renderingHints.
 # 2. Is there anything that can be rendered entirely by a template to string
 # that doesn't have any data...  First sections etc.  Does it help?
+
 
 class QuestionGroup(MethodMixin):
     def __init__(self, question_group_object, app_object, section_object):
@@ -280,7 +280,6 @@ class Section(MethodMixin):
                                 data[multi_name] = []
                         data_dict['id'] = q.var_id
                         data_dict[q.variable[:-2]] = q.var_value
-                        
                         if 'endoftr' in q.rendering_hints.keys():
                             multi = False
                             data[multi_name].append(data_dict)
@@ -310,7 +309,7 @@ class Application(object):
         self.studyname = self.xml_object.studyName
         self.sections = self.get_sections()
 
-    #@logger
+    # @logger
     def get_data(self, section_number, id_variable, id_variable_value):
         if self.models:
             data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
@@ -424,16 +423,9 @@ class Application(object):
         for section in self.xml_object.section:
             sections[section.attrib['position']] = Section(section, self)
         return sections
-        
+
     def search(self, search_term, section_number):
-        if self.models:
-            # data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
-            data = self.model_mapping[int(section_number)].objects.filter(surname__contains=search_term) 
-            do_something = 1
-        else:
-            queryset = QuerySet(table_name=self.get_table_name(section_number))
-            data = queryset.filter('surname', search_term)
-        return data
+        pass
 
 
 class DataPrep(object):
