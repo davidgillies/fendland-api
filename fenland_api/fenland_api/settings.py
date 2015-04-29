@@ -78,7 +78,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
     'db2': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django_mysql_fix.backends.mysql',
         'NAME': 'mydb',
         'USER': 'david',
         'PASSWORD': 'david',
@@ -86,7 +86,7 @@ DATABASES = {
         'PORT': '3306',
     },
     'db3': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django_mysql_fix.backends.mysql',
         'NAME': 'mrc_epid_fenland',
         'USER': 'david',
         'PASSWORD': 'david',
@@ -106,6 +106,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
+)
+
+TEMPLATE_LOADERS = (
+    ('django.template.loaders.cached.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
 )
 
 STATIC_ROOT = 'U:/Data/fenland_api/fendland-api/static'

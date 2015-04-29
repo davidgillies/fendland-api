@@ -5,8 +5,6 @@ import local_settings
 from .models import Surgery
 from cam_querysets import QuerySet
 
-#db = sqlsoup.SQLSoup(local_settings.DATABASE)
-
 
 class CustomDataPrep(cam_apps.DataPrep):
     def __init__(self, section, data):
@@ -15,8 +13,6 @@ class CustomDataPrep(cam_apps.DataPrep):
 
     def get_multi_data(self, table, id):
         # should really have a models based version for this too...?
-        #db.table = db.entity(table)
-        #objs = db.table.filter(db.appointments.volunteers_id==id).all()
         qs = QuerySet(table_name='volunteers', related_table='appointments', related_field='volunteers_id')
         qs.get(id)
         objs = qs.related_set()

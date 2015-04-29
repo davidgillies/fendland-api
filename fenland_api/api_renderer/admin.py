@@ -134,7 +134,7 @@ class AppointmentAdmin(admin.ModelAdmin):
         return obj.volunteers
 
     get_volunteer.short_description = 'Volunteer'
-    get_volunteer.admin_order_field = 'appointment__volunteer'
+    #get_volunteer.admin_order_field = 'appointment__volunteer'
 
 admin.site.register(Appointment, AppointmentAdmin)
 
@@ -197,7 +197,7 @@ class LogEntryAdmin(admin.ModelAdmin):
             )
         return link
     object_link.allow_tags = True
-    object_link.admin_order_field = 'object_repr'
+    #object_link.admin_order_field = 'object_repr'
     object_link.short_description = u'object'
 
     def queryset(self, request):

@@ -310,7 +310,7 @@ class Application(object):
         self.studyname = self.xml_object.studyName
         self.sections = self.get_sections()
 
-    @logger
+    #@logger
     def get_data(self, section_number, id_variable, id_variable_value):
         if self.models:
             data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
