@@ -10,9 +10,6 @@ from validator import Validator
 from .cam_querysets import QuerySet
 
 
-db = sqlsoup.SQLSoup(local_settings.DATABASE)
-
-
 def logger(func):
     def inner(*args, **kwargs):
         print "Args: %s, %s" % (args, kwargs)
@@ -106,7 +103,6 @@ class Question(MethodMixin):
         self.build_question(question_object)
         self.validator_rules()
         self.app_object.validator[self.variable] = self
-        print self.data_type
 
     def validator_rules(self):
         rules = {}
