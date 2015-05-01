@@ -54,6 +54,7 @@ INSTALLED_APPS = (
 
 ADMIN_TOOLS_INDEX_DASHBOARD = 'api_renderer.dashboard.CustomIndexDashboard'
 ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'api_renderer.dashboard.CustomAppIndexDashboard'
+ADMIN_TOOLS_MENU = 'api_renderer.menu.CustomMenu'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
