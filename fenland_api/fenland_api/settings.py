@@ -33,7 +33,7 @@ INSTALLED_APPS = (
     'admin_tools.theming',
     'admin_tools.menu',
     'admin_tools.dashboard',
-    'django.contrib.admin',
+    'django.contrib.admin.apps.SimpleAdminConfig',
     'django.contrib.admindocs',
     'django.contrib.sites',
     'django.contrib.auth',
@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'html_renderer',
     'questionnaire',
     'import_export',
+    'adminplus',
 )
 
 MIDDLEWARE_CLASSES = (

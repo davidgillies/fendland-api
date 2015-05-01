@@ -1,0 +1,116 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrahead %}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart','geochart', 'table']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+      google.setOnLoadCallback(drawChart2);
+ google.setOnLoadCallback(drawMarkersMap);
+google.setOnLoadCallback(drawTable);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+    
+  function drawChart() {
+
+        // Create the data table.
+var data = google.visualization.arrayToDataTable([
+       [ {label: 'Town', id: 'town'},
+         {label: 'Volunteers', id: 'Vounteers', type: 'number'}, // Use object notation to explicitly specify the data type.
+           {label: 'Appts', id: 'Appts', type: 'number'} ],
+{% for town, pop in towns.items %}
+       ["{{town}}", {{pop.t_count}}, {{pop.a_count}} ],
+{% endfor %}
+]);
+
+        // Set chart options
+        var options = {'title':'Population',
+                       'width':800,
+                       'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+      function drawChart2() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Town', 'No. of Volunteers'],
+{% for town, pop in towns.items %}
+       ["{{town}}", {{pop.t_count}} ],
+{% endfor %}
+        ]);
+
+        var options = {
+          title: '%tage Population',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+
+ 
+    
+
+      function drawMarkersMap() {
+      var data = google.visualization.arrayToDataTable([
+        ['City',   'Population'],
+{% for town, pop in towns.items %}
+       ["{{town}}", {{pop.t_count}} ],
+{% endfor %}
+
+      ]);
+
+      var options = {
+        region: 'GB',
+        displayMode: 'markers',
+        colorAxis: {colors: ['yellow', 'red']}
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('chart_div2'));
+      chart.draw(data, options);
+    };
+
+
+function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Town');
+        data.addColumn('number', 'No. of Volunteers');
+       data.addColumn('number', 'No. of Appts');
+        data.addRows([
+{% for town, pop in towns.items %}
+       ["{{town}}", {{pop.t_count}}, {{pop.a_count}} ],
+{% endfor %}
+
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data, {showRowNumber: true});
+      }
+
+    </script>
+{% endblock %}
+
+
+        {% block content_title %}<h3>Population Report</h3>{% endblock %}
+        {% block content %}
+    <div id="chart_div"></div>
+ <div id="piechart" style="width: 900px; height: 500px;"></div>
+<div id="chart_div2" style="width: 900px; height: 500px;"></div>
+<div id="table_div"></div>
+        {% endblock %}
+
+
+
+

@@ -3,7 +3,10 @@ from django.contrib import admin
 from html_renderer import views as html_renderer_views
 from api_renderer import views as api_renderer_views
 from django.views.decorators.csrf import csrf_exempt
+from adminplus.sites import AdminSitePlus
 
+admin.site = AdminSitePlus()
+admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin_tools/', include('admin_tools.urls')),

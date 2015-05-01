@@ -2,12 +2,32 @@ from django.core.urlresolvers import reverse
 from django.utils.html import escape
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry, DELETION
+from django.http import HttpResponse
+from django.shortcuts import render
 from api_renderer.models import Surgery, Volunteer, Status, Appointment, AuditLog
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 import arrow
 
 admin.site.index_title = 'Fenland Database'
+
+
+def my_view(request, *args, **kwargs):
+    volunteers = Volunteer.objects.all()
+    towns = {}
+    appts = {}
+    for v in volunteers:
+        appts = v.appointment_set.count()
+        if v.town not in towns.keys():
+            towns[v.town] = {}
+            towns[v.town]['t_count'] = 1
+            towns[v.town]['a_count'] = appts
+        else:
+            towns[v.town]['t_count'] = towns[v.town]['t_count'] + 1
+            towns[v.town]['a_count'] =  towns[v.town]['a_count'] + appts
+    return render(request, 'html_renderer/admin_view.html', {'towns': towns})
+
+admin.site.register_view('somepath', view=my_view)
 
 
 class VolunteerResource(resources.ModelResource):
