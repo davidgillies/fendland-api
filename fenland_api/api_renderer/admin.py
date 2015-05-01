@@ -27,7 +27,7 @@ def my_view(request, *args, **kwargs):
             towns[v.town]['a_count'] =  towns[v.town]['a_count'] + appts
     return render(request, 'html_renderer/admin_view.html', {'towns': towns})
 
-admin.site.register_view('somepath', view=my_view)
+admin.site.register_view('somepath', view=my_view, urlname='somepath')
 
 
 class VolunteerResource(resources.ModelResource):

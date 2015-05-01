@@ -87,7 +87,7 @@ class CustomIndexDashboard(Dashboard):
             children=[
                 {
                     'title': _('Some Google Chart Reports'),
-                    'url': '/admin/somepath',
+                    'url': reverse('admin:somepath'),
                     'external': False,
                 },
             ]

@@ -30,7 +30,7 @@ class CustomMenu(Menu):
             ),
             items.MenuItem(
                 title= _('Reports'), url='#', children=[
-                items.MenuItem(title=_('Some Google Chart Reports'), url='/admin/somepath')]
+                items.MenuItem(title=_('Some Google Chart Reports'), url=reverse('admin:somepath'))]
             ),
              
         ]
