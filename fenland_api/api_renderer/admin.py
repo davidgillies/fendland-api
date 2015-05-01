@@ -114,8 +114,8 @@ admin.site.register(Volunteer, VolunteerAdmin)
 class MyVolunteer(Volunteer):
     class Meta:
         proxy = True
-        verbose_name = 'Another Volunteer View'
-        verbose_name_plural = 'Another Volunteer View'
+        verbose_name = 'My Volunteer'
+        verbose_name_plural = 'My Volunteers'
 
 
 class VolunteerAdmin2(admin.ModelAdmin):
@@ -140,6 +140,12 @@ class VolunteerAdmin2(admin.ModelAdmin):
                                 ('modified', 'modified_by'),
                                 ('diabetes_diagnosed', 'moved_away'),)}),
     )
+    
+    def get_queryset(self, request):
+        qs = super(VolunteerAdmin2, self).get_queryset(request)
+        # if request.user.is_superuser:
+        #    return qs
+        return qs.filter(modified_by=request.user)
 
 admin.site.register(MyVolunteer, VolunteerAdmin2)
 
