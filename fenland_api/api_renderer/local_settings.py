@@ -16,7 +16,7 @@ DB_MAPPING = {'surgery': 'surgeries_id', 'surgeries': 'surgeries_id', 'diabetes'
 #SECTION_MAPPING = {0: 'ships_ship', 1: 'ships_ship', 2: 'ships_ship'}
 SECTION_MAPPING = {0: 'volunteers', 1: 'volunteers', 2: 'volunteers'}
 
-MODELS = False
+MODELS = True
 
 MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer}
 

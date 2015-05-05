@@ -89,6 +89,7 @@ class Question(MethodMixin):
         self.var_value = None
         self.var_id = None
         self.required = False
+        self.dynamic = False
         self.maxlength = 0
         self.multi = False
         self.tests = []
@@ -146,6 +147,7 @@ class Question(MethodMixin):
     def set_options(self, item):
         if item.optionText.text == 'dynamic':
             self.template_args['options'] = self.get_options(item.optionValue.text)
+            self.dynamic = True
         else:
             self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
 
@@ -281,13 +283,19 @@ class Section(MethodMixin):
                             if multi_name not in data.keys():
                                 data[multi_name] = []
                         data_dict['id'] = q.var_id
-                        data_dict[q.variable[:-2]] = q.var_value
+                        if isinstance(q.var_value, datetime.timedelta):
+                            data_dict[q.variable[:-2]] = str(q.var_value)
+                        else:
+                            data_dict[q.variable[:-2]] = q.var_value
                         if 'endoftr' in q.rendering_hints.keys():
                             multi = False
                             data[multi_name].append(data_dict)
                             data_dict = {}
                     else:
-                        data[q.variable] = q.var_value
+                        if isinstance(q.var_value, datetime.timedelta):
+                            data[q.variable] = str(q.var_value)
+                        else:
+                            data[q.variable] = q.var_value
         return data
 
 
