@@ -45,9 +45,9 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'rest_framework',
     'django_extensions',
+    'questionnaire',
     'api_renderer',
     'html_renderer',
-    'questionnaire',
     'import_export',
     'adminplus',
 )
