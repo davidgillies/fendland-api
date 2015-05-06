@@ -14,13 +14,15 @@ DB_MAPPING = {'surgery': 'surgeries_id', 'surgeries': 'surgeries_id', 'diabetes'
 #DB_MAPPING = {}
 
 #SECTION_MAPPING = {0: 'ships_ship', 1: 'ships_ship', 2: 'ships_ship'}
-SECTION_MAPPING = {0: 'volunteers', 1: 'volunteers', 2: 'volunteers'}
+SECTION_MAPPING = {0: 'volunteers', 1: 'volunteers', 2: 'volunteers',
+                   3: 'volunteers', 4: 'volunteers'}
 
-MODELS = True
+MODELS = False
 
-MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer}
+MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer, 3: Volunteer, 4: Volunteer}
 
-MODEL_FORM_MAPPING = {0: VolunteerForm, 1: VolunteerForm, 2: VolunteerForm}
+MODEL_FORM_MAPPING = {0: VolunteerForm, 1: VolunteerForm, 2: VolunteerForm,
+                      3: VolunteerForm, 4: VolunteerForm}
 
 CUSTOM = True
 
