@@ -494,4 +494,4 @@ class DataPrep(object):
 
     def add_question_value(self, q):
         q.var_value = self.data[q.variable]
-        self.section.api[q.variable] = q.var_value
+        #self.section.api[q.variable] = q.var_value

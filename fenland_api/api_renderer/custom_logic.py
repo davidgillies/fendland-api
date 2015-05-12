@@ -29,7 +29,8 @@ class CustomDataPrep(cam_apps.DataPrep):
         else:
             q.var_value = self.data[q.variable]
 
-        self.section.api[q.variable] = q.var_value
+        # self.section.api[q.variable] = q.var_value
+        # not using thw api variable at present
 
 
 class CustomQuestion(cam_apps.Question):
