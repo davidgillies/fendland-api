@@ -102,9 +102,26 @@ class Question(MethodMixin):
         self.template = ''
         self.template_args = {'options': []}
         self.build_question(question_object)
+        self.model = self.set_model()
         self.validator_rules()
         self.app_object.validator[self.variable] = self
 
+    def set_model(self):
+        if self.variable in self.app_object.db_mapping.keys():
+            variable = self.app_object.db_mapping[self.variable]
+        else:
+            variable = self.variable
+        if self.app_object.models:
+            print self.multi
+            section_model = self.app_object.model_mapping[int(self.section.position)]
+            if variable in section_model._meta.get_all_field_names():
+                self.model = section_model
+            elif 'multi' in self.rendering_hints.keys():
+                if variable in self.app_object.table_model_mapping[self.rendering_hints['multi']]._meta.get_all_field_names():
+                    self.model = self.app_object.table_model_mapping[self.rendering_hints['multi']]
+            else:
+                self.model = None
+            
     def validator_rules(self):
         rules = {}
         try:
@@ -311,6 +328,7 @@ class Application(object):
         self.db_mapping = local_settings.DB_MAPPING
         self.model_mapping = local_settings.MODEL_MAPPING
         self.model_form_mapping = local_settings.MODEL_FORM_MAPPING
+        self.table_model_mapping = local_settings.TABLE_MODEL_MAPPING
         self.testing = local_settings.TESTING
         self.author = self.xml_object.author
         self.version_number = self.xml_object.versionNumber
@@ -494,4 +512,5 @@ class DataPrep(object):
 
     def add_question_value(self, q):
         q.var_value = self.data[q.variable]
-        #self.section.api[q.variable] = q.var_value
+        # self.section.api[q.variable] = q.var_value
+        # not using thw api variable at present
