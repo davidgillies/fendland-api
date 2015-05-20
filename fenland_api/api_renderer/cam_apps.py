@@ -112,7 +112,6 @@ class Question(MethodMixin):
         else:
             variable = self.variable
         if self.app_object.models:
-            print self.multi
             section_model = self.app_object.model_mapping[int(self.section.position)]
             if variable in section_model._meta.get_all_field_names():
                 self.model = section_model
