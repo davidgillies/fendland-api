@@ -1,8 +1,8 @@
 from lxml import objectify
 from copy import deepcopy
 from itertools import chain
+from bunch import Bunch
 import datetime
-import sqlsoup
 import simplejson
 import local_settings
 from django.forms.models import model_to_dict
@@ -15,13 +15,6 @@ def logger(func):
         print "Args: %s, %s" % (args, kwargs)
         return func(*args, **kwargs)
     return inner
-
-
-class TextNode(dict):
-    def __init__(self, position):
-        self.rendering_hints = {}
-        self.position = position
-        super(TextNode, self).__init__()
 
 
 class MethodMixin(object):
@@ -120,7 +113,7 @@ class Question(MethodMixin):
                     self.model = self.app_object.table_model_mapping[self.rendering_hints['multi']]
             else:
                 self.model = None
-            
+
     def validator_rules(self):
         rules = {}
         try:
@@ -221,7 +214,8 @@ class QuestionGroup(MethodMixin):
         self.question_group_objects.append(qg_info)
 
     def set_text_node(self, item):
-        text_node = TextNode(item.attrib['position'])
+        text_node = Bunch()
+        text_node.rendering_hints = {}
         try:
             text_node['id'] = item.attrib['ID']
         except:
