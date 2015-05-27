@@ -94,8 +94,8 @@ class Question(MethodMixin):
         self.restrictions = {}
         self.template = ''
         self.template_args = {'options': []}
+        self.model = None
         self.build_question(question_object)
-        self.model = self.set_model()
         self.validator_rules()
         self.app_object.validator[self.variable] = self
 
@@ -106,13 +106,13 @@ class Question(MethodMixin):
             variable = self.variable
         if self.app_object.models:
             section_model = self.app_object.model_mapping[int(self.section.position)]
+
             if variable in section_model._meta.get_all_field_names():
                 self.model = section_model
             elif 'multi' in self.rendering_hints.keys():
                 if variable in self.app_object.table_model_mapping[self.rendering_hints['multi']]._meta.get_all_field_names():
+                    self.app_object.table_model_mapping[self.rendering_hints['multi']]._meta.get_all_field_names()
                     self.model = self.app_object.table_model_mapping[self.rendering_hints['multi']]
-            else:
-                self.model = None
 
     def validator_rules(self):
         rules = {}
@@ -152,6 +152,7 @@ class Question(MethodMixin):
         for item in question_object.getchildren():
             self.tag_type(item.tag)(item)
         self.set_template()
+        self.set_model()
 
     def set_options(self, item):
         if item.optionText.text == 'dynamic':
@@ -230,6 +231,7 @@ class QuestionGroup(MethodMixin):
             text_node.rendering_hints[key] = text_node.rendering_hints[key].strip()
         self.question_group_objects.append(text_node)
 
+    @logger
     def set_question(self, item):
         question = Question(item, self.app_object, self.section)
         self.question_group_objects.append(question)
@@ -286,6 +288,7 @@ class Section(MethodMixin):
             data_dict = {}
             for q in qg.question_group_objects:
                 if isinstance(q, Question):
+                    print q.model
                     if 'multi' in q.rendering_hints.keys() or multi is True:
                         if multi is False:
                             multi = True

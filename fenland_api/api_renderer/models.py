@@ -111,8 +111,8 @@ class Appointment(models.Model):
     id = models.AutoField(primary_key=True)  # AutoField?
     repeat = models.IntegerField(blank=True, null=True)
     studyphase = models.IntegerField(blank=True, null=True)
-    appt_date = models.DateField(blank=True, null=True)
-    appt_time = models.TimeField(blank=True, null=True)
+    appt_date = models.DateField(blank=True, null=True, help_text="Format: YYYY-MM-DD")
+    appt_time = models.TimeField(blank=True, null=True, help_text="Format: HH:MM:SS")
     test_site = models.CharField(max_length=10, blank=True)
     modified_by = models.CharField(max_length=45, blank=True)
     modified = models.DateTimeField(blank=True, null=True)
