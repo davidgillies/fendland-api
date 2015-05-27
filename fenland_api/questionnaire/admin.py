@@ -1,14 +1,28 @@
 from django.contrib import admin
 from questionnaire.models import Users, Results, Progress, Questionnaires, Roles, Groups
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
+class ResultsResource(resources.ModelResource):
 
-class UsersAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Results
+        
+
+class UsersResource(resources.ModelResource):
+
+    class Meta:
+        model = Users
+
+class UsersAdmin(ImportExportModelAdmin):
+    resource_class = UsersResource
     search_fields = ('user_id',)
 
 admin.site.register(Users, UsersAdmin)
 
 
-class ResultsAdmin(admin.ModelAdmin):
+class ResultsAdmin(ImportExportModelAdmin):
+    resource_class = ResultsResource
     search_fields = ('user__user_id', 'questionnaire_id')
     list_display = ('user', 'questionnaire_id', 'var_id', 'var_name', 'var_value')
     list_filter = ('questionnaire_id',)

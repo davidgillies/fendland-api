@@ -16,6 +16,7 @@ class CustomDataPrep(cam_apps.DataPrep):
         qs = QuerySet(table_name='volunteers', related_table='appointments', related_field='volunteers_id')
         qs.get(id)
         objs = qs.related_set()
+        print "OBJS: %s" % objs
         return objs
 
     def add_question_value(self, q):
