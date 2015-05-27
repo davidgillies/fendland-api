@@ -1,8 +1,9 @@
+from django.forms.models import model_to_dict
 import sqlsoup
 import arrow
 import cam_apps
 import local_settings
-from .models import Surgery
+from .models import Surgery, Volunteer
 from cam_querysets import QuerySet
 
 
@@ -13,10 +14,17 @@ class CustomDataPrep(cam_apps.DataPrep):
 
     def get_multi_data(self, table, id):
         # should really have a models based version for this too...?
-        qs = QuerySet(table_name='volunteers', related_table='appointments', related_field='volunteers_id')
-        qs.get(id)
-        objs = qs.related_set()
-        print "OBJS: %s" % objs
+        if local_settings.MODELS:
+            volunteer = Volunteer.objects.get(pk=id)
+            appts = volunteer.appointment_set.all()
+            objs = []
+            for appt in appts:
+                res = model_to_dict(appt)
+                objs.append(res)
+        else:
+            qs = QuerySet(table_name='volunteers', related_table='appointments', related_field='volunteers_id')
+            qs.get(id)
+            objs = qs.related_set()
         return objs
 
     def add_question_value(self, q):
@@ -40,11 +48,15 @@ class CustomQuestion(cam_apps.Question):
         super(CustomQuestion, self).__init__(question_object, app_object, section_object)
 
     def get_surgeries(self):
-        # surgeries = db.surgeries.all()
-        surgeries = QuerySet(table_name='surgeries').all()
         result = []
-        for surgery in surgeries:
-            result.append({'text': surgery['full_name'], 'value': surgery['id']})
+        if local_settings.MODELS:
+            surgeries = Surgery.objects.all()
+            for surgery in surgeries:
+                result.append({'text': surgery.full_name, 'value': surgery.id})
+        else:
+            surgeries = QuerySet(table_name='surgeries').all()
+            for surgery in surgeries:
+                result.append({'text': surgery['full_name'], 'value': surgery['id']})
         return result
 
     def get_options(self, option):
