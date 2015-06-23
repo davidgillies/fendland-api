@@ -21,7 +21,7 @@ TABLE_MODEL_MAPPING = {'volunteers': Volunteer, 'appointments': Appointment}
 
 MODEL_LIST = [Volunteer, Appointment]
 
-MODELS = True
+MODELS = False
 
 MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer, 3: Volunteer, 4: Volunteer}
 

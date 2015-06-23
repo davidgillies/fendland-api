@@ -63,7 +63,13 @@ class Validator(object):
         return (format_ok, error)
 
     def check_str(self, string_value):
-        return (True, None)
+        if isinstance(string_value, unicode):
+            return (True, None)
+        else:
+            return (False, "Value must be a string.")
 
     def check_int(self, string_value):
-        return (True, None)
+        if isinstance(int(string_value), int):
+            return (True, None)
+        else:
+            return (False, "Value must be an integer.")
