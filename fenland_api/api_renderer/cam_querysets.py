@@ -87,9 +87,9 @@ class QuerySet(object):
         db.commit()
         return 
 
-    def delete(self, id_variable_value):
-        instance = self.table.get(int(id_variable_value))
-        self.id_variable_value = id_variable_value
+    def delete(self):
+        instance = self.table.get(int(self.id_variable_value))
+        # self.id_variable_value = id_variable_value
         db.delete(instance)
         db.commit()
         return
