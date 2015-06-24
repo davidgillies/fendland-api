@@ -244,9 +244,10 @@ class QuestionGroup(MethodMixin):
 
 class Section(MethodMixin):
     def __init__(self, section_xml_object, app_object):
-        self.app_object = app_object
-        self.section_xml_object = section_xml_object
-        self.title = section_xml_object.title
+        """Initializes Section object."""
+        self.app_object = app_object # reference to parent
+        self.section_xml_object = section_xml_object # section xml
+        self.title = section_xml_object.title 
         self.position = section_xml_object.attrib['position']
         self.testing = local_settings.TESTING
         self.info = []
@@ -258,10 +259,12 @@ class Section(MethodMixin):
         self.build_section()
 
     def build_section(self):
+        """sets Question Group instance's properties."""
         for item in self.section_xml_object.getchildren():
             self.tag_type(item.tag)(item)
 
     def set_info(self, item):
+        """Sets properties with Info tag."""
         section_info = {}
         section_info['text'] = item.text
         try:
@@ -272,6 +275,7 @@ class Section(MethodMixin):
         # self.section_objects.append(section_info)
 
     def set_question_group(self, item):
+        """Creates Question Group instances."""
         question_group = QuestionGroup(item, self.app_object, self)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
@@ -282,6 +286,7 @@ class Section(MethodMixin):
                 return qg
 
     def section_to_dict(self):
+        """Converts Section instance copy to dictionary."""
         data = {}
         multi = False
         for qg in self.section_objects:
@@ -314,6 +319,7 @@ class Section(MethodMixin):
 
 class Application(object):
     def __init__(self, name, xml):
+        """Initializes the Application object."""
         self.name = name
         self.xml = xml
         self.validator = {}
@@ -364,22 +370,25 @@ class Application(object):
                 data = json_dict
                 data['errors'] = 'errors'
         else:
-            validator = Validator(self.validator, json_dict)
-            print json_dict, self.validator
-            if validator.is_valid():
-                for k in json_dict.keys():
-                    if k in self.db_mapping.keys():
-                        json_dict[self.db_mapping[k]] = json_dict[k]
-                        json_dict.pop(k)
-                queryset = QuerySet(table_name=self.get_table_name(section_number))
-                data = queryset.create(json_dict)
+            if 'search' in json_dict.keys():
+                data = self.search(json_dict['search'], section_number)
             else:
-                for k in json_dict.keys():
-                    if k in self.db_mapping.keys():
-                        json_dict[self.db_mapping[k]] = json_dict[k]
-                        json_dict.pop(k)
-                data = json_dict
-                data['errors'] = validator.errors
+                validator = Validator(self.validator, json_dict)
+                print json_dict, self.validator
+                if validator.is_valid():
+                    for k in json_dict.keys():
+                        if k in self.db_mapping.keys():
+                            json_dict[self.db_mapping[k]] = json_dict[k]
+                            json_dict.pop(k)
+                    queryset = QuerySet(table_name=self.get_table_name(section_number))
+                    data = queryset.create(json_dict)
+                else:
+                    for k in json_dict.keys():
+                        if k in self.db_mapping.keys():
+                            json_dict[self.db_mapping[k]] = json_dict[k]
+                            json_dict.pop(k)
+                    data = json_dict
+                    data['errors'] = validator.errors
         return data
 
     def pre_process_keys(self, json_dict):
@@ -444,12 +453,14 @@ class Application(object):
         return deepcopy(self.sections[str(section_number)])
 
     def get_sections(self):
+        """Instantiates Section objects for each section."""
         sections = {}
         for section in self.xml_object.section:
             sections[section.attrib['position']] = Section(section, self)
         return sections
 
     def search(self, search_term, section_number):
+        """Filler function should be overwritten in subclass."""
         pass
 
 

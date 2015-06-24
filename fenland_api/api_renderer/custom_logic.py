@@ -13,7 +13,6 @@ class CustomDataPrep(cam_apps.DataPrep):
         self.Question = cam_apps.Question
 
     def get_multi_data(self, table, id):
-        # should really have a models based version for this too...?
         if local_settings.MODELS:
             volunteer = Volunteer.objects.get(pk=id)
             appts = volunteer.appointment_set.all()
