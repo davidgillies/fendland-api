@@ -1,5 +1,4 @@
 from django.forms.models import model_to_dict
-import sqlsoup
 import arrow
 import cam_apps
 import local_settings
@@ -101,7 +100,7 @@ class CustomApplication(cam_apps.Application):
         if 'surgeries' in json_dict.keys():
             json_dict['surgeries'] = Surgery.objects.get(id=int(json_dict['surgeries']))
         return json_dict
-        
+
     def search(self, search_term, section_number):
         if self.models:
             # data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))

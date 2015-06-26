@@ -245,9 +245,9 @@ class QuestionGroup(MethodMixin):
 class Section(MethodMixin):
     def __init__(self, section_xml_object, app_object):
         """Initializes Section object."""
-        self.app_object = app_object # reference to parent
-        self.section_xml_object = section_xml_object # section xml
-        self.title = section_xml_object.title 
+        self.app_object = app_object  # reference to parent
+        self.section_xml_object = section_xml_object  # section xml
+        self.title = section_xml_object.title
         self.position = section_xml_object.attrib['position']
         self.testing = local_settings.TESTING
         self.info = []

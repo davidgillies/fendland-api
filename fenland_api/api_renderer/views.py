@@ -51,5 +51,5 @@ class APIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class StandardView(generic.ListView): 
+class StandardView(generic.ListView):
     model = Volunteer

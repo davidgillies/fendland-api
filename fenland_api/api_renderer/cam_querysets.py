@@ -56,7 +56,7 @@ class QuerySet(object):
         self.id_variable_value = data[u'id']
         self.data = data
         return data
-    
+
     def create_related(self, query_dict):
         data = self.related_table.insert(**query_dict).__dict__
         db.commit()
@@ -71,7 +71,7 @@ class QuerySet(object):
                 relateds = query_dict.pop(key)
         for related in relateds:
             related[self.related_field] = int(id_variable_value)
-            if related.has_key('id'):
+            if 'id' in related:
                 self.update_related(related, related['id'])
             else:
                 self.create_related(related)
@@ -81,11 +81,11 @@ class QuerySet(object):
         db.commit()
         self.data = data
         return
-    
+
     def update_related(self, query_dict, id_variable_value):
-        data = self.related_table.filter_by(id=int(id_variable_value)).update(query_dict)
+        self.related_table.filter_by(id=int(id_variable_value)).update(query_dict)
         db.commit()
-        return 
+        return
 
     def delete(self):
         instance = self.table.get(int(self.id_variable_value))
@@ -108,16 +108,16 @@ class QuerySet(object):
         for k in data.keys():
             if isinstance(data[k], datetime.date):
                 data[k] = str(data[k])
-                
+
     def filter(self, field, like, order=None):
         result = self.sql_execute("""select * from %s where %s like '%%%s%%';""" % (self.table_name, field, like))
         return result
-    
+
     def related_set(self, related_table=None, field='id'):
-        if related_table == None:
+        if related_table is None:
             related_table = self.related_table_name
         if self.related_field:
-            field = self.related_field     
+            field = self.related_field
         result = self.sql_execute("""select * from %s where %s = %s;""" % (related_table, field, int(self.id_variable_value)))
         return result
 
@@ -126,4 +126,3 @@ class QuerySet(object):
         for key, value in row.items():
             d[key] = value
         return d
-

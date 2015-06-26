@@ -83,6 +83,7 @@ class TestView(View):
         result['question'] = question
         return render(request, 'html_renderer/question.html', result)
 
+
 class TestAreaView(View):
     def post(self, request):
         myDict = dict(request.POST.iterlists())
