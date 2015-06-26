@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'html_renderer',
     'import_export',
     'adminplus',
+    'explorer',
 )
 
 ADMIN_TOOLS_INDEX_DASHBOARD = 'api_renderer.dashboard.CustomIndexDashboard'
@@ -72,7 +73,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'fenland_api.urls'
 
 WSGI_APPLICATION = 'fenland_api.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -99,6 +99,8 @@ DATABASES = {
         'PORT': '3306',
     },
 }
+
+EXPLORER_CONNECTION_NAME = 'db2'
 
 DATABASE_ROUTERS = ['api_renderer.routers.PlayRouter', 'questionnaire.routers.PlayRouter', ]
 

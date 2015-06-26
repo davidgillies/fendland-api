@@ -341,6 +341,7 @@ class Application(object):
 
     # @logger
     def get_data(self, section_number, id_variable, id_variable_value):
+        """Returns section data."""
         if self.models:
             data = model_to_dict(self.model_mapping[int(section_number)].objects.get(id=id_variable_value))
         else:
