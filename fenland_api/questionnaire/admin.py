@@ -3,16 +3,18 @@ from questionnaire.models import Users, Results, Progress, Questionnaires, Roles
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
+
 class ResultsResource(resources.ModelResource):
 
     class Meta:
         model = Results
-        
+
 
 class UsersResource(resources.ModelResource):
 
     class Meta:
         model = Users
+
 
 class UsersAdmin(ImportExportModelAdmin):
     resource_class = UsersResource

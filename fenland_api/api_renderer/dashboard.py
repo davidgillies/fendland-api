@@ -59,7 +59,7 @@ class CustomIndexDashboard(Dashboard):
             feed_url='http://www.djangoproject.com/rss/weblog/',
             limit=5
         ))
-        
+
         self.children.append(modules.Feed(
             _('PubMed News'),
             feed_url='http://www.ncbi.nlm.nih.gov/feed/rss.cgi?ChanKey=PubMedNews',
@@ -87,7 +87,7 @@ class CustomIndexDashboard(Dashboard):
                 },
             ]
         ))
-        
+
         self.children.append(modules.LinkList(
             _('Reports'),
             children=[

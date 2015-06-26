@@ -2,7 +2,6 @@ from django.core.urlresolvers import reverse
 from django.utils.html import escape
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry, DELETION
-from django.http import HttpResponse
 from django.shortcuts import render
 from api_renderer.models import Surgery, Volunteer, Status, Appointment, AuditLog
 from import_export import resources
@@ -24,7 +23,7 @@ def my_view(request, *args, **kwargs):
             towns[v.town]['a_count'] = appts
         else:
             towns[v.town]['t_count'] = towns[v.town]['t_count'] + 1
-            towns[v.town]['a_count'] =  towns[v.town]['a_count'] + appts
+            towns[v.town]['a_count'] = towns[v.town]['a_count'] + appts
     return render(request, 'html_renderer/admin_view.html', {'towns': towns})
 
 admin.site.register_view('somepath', view=my_view, urlname='somepath')
@@ -140,7 +139,7 @@ class VolunteerAdmin2(admin.ModelAdmin):
                                 ('modified', 'modified_by'),
                                 ('diabetes_diagnosed', 'moved_away'),)}),
     )
-    
+
     def get_queryset(self, request):
         qs = super(VolunteerAdmin2, self).get_queryset(request)
         # if request.user.is_superuser:
@@ -160,7 +159,7 @@ class AppointmentAdmin(admin.ModelAdmin):
         return obj.volunteers
 
     get_volunteer.short_description = 'Volunteer'
-    #get_volunteer.admin_order_field = 'appointment__volunteer'
+    # get_volunteer.admin_order_field = 'appointment__volunteer'
 
 admin.site.register(Appointment, AppointmentAdmin)
 
@@ -223,7 +222,7 @@ class LogEntryAdmin(admin.ModelAdmin):
             )
         return link
     object_link.allow_tags = True
-    #object_link.admin_order_field = 'object_repr'
+    # object_link.admin_order_field = 'object_repr'
     object_link.short_description = u'object'
 
     def queryset(self, request):

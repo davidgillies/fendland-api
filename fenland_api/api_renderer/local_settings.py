@@ -4,19 +4,19 @@ Django app settings for api_renderer and html_renderer.
 from .models import Volunteer, Appointment
 from .forms import VolunteerForm
 
-#XML_FILE = 'U:/Data/forms_api/forms_api/xmlfiles/Ships.xml'
+# XML_FILE = 'U:/Data/forms_api/forms_api/xmlfiles/Ships.xml'
 XML_FILE = 'U:/Data/forms_api/forms_api/xmlfiles/Fenland.xml'
 
 DATABASE = 'mysql+pymysql://david:david@localhost:3306/mydb'
-#DATABASE = 'sqlite:///U:\\Data\\fenland_api\\db.sqlite3'
+# DATABASE = 'sqlite:///U:\\Data\\fenland_api\\db.sqlite3'
 
 DB_MAPPING = {'surgery': 'surgeries_id', 'surgeries': 'surgeries_id', 'diabetes': 'diabetes_diagnosed'}
-#DB_MAPPING = {}
+# DB_MAPPING = {}
 
-#SECTION_MAPPING = {0: 'ships_ship', 1: 'ships_ship', 2: 'ships_ship'}
+# SECTION_MAPPING = {0: 'ships_ship', 1: 'ships_ship', 2: 'ships_ship'}
 SECTION_MAPPING = {0: 'volunteers', 1: 'volunteers', 2: 'volunteers',
                    3: 'volunteers', 4: 'volunteers'}
-                   
+
 TABLE_MODEL_MAPPING = {'volunteers': Volunteer, 'appointments': Appointment}
 
 MODEL_LIST = [Volunteer, Appointment]

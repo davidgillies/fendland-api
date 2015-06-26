@@ -32,7 +32,6 @@ class CustomMenu(Menu):
                 title= _('Reports'), url='#', children=[
                 items.MenuItem(title=_('Some Google Chart Reports'), url=reverse('admin:somepath'))]
             ),
-             
         ]
 
     def init_with_context(self, context):
