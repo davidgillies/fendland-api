@@ -5,7 +5,7 @@ from .models import Volunteer, Appointment
 from .forms import VolunteerForm
 
 # XML_FILE = 'U:/Data/forms_api/forms_api/xmlfiles/Ships.xml'
-XML_FILE = 'U:/Data/forms_api/forms_api/xmlfiles/Fenland.xml'
+XML_FILE = 'xmlfiles/Fenland.xml'
 
 DATABASE = 'mysql+pymysql://david:david@localhost:3306/mydb'
 # DATABASE = 'sqlite:///U:\\Data\\fenland_api\\db.sqlite3'
