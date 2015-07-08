@@ -1,0 +1,74 @@
+{% extends "admin/base.html" %}
+{% block extrahead %}
+  <!--link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"-->
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+{% endblock %}
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+    {% block logged_in %}
+        <ul class="loggedlist" id="logged_in">
+            <li class="success" id='user_name'></li>
+        </ul>
+ 
+    {% endblock logged_in %}
+
+{% block nav-global %}{% endblock %}
+    {% block footer %}<div id="footer">
+  <script>
+    var ws = new WebSocket('ws://localhost:8080/ws');
+    var $message = $('#user_name');
+    $('#logged_in').hide();
+
+
+    ws.onopen = function(){
+      //$message.attr("class", 'label label-success');
+      //$message.text('open');
+    };
+    ws.onmessage = function(ev){
+      //$message.attr("class", 'label label-info');
+      $('#logged_in').hide();
+      $('#logged_in').attr("class", 'messagelist');
+      $('#logged_in').fadeIn("slow");
+      var json = JSON.parse(ev.data);
+      if(json.status == 'in') {  
+      $message.text(json.value + ' has logged in');
+      $message.attr("class", 'success');
+      }
+      else {
+      $message.text(json.value + ' has logged out');
+
+      }
+        
+
+      //var json = JSON.parse(ev.data);
+      //$('#' + json.id).hide();
+      //$('#' + json.id).fadeIn("slow");
+      //$('#' + json.id).text(json.value);
+
+      //var $rowid = $('#row' + json.id);
+      //if(json.value > 500){
+      // $rowid.attr("class", "error");
+      //}
+      //else if(json.value > 200){
+      //  $rowid.attr("class", "warning");
+      //}
+      //else{
+      //  $rowid.attr("class", "");
+      //}
+    };
+    ws.onclose = function(ev){
+      //$message.attr("class", 'label label-important');
+      //$message.text('closed');
+    };
+    ws.onerror = function(ev){
+      //$message.attr("class", 'label label-warning');
+      //$message.text('error occurred');
+    };
+
+  </script>
+</div>{% endblock %}
