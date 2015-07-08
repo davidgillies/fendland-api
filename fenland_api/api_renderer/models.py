@@ -1,6 +1,20 @@
 from datetime import date
 from django.db import models
+from django.contrib.auth.signals import user_logged_in, user_logged_out
+from django.dispatch import receiver
+import requests
 
+
+@receiver(user_logged_in)
+def do_stuff(sender, user, request, **kwargs):
+    requests.get('http://localhost:8080/t_api?value=%s&status=in' % user.username)
+    # os.system('python hit_server.py %s' % user.username)
+    print user.username
+
+@receiver(user_logged_out)
+def do_stuff2(sender, user, request, **kwargs):
+    requests.get('http://localhost:8080/t_api?value=%s&status=out' % user.username)
+    print user.username
 
 class Surgery(models.Model):
     id = models.AutoField(primary_key=True)  # AutoField?
