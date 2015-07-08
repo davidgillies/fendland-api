@@ -117,12 +117,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
 )
 
-TEMPLATE_LOADERS = (
-    ('django.template.loaders.cached.Loader', (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )),
-)
+#TEMPLATE_LOADERS = (
+#    ('django.template.loaders.cached.Loader', (
+#        'django.template.loaders.filesystem.Loader',
+#        'django.template.loaders.app_directories.Loader',
+#    )),
+#)
 
 STATIC_ROOT = 'U:/Data/fenland_api/fendland-api/static'
 

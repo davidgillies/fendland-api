@@ -7,6 +7,7 @@ from api_renderer.models import Surgery, Volunteer, Status, Appointment, AuditLo
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 import arrow
+import requests
 
 admin.site.index_title = 'Fenland Database'
 
@@ -105,6 +106,7 @@ class VolunteerAdmin(ImportExportModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.modified_by = request.user.get_username()
         obj.modified = str(arrow.now()).replace('+01:00', '')
+        requests.get('http://localhost:8080/model_update?user=%s&model=volunteer&name=%s' % (request.user.get_username(), obj.forenames + ' ' + obj.surname))
         obj.save()
 
 admin.site.register(Volunteer, VolunteerAdmin)

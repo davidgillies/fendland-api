@@ -54,6 +54,24 @@ class ApiHandler(web.RequestHandler):
     @web.asynchronous
     def post(self):
         pass
+    
+class ModelHandler(web.RequestHandler):
+
+    @web.asynchronous
+    def get(self, *args):
+        self.finish()
+        model = self.get_argument("model")
+        user = self.get_argument("user")
+        name = self.get_argument("name")
+        data = {"model" : model, "user": user, "name": name}
+        data = json.dumps(data)
+        for c in cl:
+            c.write_message(data)
+            
+
+    @web.asynchronous
+    def post(self):
+        pass
 
  
 class NoCacheStaticHandler(tornado.web.StaticFileHandler):
@@ -79,6 +97,7 @@ def main():
      # (r'/static/(.*)', web.StaticFileHandler, {'path': 'U:/Data/fenland_api/fendland-api/static'}),
       (r'/ws', SocketHandler),
       (r'/t_api', ApiHandler),
+      (r'/model_update', ModelHandler),
     #  ('.*', tornado.web.FallbackHandler, dict(fallback=wsgi_app)),
       ])
   server = tornado.httpserver.HTTPServer(tornado_app)

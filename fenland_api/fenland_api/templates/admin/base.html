@@ -110,10 +110,14 @@
       $message.text(json.value + ' has logged in');
       $message.attr("class", 'success');
       }
-      else {
+      else if(json.status == 'out') {
       $message.text(json.value + ' has logged out');
 
       }
+      else {
+        $message.text(json.user + ' has changed ' + json.model + ' ' + json.name);
+        }
+
         
 
       //var json = JSON.parse(ev.data);
@@ -140,6 +144,8 @@
       //$message.attr("class", 'label label-warning');
       //$message.text('error occurred');
     };
+
+
 
   </script>
 {% endblock %}
