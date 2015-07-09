@@ -106,19 +106,22 @@
       $('#logged_in').attr("class", 'messagelist');
       $('#logged_in').fadeIn("slow");
       var json = JSON.parse(ev.data);
-      if(json.status == 'in') {  
-      $message.text(json.value + ' has logged in');
-      $message.attr("class", 'success');
-      }
-      else if(json.status == 'out') {
-      $message.text(json.value + ' has logged out');
+      switch(json.type) {
+      case "user_update":
+          if(json.status == 'in') {  
+              $message.text(json.value + ' has logged in');
+              $message.attr("class", 'success');
+          }
+          else if(json.status == 'out') {
+              $message.text(json.value + ' has logged out');
 
-      }
-      else {
-        $message.text(json.user + ' has changed ' + json.model + ' ' + json.name);
+          }
+        break;
+      case "volunteer_update":
+         $message.text(json.user + ' has changed ' + json.model + ' ' + json.name);
+         break;
+
         }
-
-        
 
       //var json = JSON.parse(ev.data);
       //$('#' + json.id).hide();

@@ -45,7 +45,7 @@ class ApiHandler(web.RequestHandler):
         self.finish()
         status = self.get_argument("status")
         value = self.get_argument("value")
-        data = {"value" : value, "status": status}
+        data = {"value" : value, "status": status, 'type': 'user_update'}
         data = json.dumps(data)
         for c in cl:
             c.write_message(data)
@@ -63,7 +63,7 @@ class ModelHandler(web.RequestHandler):
         model = self.get_argument("model")
         user = self.get_argument("user")
         name = self.get_argument("name")
-        data = {"model" : model, "user": user, "name": name}
+        data = {"model" : model, "user": user, "name": name, 'type': 'volunteer_update'}
         data = json.dumps(data)
         for c in cl:
             c.write_message(data)
