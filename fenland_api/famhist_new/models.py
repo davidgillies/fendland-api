@@ -65,3 +65,11 @@ class FamHistQuestionnaire(models.Model):
     FH36_Sibling10Diabetic = models.IntegerField(blank=True, null=True, choices=boolean_choices)
     FH37_Sibling10Age = models.IntegerField(blank=True, null=True, choices=age_choices)
     FH38_FamilyHistoryEntryComments = models.TextField(blank=True, null=True)
+    #user = models.CharField(max_length=20, blank=True, null=True)
+    #finished = models.BooleanField(default=False)
+
+        
+    class Meta:
+        verbose_name = 'Family History Questionnaire'
+        verbose_name_plural = 'Family History Questionnaires'
+
