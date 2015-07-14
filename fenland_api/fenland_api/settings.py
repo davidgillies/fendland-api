@@ -53,6 +53,7 @@ INSTALLED_APPS = (
     'import_export',
     'adminplus',
     'explorer',
+    'famhist_new',
 )
 
 ADMIN_TOOLS_INDEX_DASHBOARD = 'api_renderer.dashboard.CustomIndexDashboard'
@@ -100,11 +101,19 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
     },
+    'db4': {
+        'ENGINE': 'django_mysql_fix.backends.mysql',
+        'NAME': 'famhist_new',
+        'USER': 'david',
+        'PASSWORD': 'david',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
 }
 
 EXPLORER_CONNECTION_NAME = 'db2'
 
-DATABASE_ROUTERS = ['api_renderer.routers.PlayRouter', 'questionnaire.routers.PlayRouter', ]
+DATABASE_ROUTERS = ['api_renderer.routers.PlayRouter', 'questionnaire.routers.PlayRouter', 'famhist_new.routers.PlayRouter',]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),

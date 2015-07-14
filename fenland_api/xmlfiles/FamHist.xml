@@ -1,0 +1,2163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epi:questionnaire ID="FamHist" lang="eng" css="questionnaire.css" xsi:schemaLocation="http://www.mrc-epid.cam.ac.uk/schema/common/epi XSD/questionnaireSchema_009.xsd" xmlns:epi="http://www.mrc-epid.cam.ac.uk/schema/common/epi" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<epi:metadata>
+		<dc:date/>
+		<dc:description/>
+		<dc:identifier/>
+		<dc:publisher/>
+		<dc:title/>
+		<dc:type/>
+		<epi:version/>
+	</epi:metadata>
+	<epi:author/>
+	<epi:studyName>Fenland</epi:studyName>
+	<epi:versionNumber>2</epi:versionNumber>
+	<epi:versionDate>5/12/2005</epi:versionDate>
+	<epi:title>Family History Questionnare</epi:title>
+	<epi:info cssClass="questionnaire_textbody">Please complete the questionnaire for all family members to indicate if they have/had diabetes. For those family members who have/had diabetes please indicate their approximate age at diagnosis.</epi:info>
+	<epi:info cssClass="questionnaire_textbody">Please do not include any adopted family members or step-brothers/sisters/parents. </epi:info>
+	<epi:info cssClass="questionnaire_textbody">Please do not include gestational diabetes.</epi:info>
+	<epi:info cssClass="questionnaire_textbody">Please try to answer every question.</epi:info>
+	<epi:info cssClass="questionnaire_footer">Your answers will be treated as strictly confidential and will be used only for medical research.</epi:info>
+	<epi:section position="0">
+		<epi:title>Introduction</epi:title>
+		<epi:info cssClass="section_header textalign_center">Family History Questionnare</epi:info>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="section_textbody">Please complete the questionnaire for all family members to indicate if they have/had diabetes. For those family members who have/had diabetes please indicate their approximate age at diagnosis.</epi:info>
+		<epi:info cssClass="section_textbody">Please do &lt;b&gt;not&lt;/b&gt; include any adopted family members or step-brothers/sisters/parents. </epi:info>
+		<epi:info cssClass="section_textbody">Please do &lt;b&gt;not&lt;/b&gt; include gestational diabetes.</epi:info>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="section_textbody">Please try to answer every question.</epi:info>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="section_footer textalign_center">Your answers will be treated as strictly confidential and will be used only for medical research.</epi:info>
+	</epi:section>
+	<epi:section ID="A" position="1">
+		<epi:title/>
+		<epi:questionGroup ID="1" position="1">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_textbody">How many brothers and sisters do or did you have?</epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:textNode position="1">
+				<epi:info cssClass="textnode_textbody">Brothers:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q1" position="2">
+				<epi:variable ID="2253">
+					<epi:varName>FH03_BrotherTotal</epi:varName>
+					<epi:dataType>
+						<epi:integer/>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>5</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer. Enter 0 if you don't have any brothers.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+					<epi:rule name="CheckDataType">
+						<epi:parameter type="string" use="ErrorResponse">Please provide a round number</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="3">
+				<epi:info cssClass="textnode_textbody">Sisters:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q2" position="4">
+				<epi:variable ID="2254">
+					<epi:varName>FH02_SisterTotal</epi:varName>
+					<epi:dataType>
+						<epi:integer/>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>5</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer. Enter 0 if you don't have any sisters.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+					<epi:rule name="CheckDataType">
+						<epi:parameter type="string" use="ErrorResponse">Please provide a round number</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+	</epi:section>
+	<epi:section ID="B" position="2">
+		<epi:title/>
+		<epi:info cssClass="section_textbody">Please complete the table below for all family members to indicate if they have/had diabetes. For those family members who have/had diabetes please indicate their approximate age at diagnosis.</epi:info>
+		<epi:questionGroup ID="2" position="1">
+			<epi:title/>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+				<epi:rhData>bordered</epi:rhData>
+				<epi:rhData>alt_color</epi:rhData>
+				<epi:rhData>freeze_headers</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:textNode position="1">
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>header</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>rowspan</epi:rhType>
+					<epi:rhData>2</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>colspan</epi:rhType>
+					<epi:rhData>2</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="2">
+				<epi:info cssClass="textnode_textbody">Diabetes present</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>header</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>rowspan</epi:rhType>
+					<epi:rhData>2</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="3">
+				<epi:info cssClass="textnode_textbody">Approximate age at diagnosis (in years)</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>header</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>colspan</epi:rhType>
+					<epi:rhData>9</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="4">
+				<epi:info cssClass="textnode_textbody">&gt;10</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+					<epi:rhData>minwidth_60</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="5">
+				<epi:info cssClass="textnode_textbody">10 - 19</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="6">
+				<epi:info cssClass="textnode_textbody">20 - 29</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="7">
+				<epi:info cssClass="textnode_textbody">30 - 39</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="8">
+				<epi:info cssClass="textnode_textbody">40 - 49</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="9">
+				<epi:info cssClass="textnode_textbody">50 - 59</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="10">
+				<epi:info cssClass="textnode_textbody">60 - 69</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="11">
+				<epi:info cssClass="textnode_textbody">70+</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+					<epi:rhData>minwidth_60</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="12">
+				<epi:info cssClass="textnode_textbody">Not known</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+					<epi:rhData>fixheader</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="13">
+				<epi:info cssClass="textnode_textbody">Mother</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>colspan</epi:rhType>
+					<epi:rhData>2</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q3" position="14">
+				<epi:variable ID="2252">
+					<epi:varName>FH04_MotherDiabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q4">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q4">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q4">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for diabetes present for Mother.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q4" position="15">
+				<epi:variable ID="2251">
+					<epi:varName>FH05_MotherAge</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH04_MotherDiabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Mother.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="16">
+				<epi:info cssClass="textnode_textbody">Father</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>colspan</epi:rhType>
+					<epi:rhData>2</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q5" position="17">
+				<epi:variable ID="2250">
+					<epi:varName>FH06_FatherDiabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q6">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q6">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q6">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for diabetes present for Father.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q6" position="17">
+				<epi:variable ID="2249">
+					<epi:varName>FH07_FatherAge</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH06_FatherDiabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Father.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="18">
+				<epi:info cssClass="textnode_textbody">Sibling 1:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>leftborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q7" position="19">
+				<epi:variable ID="2239">
+					<epi:varName>FH08_Sibling01Type</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" disable="Q8 Q9">
+					<epi:optionText/>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" enable="Q8">
+					<epi:optionText>Sister</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" enable="Q8">
+					<epi:optionText>Brother</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="4" enable="Q8">
+					<epi:optionText>Half sister</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="5" enable="Q8">
+					<epi:optionText>Half brother</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>rightborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+			<epi:question ID="Q8" position="20">
+				<epi:variable ID="2247">
+					<epi:varName>FH09_Sibling01Diabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q9">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q9">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q9">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH08_Sibling01Type</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for diabetes present for Sibling 1.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q9" position="21">
+				<epi:variable ID="2260">
+					<epi:varName>FH10_Sibling01Age</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH09_Sibling01Diabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Sibling 1.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			
+			
+			
+			<epi:textNode position="22">
+				<epi:info cssClass="textnode_textbody">Sibling 2:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>leftborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q10" position="23">
+				<epi:variable ID="2245">
+					<epi:varName>FH11_Sibling02Type</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" disable="Q11 Q12">
+					<epi:optionText/>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" enable="Q11">
+					<epi:optionText>Sister</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" enable="Q11">
+					<epi:optionText>Brother</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="4" enable="Q11">
+					<epi:optionText>Half sister</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="5" enable="Q11">
+					<epi:optionText>Half brother</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>rightborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+			<epi:question ID="Q11" position="24">
+				<epi:variable ID="1638">
+					<epi:varName>FH12_Sibling02Diabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q12">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q12">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q12">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH11_Sibling02Type</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for diabetes present for Sibling 2.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q12" position="25">
+				<epi:variable ID="2244">
+					<epi:varName>FH13_Sibling02Age</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH12_Sibling02Diabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Sibling 2.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			
+			
+			<epi:textNode position="26">
+				<epi:info cssClass="textnode_textbody">Sibling 3:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>leftborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q13" position="27">
+				<epi:variable ID="1642">
+					<epi:varName>FH14_Sibling03Type</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" disable="Q14 Q15">
+					<epi:optionText/>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" enable="Q14">
+					<epi:optionText>Sister</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" enable="Q14">
+					<epi:optionText>Brother</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="4" enable="Q14">
+					<epi:optionText>Half sister</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="5" enable="Q14">
+					<epi:optionText>Half brother</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>rightborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+			<epi:question ID="Q14" position="28">
+				<epi:variable ID="2243">
+					<epi:varName>FH15_Sibling03Diabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q15">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q15">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q15">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH14_Sibling03Type</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for diabetes present for Sibling 3.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q15" position="29">
+				<epi:variable ID="2242">
+					<epi:varName>FH16_Sibling03Age</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH15_Sibling03Diabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Sibling 3.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			
+			
+			<epi:textNode position="30">
+				<epi:info cssClass="textnode_textbody">Sibling 4:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>leftborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q16" position="31">
+				<epi:variable ID="2241">
+					<epi:varName>FH17_Sibling04Type</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" disable="Q17 Q18">
+					<epi:optionText/>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" enable="Q17">
+					<epi:optionText>Sister</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" enable="Q17">
+					<epi:optionText>Brother</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="4" enable="Q17">
+					<epi:optionText>Half sister</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="5" enable="Q17">
+					<epi:optionText>Half brother</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>rightborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+			<epi:question ID="Q17" position="32">
+				<epi:variable ID="2240">
+					<epi:varName>FH18_Sibling04Diabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q18">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q18">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q18">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH17_Sibling04Type</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for diabetes present for Sibling 4.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q18" position="33">
+				<epi:variable ID="1628">
+					<epi:varName>FH19_Sibling04Age</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH18_Sibling04Diabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Sibling 4.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			
+			
+			<epi:textNode position="34">
+				<epi:info cssClass="textnode_textbody">Sibling 5:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>leftborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q19" position="35">
+				<epi:variable ID="1630">
+					<epi:varName>FH20_Sibling05Type</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" disable="Q20 Q21">
+					<epi:optionText/>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" enable="Q20">
+					<epi:optionText>Sister</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" enable="Q20">
+					<epi:optionText>Brother</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="4" enable="Q20">
+					<epi:optionText>Half sister</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="5" enable="Q20">
+					<epi:optionText>Half brother</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>rightborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+			<epi:question ID="Q20" position="36">
+				<epi:variable ID="2248">
+					<epi:varName>FH21_Sibling05Diabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q21">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q21">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q21">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH20_Sibling05Type</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for diabetes present for Sibling 5.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q21" position="37">
+				<epi:variable ID="2259">
+					<epi:varName>FH22_Sibling05Age</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH21_Sibling05Diabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Sibling 5.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			
+			
+			<epi:textNode position="38">
+				<epi:info cssClass="textnode_textbody">Sibling 6:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>leftborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q22" position="39">
+				<epi:variable ID="2258">
+					<epi:varName>FH23_Sibling06Type</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" disable="Q23 Q24">
+					<epi:optionText/>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" enable="Q23">
+					<epi:optionText>Sister</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" enable="Q23">
+					<epi:optionText>Brother</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="4" enable="Q23">
+					<epi:optionText>Half sister</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="5" enable="Q23">
+					<epi:optionText>Half brother</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>rightborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+			<epi:question ID="Q23" position="40">
+				<epi:variable ID="2257">
+					<epi:varName>FH24_Sibling06Diabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q24">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q24">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q24">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH23_Sibling06Type</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for diabetes present for Sibling 6.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q24" position="41">
+				<epi:variable ID="2256">
+					<epi:varName>FH25_Sibling06Age</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH24_Sibling06Diabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Sibling 6.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			
+			
+			<epi:textNode position="42">
+				<epi:info cssClass="textnode_textbody">Sibling 7:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>leftborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q25" position="43">
+				<epi:variable ID="2255">
+					<epi:varName>FH26_Sibling07Type</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" disable="Q26 Q27">
+					<epi:optionText/>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" enable="Q26">
+					<epi:optionText>Sister</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" enable="Q26">
+					<epi:optionText>Brother</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="4" enable="Q26">
+					<epi:optionText>Half sister</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="5" enable="Q26">
+					<epi:optionText>Half brother</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>rightborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+			<epi:question ID="Q26" position="44">
+				<epi:variable ID="1631">
+					<epi:varName>FH27_Sibling07Diabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q27">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q27">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q27">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH26_Sibling07Type</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for for diabetes present for Sibling 7.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q27" position="45">
+				<epi:variable ID="2261">
+					<epi:varName>FH28_Sibling07Age</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH27_Sibling07Diabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Sibling 7.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			
+			
+			
+			
+			
+			
+			<epi:textNode position="46">
+				<epi:info cssClass="textnode_textbody">Sibling 8:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>leftborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q28" position="47">
+				<epi:variable ID="1637">
+					<epi:varName>FH29_Sibling08Type</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" disable="Q29 Q30">
+					<epi:optionText/>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" enable="Q29">
+					<epi:optionText>Sister</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" enable="Q29">
+					<epi:optionText>Brother</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="4" enable="Q29">
+					<epi:optionText>Half sister</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="5" enable="Q29">
+					<epi:optionText>Half brother</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>rightborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+			<epi:question ID="Q29" position="48">
+				<epi:variable ID="1629">
+					<epi:varName>FH30_Sibling08Diabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q30">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q30">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q30">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH29_Sibling08Type</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for for diabetes present for Sibling 7.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q30" position="49">
+				<epi:variable ID="1639">
+					<epi:varName>FH31_Sibling08Age</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH30_Sibling08Diabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Sibling 7.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			
+			<epi:textNode position="50">
+				<epi:info cssClass="textnode_textbody">Sibling 9:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>leftborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q31" position="51">
+				<epi:variable ID="1627">
+					<epi:varName>FH32_Sibling09Type</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" disable="Q32 Q33">
+					<epi:optionText/>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" enable="Q32">
+					<epi:optionText>Sister</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" enable="Q32">
+					<epi:optionText>Brother</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="4" enable="Q32">
+					<epi:optionText>Half sister</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="5" enable="Q32">
+					<epi:optionText>Half brother</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>rightborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+			<epi:question ID="Q32" position="52">
+				<epi:variable ID="1626">
+					<epi:varName>FH33_Sibling09Diabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q33">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q33">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q33">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH32_Sibling09Type</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for for diabetes present for Sibling 7.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q33" position="53">
+				<epi:variable ID="2265">
+					<epi:varName>FH34_Sibling09Age</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH33_Sibling09Diabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Sibling 7.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			
+			<epi:textNode position="54">
+				<epi:info cssClass="textnode_textbody">Sibling 10:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>leftborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q34" position="55">
+				<epi:variable ID="2264">
+					<epi:varName>FH35_Sibling10Type</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" disable="Q35 Q36">
+					<epi:optionText/>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" enable="Q35">
+					<epi:optionText>Sister</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" enable="Q35">
+					<epi:optionText>Brother</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="4" enable="Q35">
+					<epi:optionText>Half sister</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="5" enable="Q35">
+					<epi:optionText>Half brother</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>topborder</epi:rhData>
+					<epi:rhData>rightborder</epi:rhData>
+					<epi:rhData>bottomborder</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+			<epi:question ID="Q35" position="56">
+				<epi:variable ID="2263">
+					<epi:varName>FH36_Sibling10Diabetic</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1" enable="Q36">
+					<epi:optionText>Yes</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="2" disable="Q36">
+					<epi:optionText>No</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="3" disable="Q36">
+					<epi:optionText>Not known</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH35_Sibling10Type</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for for diabetes present for Sibling 7.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q36" position="57">
+				<epi:variable ID="2262">
+					<epi:varName>FH37_Sibling10Age</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+				<epi:option position="9">
+					<epi:optionValue>9</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>conditional</epi:rhType>
+					<epi:rhData>initialdisable</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="AnsweredIfOtherAnswered">
+						<epi:parameter type="variable" use="Input">FH36_Sibling10Diabetic</epi:parameter>
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer for approximate age at diagnosis for Sibling 7.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			
+			
+		</epi:questionGroup>
+	</epi:section>
+	<epi:section position="3">
+		<epi:title>Comments</epi:title>
+		<epi:questionGroup ID="5" position="1">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_textbody">Would you like to add any comments?</epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:question ID="Q40" position="1">
+				<epi:variable ID="1641">
+					<epi:varName>FH38_FamilyHistoryEntryComments</epi:varName>
+					<epi:dataType>
+						<epi:string>
+							<epi:maxLength>500</epi:maxLength>
+						</epi:string>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>multiline</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>rows</epi:rhType>
+					<epi:rhData>5</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>cols</epi:rhType>
+					<epi:rhData>100</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="CheckLength">
+						<epi:parameter type="string" use="ErrorResponse">Your answer should be less than 500 characters long</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+	</epi:section>
+	<epi:section position="4">
+		<epi:title/>
+		<epi:info cssClass="textbody">Thank you. You have now completed the questionnaire.</epi:info>
+	</epi:section>
+</epi:questionnaire>
