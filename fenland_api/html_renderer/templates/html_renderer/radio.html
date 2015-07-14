@@ -1,7 +1,11 @@
-{# placeholder code for the cams radio buttons as the template needs fixes to get it to work. #}
-
- {% for k, v in options.items %}
-<td id="{{question.var_id}}" class="textalign_center bordered ">
-<input type="radio" id="{{v.1}}" name="{{var_name}}" value="{{k}}" {% if k == obj_id %} checked {% endif %}>
+{% for item in question.template_args.options %}
+{% if not forloop.first %}
+<td class="textalign_center bordered ">
+{% endif %}
+<input type="radio" id="{{question.variable}}_{{forloop.counter}}" name="{{question.variable}}" value="{{item.value}}" {% if item.value|add:"0" == question.var_value|add:"0" %} checked {% endif %}>
+{% if not forloop.last %}
 </td>
+{% endif %}
 {% endfor %}
+
+ 

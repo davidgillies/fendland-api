@@ -616,9 +616,6 @@ border-style: solid;
 border-color: black;
 }*/
 /*use bigger radio buttons instead of the default ones*/
-input[type=radio] {
-display: none;
-}
 #id1197_1 {
 display:none;
 }
