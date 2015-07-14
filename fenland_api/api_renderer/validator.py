@@ -38,7 +38,7 @@ class Validator(object):
         return self.get_type_test(question.data_type['type'])(answer)
 
     def get_type_test(self, the_type):
-        return {'string': self.check_str, 'date': self.check_date, 'datetime': self.check_time}[the_type]
+        return {'integer': self.check_int, 'string': self.check_str, 'date': self.check_date, 'datetime': self.check_time}[the_type]
 
     def check_date(self, date_value):
         masks = ['%Y%m%d', '%Y-%m-%d', '%d%m%Y', '%m%d%Y']

@@ -155,11 +155,14 @@ class Question(MethodMixin):
         self.set_model()
 
     def set_options(self, item):
-        if item.optionText.text == 'dynamic':
-            self.template_args['options'] = self.get_options(item.optionValue.text)
-            self.dynamic = True
-        else:
-            self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
+        try:
+            if item.optionText.text == 'dynamic':
+                self.template_args['options'] = self.get_options(item.optionValue.text)
+                self.dynamic = True
+            else:
+                self.template_args['options'].append({'text': item.optionText.text, 'value': item.optionValue.text})
+        except:
+            self.template_args['options'].append({'text': item.optionValue.text, 'value': item.optionValue.text})
 
     def get_options(self, item):
         pass
@@ -199,6 +202,7 @@ class QuestionGroup(MethodMixin):
         self.app_object = app_object
         self.section = section_object
         self.question_group_objects = []
+        self.info = []
         self.title = question_group_object.title
         self.position = question_group_object.attrib['position']
         self.rendering_hints = {}
@@ -211,8 +215,11 @@ class QuestionGroup(MethodMixin):
     def set_info(self, item):
         qg_info = {}
         qg_info['text'] = item.text
-        qg_info['cssClass'] = item.attrib['cssClass']
-        self.question_group_objects.append(qg_info)
+        try:
+            qg_info['cssClass'] = item.attrib['cssClass']
+        except:
+            qg_info['cssClass'] = ''
+        self.info.append(qg_info)
 
     def set_text_node(self, item):
         text_node = Bunch()
@@ -222,7 +229,10 @@ class QuestionGroup(MethodMixin):
         except:
             text_node['id'] = None
         text_node['position'] = item.attrib['position']
-        text_node['text'] = item.info.text
+        try:
+            text_node['text'] = item.info.text
+        except:
+            text_node['text'] = ''
         for rh in item.renderingHint:
             key = rh.rhType.text
             text_node.rendering_hints[key] = ''
@@ -231,7 +241,7 @@ class QuestionGroup(MethodMixin):
             text_node.rendering_hints[key] = text_node.rendering_hints[key].strip()
         self.question_group_objects.append(text_node)
 
-    @logger
+    # @logger
     def set_question(self, item):
         question = Question(item, self.app_object, self.section)
         self.question_group_objects.append(question)
@@ -293,7 +303,6 @@ class Section(MethodMixin):
             data_dict = {}
             for q in qg.question_group_objects:
                 if isinstance(q, Question):
-                    print q.model
                     if 'multi' in q.rendering_hints.keys() or multi is True:
                         if multi is False:
                             multi = True
@@ -474,7 +483,12 @@ class DataPrep(object):
     def data_prep(self):
         if 'errors' in self.data.keys():
             self.section.errors = self.data['errors']
-
+#        for qg in self.section.section_objects:
+#            for q in qg.question_group_objects:
+#                print q
+#                print type(q)
+#                if isinstance(q, self.Question):
+#                    print q.rendering_hints
         try:
             for qg in self.section.section_objects:
                 multi_lines = []
@@ -514,12 +528,10 @@ class DataPrep(object):
                     qg.question_group_objects[ml[1]:ml[1]+(len(ml[0])/len(multi_data))] = ml[0]
             return self.section
         except:
-            return self.section
+           return self.section
 
     def get_multi_data(self, table, id):
         pass
 
     def add_question_value(self, q):
         q.var_value = self.data[q.variable]
-        # self.section.api[q.variable] = q.var_value
-        # not using thw api variable at present
