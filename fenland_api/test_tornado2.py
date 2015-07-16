@@ -28,6 +28,7 @@ cl = []
 
 class SocketHandler(websocket.WebSocketHandler):
     def check_origin(self, origin):
+        print origin
         return True
 
     def open(self):

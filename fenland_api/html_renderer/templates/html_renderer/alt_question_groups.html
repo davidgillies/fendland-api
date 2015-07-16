@@ -1,0 +1,12 @@
+
+
+
+    {% for question_group in section.section_objects %}
+        {{question_group.title}}<br />
+             {% for i in question_group.info %}
+                {% if i.cssClass == 'new_line' %}<br />
+                    {% else %}<div class="{{i.cssClass}}">{{i.text}}</div>    
+                {% endif %}
+            {% endfor %}
+        {% include 'html_renderer/alt_question_group.html'%}
+    {% endfor %}

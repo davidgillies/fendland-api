@@ -3,6 +3,6 @@ from .models import FamHistQuestionnaire
 
 
 class FamHistQuestionnaireAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('user', 'finished')
 
 admin.site.register(FamHistQuestionnaire, FamHistQuestionnaireAdmin)

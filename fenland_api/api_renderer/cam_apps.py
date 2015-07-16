@@ -143,10 +143,21 @@ class Question(MethodMixin):
                 'multiline': 'html_renderer/textarea.html',
                 'range': 'html_renderer/range.html',
                 'datalist': 'html_renderer/datalist.html',
-                'search': 'html_renderer/search.html'}[selection]
+                'search': 'html_renderer/search.html',
+                'altradio': 'html_renderer/alt_radio.html',
+                'altdropdown': 'html_renderer/alt_select.html',
+                'alttext': 'html_renderer/alt_text.html',
+                'altmultiline': 'html_renderer/alt_textarea.html',
+                'altrange': 'html_renderer/alt_range.html',
+                'altdatalist': 'html_renderer/alt_datalist.html',
+                'altsearch': 'html_renderer/alt_search.html'}[selection]
 
     def set_template(self):
-        self.template = self.get_template(self.rendering_hints['qtype'])
+        if local_settings.QUESTIONNAIRE:
+            qtype = 'alt' + self.rendering_hints['qtype']
+            self.template = self.get_template(qtype)
+        else:
+            self.template = self.get_template(self.rendering_hints['qtype'])
 
     def build_question(self, question_object):
         for item in question_object.getchildren():

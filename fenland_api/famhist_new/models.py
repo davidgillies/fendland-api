@@ -3,7 +3,6 @@ from django.db import models
 
 class FamHistQuestionnaire(models.Model):
     sibling_choices = (
-        (-1, 'None'),
         (1, 'Sister'),
         (2, 'Brother'),
         (3, 'Half sister'),
@@ -22,7 +21,6 @@ class FamHistQuestionnaire(models.Model):
         (9, 'Not known'),    
     )
     boolean_choices = (
-        (-1, 'Please select...'),   
         (2, 'Yes'),
         (3, 'No'),
         (4, 'Not known'),  
@@ -65,11 +63,10 @@ class FamHistQuestionnaire(models.Model):
     FH36_Sibling10Diabetic = models.IntegerField(blank=True, null=True, choices=boolean_choices)
     FH37_Sibling10Age = models.IntegerField(blank=True, null=True, choices=age_choices)
     FH38_FamilyHistoryEntryComments = models.TextField(blank=True, null=True)
-    #user = models.CharField(max_length=20, blank=True, null=True)
-    #finished = models.BooleanField(default=False)
+    user = models.CharField(max_length=20, blank=True, null=True)
+    finished = models.BooleanField(default=False)
 
-        
+
     class Meta:
         verbose_name = 'Family History Questionnaire'
         verbose_name_plural = 'Family History Questionnaires'
-

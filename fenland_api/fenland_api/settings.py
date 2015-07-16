@@ -111,7 +111,7 @@ DATABASES = {
     },
 }
 
-EXPLORER_CONNECTION_NAME = 'db2'
+EXPLORER_CONNECTION_NAME = 'db3'
 
 DATABASE_ROUTERS = ['api_renderer.routers.PlayRouter', 'questionnaire.routers.PlayRouter', 'famhist_new.routers.PlayRouter',]
 

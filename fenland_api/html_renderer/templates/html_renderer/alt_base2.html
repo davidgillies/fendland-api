@@ -1,3 +1,4 @@
+{% load getattribute %}
  {% if section.testing %} 
 <html>
 <head>
@@ -9,7 +10,7 @@
 <body>
 
  {% endif %}
-
+{{ section.app_object.title }}
 
 <div class="section">
     <form style="" onscroll="moveScroll();" id="questionnaire_form" method="POST" >
@@ -22,7 +23,7 @@
                     {% else %}<div class="{{i.cssClass}}"> {{i.text | safe}}</div>    
                 {% endif %}
             {% endfor %}
-            {% include 'html_renderer/question_groups.html' %}
+            {% include 'html_renderer/alt_question_groups.html' %}
             {% if section.testing %} <input class="navigation_button" type="submit" value="submit" /> {% endif %}
 </form>
 </div>    

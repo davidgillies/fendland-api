@@ -12,7 +12,7 @@
 
 
 <div class="section">
-    <form style="" onscroll="moveScroll();" id="questionnaire_form" method="POST" >
+    <form style="height: 212px;" onscroll="moveScroll();" id="questionnaire_form" method="POST" >
         <input type="hidden" name="id" value="{{data_id}}" />
         <div class="section_title">
             {{section.title}}
@@ -22,7 +22,7 @@
                     {% else %}<div class="{{i.cssClass}}"> {{i.text | safe}}</div>    
                 {% endif %}
             {% endfor %}
-            {% include 'html_renderer/question_groups.html' %}
+            {% include 'html_renderer/alt_question_groups.html' %}
             {% if section.testing %} <input class="navigation_button" type="submit" value="submit" /> {% endif %}
 </form>
 </div>    
