@@ -35,7 +35,8 @@ class MethodMixin(object):
                 '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}textNode': self.set_text_node,
                 '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}question': self.set_question,
                 '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}questionGroup':self.set_question_group,
-                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}variable': self.set_variable
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}variable': self.set_variable,
+                '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}rtConditions': self.set_rtConditions,
                 }[tag_type]
 
     def __str__(self):
@@ -43,6 +44,9 @@ class MethodMixin(object):
 
     def __unicode__(self):
         return "%s: %s" % (self.title, self.position)
+        
+    def set_rtConditions(self, item):
+        pass
 
     def set_title(self, item):
         pass
@@ -244,12 +248,15 @@ class QuestionGroup(MethodMixin):
             text_node['text'] = item.info.text
         except:
             text_node['text'] = ''
-        for rh in item.renderingHint:
-            key = rh.rhType.text
-            text_node.rendering_hints[key] = ''
-            for rhdata in rh.rhData:
-                text_node.rendering_hints[key] = text_node.rendering_hints[key] + ' ' + str(rhdata)
-            text_node.rendering_hints[key] = text_node.rendering_hints[key].strip()
+        try:
+            for rh in item.renderingHint:
+                key = rh.rhType.text
+                text_node.rendering_hints[key] = ''
+                for rhdata in rh.rhData:
+                    text_node.rendering_hints[key] = text_node.rendering_hints[key] + ' ' + str(rhdata)
+                text_node.rendering_hints[key] = text_node.rendering_hints[key].strip()
+        except:
+            pass
         self.question_group_objects.append(text_node)
 
     # @logger

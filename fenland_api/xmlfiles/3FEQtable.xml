@@ -1,0 +1,1194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epi:questionnaire ID="3FEQtable" lang="eng" css="questionnaire.css" xsi:schemaLocation="http://www.mrc-epid.cam.ac.uk/schema/common/epi XSD/questionnaireSchema_009.xsd" xmlns:epi="http://www.mrc-epid.cam.ac.uk/schema/common/epi" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<epi:metadata>
+		<dc:date/>
+		<dc:description/>
+		<dc:identifier/>
+		<dc:publisher/>
+		<dc:title/>
+		<dc:type/>
+		<epi:version/>
+	</epi:metadata>
+	<epi:author></epi:author>
+	<epi:studyName>Fenland</epi:studyName>
+	<epi:versionNumber>1</epi:versionNumber>
+	<epi:versionDate>April 2011</epi:versionDate>
+	<epi:title>The Three-Factor Eating Questionnaire - R18</epi:title>
+	<epi:info cssClass="questionnaire_textbody">Please tick one option only that applies best to you for all the questions </epi:info>
+	<epi:info cssClass="questionnaire_textbody">Please try to answer every question.</epi:info>
+	<epi:info cssClass="questionnaire_footer">Your answers will be treated as strictly confidential and will be used only for medical research.</epi:info>
+	<epi:section position="0">
+		<epi:title>Introduction</epi:title>
+		<epi:info cssClass="section_header textalign_center">The Three-Factor Eating Questionnaire - R18</epi:info>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="section_textbody">Please tick &lt;b&gt;one&lt;/b&gt; option only that applies best to you for all the questions</epi:info>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="section_textbody">Please try to answer every question.</epi:info>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="section_footer textalign_center">Your answers will be treated as strictly confidential and will be used only for medical research.</epi:info>
+	</epi:section>
+	<epi:section position="1">
+		<epi:title/>
+		<epi:info cssClass="section_footer">User the inner scroll bar to make sure you answered all the questions.</epi:info>
+		<epi:questionGroup ID="1" position="1">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_footer">Please answer every line</epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+				<epi:rhData>bordered</epi:rhData>
+				<epi:rhData>alt_color</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:textNode position="1">
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="2">
+				<epi:info cssClass="textnode_textbody">Definitely true</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="3">
+				<epi:info cssClass="textnode_textbody">Mostly true</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="4">
+				<epi:info cssClass="textnode_textbody">Mostly false</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="5">
+				<epi:info cssClass="textnode_textbody">Definitely false</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>subheader</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="6">
+				<epi:info cssClass="textnode_textbody">When I smell a sizzling steak or juicy piece of meat, I find it very difficult to keep from eating, even if I have just finished a meal</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q1" position="7">
+				<epi:variable ID="1373">
+					<epi:varName>3FEQ_1SmellOfMeat</epi:varName>
+				</epi:variable>
+				<epi:option position="1">				
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">					
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="8">
+				<epi:info cssClass="textnode_textbody">I deliberately take small helpings as a means of controlling my weight.</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q2" position="9">
+				<epi:variable ID="1374">
+					<epi:varName>3FEQ_2SmallHelpings</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="10">
+				<epi:info cssClass="textnode_textbody">When I feel anxious, I find myself eating</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q3" position="11">
+				<epi:variable ID="1375">
+					<epi:varName>3FEQ_3AnxiousAndEating</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="12">
+				<epi:info cssClass="textnode_textbody">Sometimes when I start eating, I just can't seem to stop</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q4" position="13">
+				<epi:variable ID="1376">
+					<epi:varName>3FEQ_4StartedEatingCantStop</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="14">
+				<epi:info cssClass="textnode_textbody">Being with someone who is eating often makes me hungry enough to eat also.</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q5" position="15">
+				<epi:variable ID="1377">
+					<epi:varName>3FEQ_5WithSomeoneEating</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="16">
+				<epi:info cssClass="textnode_textbody">When I feel blue, I often overeat</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q6" position="17">
+				<epi:variable ID="1378">
+					<epi:varName>3FEQ_6BlueAndOvereating</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="18">
+				<epi:info cssClass="textnode_textbody">When I see a real delicacy, I often get so hungry that I have to eat right away.</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q7" position="19">
+				<epi:variable ID="1379">
+					<epi:varName>3FEQ_7DelicacyAndEatingRightAway</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="20">
+				<epi:info cssClass="textnode_textbody">I get so hungry that my stomach often seems like a bottomless pit.</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q8" position="21">
+				<epi:variable ID="1380">
+					<epi:varName>3FEQ_8HungryBottomlessPit</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="22">
+				<epi:info cssClass="textnode_textbody">I am always hungry so it is hard for me to stop eating before I finish the food on my plate</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q9" position="23">
+				<epi:variable ID="1381">
+					<epi:varName>3FEQ_9FinishFoodOnPlate</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="24">
+				<epi:info cssClass="textnode_textbody">When I feel lonely, I console myself by eating.</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q10" position="25">
+				<epi:variable ID="1382">
+					<epi:varName>3FEQ_10LonelyConsoleEating</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="26">
+				<epi:info cssClass="textnode_textbody">I consciously hold back at meals in order not to weight gain.</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q11" position="27">
+				<epi:variable ID="1383">
+					<epi:varName>3FEQ_11HoldBackAtMeals</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="28">
+				<epi:info cssClass="textnode_textbody">I do not eat some foods because they make me fat</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q12" position="29">
+				<epi:variable ID="1384">
+					<epi:varName>3FEQ_12FoodMakeMeFat</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="30">
+				<epi:info cssClass="textnode_textbody">I am always hungry enough to eat at any time.</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>questiontext_header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>	
+			<epi:question ID="Q13" position="31">
+				<epi:variable ID="1385">
+					<epi:varName>3FEQ_13HungryEatAnytime</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+		<epi:questionGroup ID="14" position="2">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_textbody">How often do you feel hungry?</epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:question ID="Q14" position="1">
+				<epi:variable ID="1386">
+					<epi:varName>3FEQ_14OftenFeelHungry</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionText>Only at meal times</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionText>Sometimes between meals</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionText>Often between meals</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionText>Almost always</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+					<epi:rhData>after</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>vertical</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+		<epi:questionGroup ID="15" position="15">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_textbody">How frequently do you avoid 'stocking up' on tempting foods? </epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:question ID="Q15" position="1">
+				<epi:variable ID="1387">
+					<epi:varName>3FEQ_15StockingUpTemptingFoods</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionText>Almost never</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionText>Seldom</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionText>Usually</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionText>Almost always</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+					<epi:rhData>after</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>vertical</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+		<epi:questionGroup ID="16" position="16">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_textbody">How likely are you to consciously eat less than you want?</epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:question ID="Q16" position="1">
+				<epi:variable ID="1388">
+					<epi:varName>3FEQ_16ConsciouslyEatLess</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionText>Unlikely</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionText>Slightly likely</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionText>Moderately likely</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionText>Very likely</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+					<epi:rhData>after</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>vertical</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+		<epi:questionGroup ID="17" position="17">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_textbody">Do you go on eating binges though you are not hungry?</epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:question ID="Q17" position="1">
+				<epi:variable ID="1389">
+					<epi:varName>3FEQ_17EatingBingesWhenNotHungry</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionText>Never</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionText>Rarely</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionText>Sometimes</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionText>At least once a week</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+					<epi:rhData>after</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>vertical</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+		<epi:questionGroup ID="18" position="18">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_textbody">On a scale of 1 to 8, where 1 means no restraint in eating (eating whatever you want, whenever you want it) and 8 means total restraint (constantly limiting food intake and never 'giving in'), what number would you give yourself?</epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:textNode position="1">
+				<epi:info cssClass="textnode_textbody">1</epi:info>
+				<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>minwidth_60</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="2">
+				<epi:info cssClass="textnode_textbody">2</epi:info>
+				<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>minwidth_60</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="3">
+				<epi:info cssClass="textnode_textbody">3</epi:info>
+				<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>minwidth_60</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="4">
+				<epi:info cssClass="textnode_textbody">4</epi:info>
+				<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>minwidth_60</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="5">
+				<epi:info cssClass="textnode_textbody">5</epi:info>
+				<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>minwidth_60</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="6">
+				<epi:info cssClass="textnode_textbody">6</epi:info>
+				<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>minwidth_60</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="7">
+				<epi:info cssClass="textnode_textbody">7</epi:info>
+				<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>minwidth_60</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="8">
+				<epi:info cssClass="textnode_textbody">8</epi:info>
+				<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+					<epi:rhData>minwidth_60</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q18" position="9">
+				<epi:variable ID="1197">
+					<epi:varName>3FEQ_18ScaleOfRestraint</epi:varName>
+				</epi:variable>
+				<epi:option position="1">
+					<epi:optionText>1</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionText>2</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionText>3</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionText>4</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:option position="5">
+					<epi:optionText>5</epi:optionText>
+					<epi:optionValue>5</epi:optionValue>
+				</epi:option>
+				<epi:option position="6">
+					<epi:optionText>6</epi:optionText>
+					<epi:optionValue>6</epi:optionValue>
+				</epi:option>
+				<epi:option position="7">
+					<epi:optionText>7</epi:optionText>
+					<epi:optionValue>7</epi:optionValue>
+				</epi:option>
+				<epi:option position="8">
+					<epi:optionText>8</epi:optionText>
+					<epi:optionValue>8</epi:optionValue>
+				</epi:option>
+		<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>radio</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>showoptionlabels</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>optionsalignment</epi:rhType>
+					<epi:rhData>horizontal</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_center</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+	</epi:section>
+	<epi:section position="2">
+		<epi:title>Comments</epi:title>
+		<epi:questionGroup ID="8" position="1">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_textbody">Would you like to add any comments?</epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:question ID="Q145" position="1">
+				<epi:variable ID="1198">
+					<epi:varName>ThreeFactorEatingComments</epi:varName>
+					<epi:dataType>
+						<epi:string>
+							<epi:maxLength>500</epi:maxLength>
+						</epi:string>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>multiline</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>rows</epi:rhType>
+					<epi:rhData>5</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>cols</epi:rhType>
+					<epi:rhData>100</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="CheckLength">
+						<epi:parameter type="string" use="ErrorResponse">Your answer should be less than 500 characters long</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+	</epi:section>
+	<epi:section position="3">
+		<epi:title/>
+		<epi:renderingHint>
+				<epi:rhType>pin</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+		<epi:questionGroup ID="" position="1">
+			<epi:title></epi:title>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:textNode position="1">
+				<epi:info cssClass="textbody">Please press "Submit" to send your answers to the MRC Epidemiololgy Unit.</epi:info>
+				<epi:info cssClass="textnode_footer">Note that you will not be able to change your answers after you press "Submit".</epi:info> 
+			</epi:textNode>
+		</epi:questionGroup>
+	</epi:section>
+	<epi:section position="4">
+		<epi:title/>
+		<epi:info cssClass="textbody">Thank you. You have now completed the questionnaire.</epi:info>
+	</epi:section>
+</epi:questionnaire>

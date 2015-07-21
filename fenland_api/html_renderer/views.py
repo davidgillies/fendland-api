@@ -9,7 +9,7 @@ if local_settings.CUSTOM is True:
 else:
     from api_renderer.cam_apps import DataPrep
 #from famhist_new.models import FamHistQuestionnaire
-from questionnaire.models import Results
+from questionnaire.models import Results, Users
 
 
 class HTMLView(View):
@@ -98,7 +98,7 @@ class AltTestView(View):
             #data = fenland_app.get_data(section, 'id', id_variable_value)
             #section_obj = DataPrep(section_obj, data)
             #section_obj = section_obj.data_prep()
-            q_data = Results.objects.filter(user_id=id_variable_value).filter(questionnaire_id='FamHist')
+            q_data = Results.objects.filter(user_id=id_variable_value).filter(questionnaire_id=section_obj.app_object.id)
             data={}
             for q in q_data:
                 data[q.var_name] = q.var_value
@@ -175,10 +175,16 @@ class AltHTMLView(View):
             #data = fenland_app.update_data(section, 'id_variable',
             #                               request.POST['id'], myDict)
             q_data = Results.objects.filter(user_id=id_variable_value).filter(questionnaire_id=section_obj.app_object.id)
+            user = Users.objects.get(user_id=id_variable_value)
+            # print q_data
             for q in q_data:
                 if q.var_name in myDict.keys():
                     q.var_value = myDict[q.var_name]
+                    myDict.pop(q.var_name)
                     q.save()
+            for q in myDict.keys():
+                Results.objects.create(user=user, questionnaire_id=section_obj.app_object.id, var_name=q, var_value=myDict[q])
+            q_data = Results.objects.filter(user_id=id_variable_value).filter(questionnaire_id=section_obj.app_object.id)
             data={}
             for q in q_data:
                 data[q.var_name] = q.var_value
