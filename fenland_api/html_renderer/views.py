@@ -138,7 +138,7 @@ class AltHTMLView(View):
             # section_obj = DataPrep(section_obj, data)
             # section_obj = section_obj.data_prep()
             # data = FamHistQuestionnaire.objects.get(pk=id_variable_value)
-            q_data = Results.objects.filter(user_id=id_variable_value).filter(questionnaire_id='FamHist')
+            q_data = Results.objects.filter(user_id=id_variable_value).filter(questionnaire_id=section_obj.app_object.id)
             data={}
             for q in q_data:
                 data[q.var_name] = q.var_value
@@ -164,17 +164,29 @@ class AltHTMLView(View):
             return HttpResponseNotFound('Page Not Found')
         section_obj = fenland_app.get_section(section)
         myDict = dict(request.POST.iterlists())
+        id_variable_value = request.GET['id']
         for k in myDict.keys():
             myDict[k] = myDict[k][0]
         if 'search' in myDict.keys():
             result['search_results'] = fenland_app.search(myDict['search'], section)
             data = {}
         else:
-            myDict = json.dumps(myDict)
-            data = fenland_app.update_data(section, 'id_variable',
-                                           request.POST['id'], myDict)
-            result['data_id'] = data['id']
+            # myDict = json.dumps(myDict)
+            #data = fenland_app.update_data(section, 'id_variable',
+            #                               request.POST['id'], myDict)
+            q_data = Results.objects.filter(user_id=id_variable_value).filter(questionnaire_id=section_obj.app_object.id)
+            for q in q_data:
+                if q.var_name in myDict.keys():
+                    q.var_value = myDict[q.var_name]
+                    q.save()
+            data={}
+            for q in q_data:
+                data[q.var_name] = q.var_value
+            result['data'] = data
+            result['section'] = section_obj
+            return render(request, 'html_renderer/alt_base2.html', result)
+            # result['data_id'] = data['id']
         # section_obj = DataPrep(section_obj, data)
         # section_obj = section_obj.data_prep()
         result['section'] = section_obj
-        return render(request, 'html_renderer/base2.html', result)
+        return render(request, 'html_renderer/alt_base2.html', result)

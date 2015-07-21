@@ -344,6 +344,7 @@ class Application(object):
         self.xml = xml
         self.validator = {}
         self.xml_object = objectify.fromstring(self.xml)
+        self.id = self.xml_object.attrib['ID']
         self.models = local_settings.MODELS
         self.custom = local_settings.CUSTOM
         self.mapping = local_settings.SECTION_MAPPING
