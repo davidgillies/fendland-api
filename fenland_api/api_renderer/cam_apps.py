@@ -90,6 +90,7 @@ class Question(MethodMixin):
         self.maxlength = 0
         self.multi = False
         self.tests = []
+        self.info = []
         self.data_type = {}
         self.pattern = ''
         self.id = question_object.attrib['ID']
@@ -186,7 +187,11 @@ class Question(MethodMixin):
         q_info = {}
         q_info['text'] = item.text
         q_info['cssClass'] = item.attrib['cssClass']
-        self.question_objects.append(q_info)
+        try:
+            q_info['cssClass'] = item.attrib['cssClass']
+        except:
+            q_info['cssClass'] = ''
+        self.info.append(q_info)
 
     def set_restrictions(self, item):
         for rule in item.getchildren():

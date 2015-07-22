@@ -5,8 +5,8 @@ from .models import Volunteer, Appointment
 from .forms import VolunteerForm
 
 # XML_FILE = 'U:/Data/forms_api/forms_api/xmlfiles/Ships.xml'
-XML_FILE = 'xmlfiles/RPAQtest4_v10.xml'
-# XML_FILE = 'xmlfiles/Fenland.xml'
+# XML_FILE = 'xmlfiles/RPAQtest4_v10.xml'
+XML_FILE = 'xmlfiles/Fenland.xml'
 
 # DATABASE = 'mysql+pymysql://david:david@localhost:3306/famhist_new'
 DATABASE = 'mysql+pymysql://david:david@localhost:3306/mydb'
@@ -25,9 +25,9 @@ TABLE_MODEL_MAPPING = {'volunteers': Volunteer, 'appointments': Appointment}
 
 MODEL_LIST = [Volunteer, Appointment]
 
-MODELS = False
+MODELS = True
 
-QUESTIONNAIRE = True
+QUESTIONNAIRE = False
 # Note if you set QUESTIONNAIRE to TRUE you use the /althtml and it uses Alt methods plus questionnaire models.
 
 MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer, 3: Volunteer, 4: Volunteer}
@@ -35,6 +35,6 @@ MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer, 3: Volunteer, 4: Volu
 MODEL_FORM_MAPPING = {0: VolunteerForm, 1: VolunteerForm, 2: VolunteerForm,
                       3: VolunteerForm, 4: VolunteerForm}
 
-CUSTOM = False
+CUSTOM = True
 
 TESTING = True

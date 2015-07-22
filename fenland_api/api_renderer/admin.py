@@ -121,6 +121,7 @@ class MyVolunteer(Volunteer):
 
 class VolunteerAdmin2(admin.ModelAdmin):
     inlines = [AppointmentInline, ]
+    readonly_fields = ('modified', 'modified_by')
     search_fields = ('surname', 'forenames', 'town', 'postcode',
                      'surgeries__full_name')
     list_display = ('surname', 'forenames', 'town', 'postcode',
