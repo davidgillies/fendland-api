@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.dispatch import receiver
 import requests
+from django.utils.translation import ugettext_lazy as _
 
 
 @receiver(user_logged_in)
@@ -33,6 +34,9 @@ class Surgery(models.Model):
     modified_by = models.CharField(max_length=45, blank=True)
     modified = models.DateTimeField(blank=True, null=True)
     surgeriescol = models.CharField(max_length=45, blank=True)
+    latitude = models.FloatField(_("latitude"), help_text=_("Latitude (Lat.) is the angle between any point and the equator (north pole is at 90; south pole is at -90)."), blank=True, null=True)
+    longitude = models.FloatField(_("longitude"), help_text=_("Longitude (Long.) is the angle east or west of an arbitrary point on Earth from Greenwich (UK), which is the international zero-longitude point (longitude=0 degrees). The anti-meridian of Greenwich is both 180 (direction to east) and -180 (direction to west)."), blank=True, null=True)
+
 
     def __unicode__(self):
         return "%s" % (self.full_name)

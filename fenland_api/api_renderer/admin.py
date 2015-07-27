@@ -60,7 +60,7 @@ class SurgeryAdmin(admin.ModelAdmin):
                            ('county'),
                            ('postcode'),
                            ('telephone'))}),
-        ('Modified', {'fields': (('modified_by', 'modified'))})
+        ('Modified', {'fields': (('modified_by', 'modified',  'latitude', 'longitude'))})
     )
 
     def save_model(self, request, obj, form, change):

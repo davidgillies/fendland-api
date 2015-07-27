@@ -1,0 +1,44 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_static admin_modify %}
+{% load url from future %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <style type="text/css">
+    #map_canvas {
+        width:722px;
+        height:300px;
+    }
+    .buttonHolder {
+        width:722px;
+    }
+    #remove_geo {
+        float: right;
+    }
+    </style>
+{% endblock %}
+
+{% block field_sets %}
+    {% for fieldset in adminform %}
+        {% include "admin/includes/fieldset.html" %}
+        {% if forloop.counter == 2 %}
+            <fieldset class="module aligned">
+                <h2>{% trans "Map" %}</h2>
+                <div class="form-row">
+                    <div id="map_canvas">
+                        <!-- THE GMAPS WILL BE INSERTED HERE DYNAMICALLY -->
+                    </div>
+                    <ul id="map_locations"></ul>
+                    <div class="buttonHolder">
+                        <button id="locate_address" type="button" class="secondaryAction">{% trans "Locate address" %}</button>&nbsp;
+                        <button id="remove_geo" type="button" class="secondaryAction">{% trans "Remove from map" %}</button>
+                    </div>
+                </div>
+            </fieldset>
+        {% endif %}
+    {% endfor %}
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en&amp;region=UK"></script>
+    <script type="text/javascript" src="/static/api_renderer/js/locating.js"></script>
+{% endblock %}
