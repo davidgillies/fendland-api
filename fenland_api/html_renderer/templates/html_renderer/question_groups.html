@@ -3,7 +3,7 @@
 
     {% for question_group in section.section_objects %}
         {{question_group.title}}<br />
-             {% for i in question_group.info %}
+             <div class="questiongroup_title">{{question_group.title}}</div>
                 {% if i.cssClass == 'new_line' %}<br />
                     {% else %}<div class="{{i.cssClass}}">{{i.text}}</div>    
                 {% endif %}
