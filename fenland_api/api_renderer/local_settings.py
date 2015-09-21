@@ -35,6 +35,6 @@ MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer, 3: Volunteer, 4: Volu
 MODEL_FORM_MAPPING = {0: VolunteerForm, 1: VolunteerForm, 2: VolunteerForm,
                       3: VolunteerForm, 4: VolunteerForm}
 
-CUSTOM = False
+CUSTOM = True
 
 TESTING = True
