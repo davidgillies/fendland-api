@@ -133,7 +133,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #    )),
 #)
 
-STATIC_ROOT = 'U:/Data/fenland_api/fendland-api/static'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static').replace('\\','/')
 
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, 'templates').replace('\\','/'),)
 
